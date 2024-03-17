@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso de Javascript</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="./basico.js"></script> <!-- link JS best way -->
+    <!-- <script defer src="./Estructuras-de-control.js"></script>  -->
+    <!-- <script defer src="./estructuras-de-datos.js"></script>  -->
+</head>
+<body>
+
+    <h1>¿Qué es lo que puedo hacer con Javascript?</h1>
+    <p id="demostracion">Este texto será transformado por JS</p>
+
+
+    <button onclick="document.getElementById('demostracion').innerHTML = 'Texto transformado por JS'">Usar Javascript</button> <!-- inline js script -->
+
+    <p id="demostracion2"></p>
+
+
+    <h1>Eventos: </h1>
+    <p id="seleccionable"></p>
+
+    <button onclick="mostrar()">Click Aqui</button>
+
+
+
+    <select onchange="mostrar()">
+        <option value="html">html</option>
+        <option value="css">css</option>
+        <option value="javascript">javascript</option>
+        <option value="react">react</option>
+    </select>
+
+
+
+    <ul id="selectArray2">
+
+    </ul>
+
+    <p id="seleccionable2"></p>
+
+    <script>
+        document.getElementById('demostracion2').innerHTML = 'Este texto ha sido generado por JS'
+    </script> <!-- inline js script otra manera-->
+
+
+    <!-- <script src="script2.js"></script> link JS script -->
+</body>
+</html>

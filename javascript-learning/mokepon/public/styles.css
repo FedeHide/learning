@@ -1,0 +1,377 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body {
+  font-family: 'Press Start 2P', cursive;
+  background-color: #36415F;
+}
+
+#seleccionar-mascota {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.titulo {
+  color: white;
+  font-size: 42px;
+  box-sizing: border-box;
+  margin: 28px;
+} 
+
+.subtitulo {
+  color: white;
+  font-size: 20px;
+  margin-bottom: 90px;
+}
+
+.tarjetas {
+  display: flex;
+  gap: 90px;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 42px;
+  width: 70%;
+}
+
+.tarjeta-de-Hipodoge {
+  width: 271px;
+  height: 232px;
+  background: #93C8EA;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+}
+
+.tarjeta-de-Capipepo {
+  width: 271px;
+  height: 232px;
+  background: #C9E4C5;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+}
+
+.tarjeta-de-Ratigueya {
+  width: 271px;
+  height: 232px;
+  background: #F3BC9E;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+}
+
+.tarjeta-de-Hipodoge:hover {
+  background-color: #0e354d;
+  cursor: pointer;
+}
+
+.tarjeta-de-Capipepo:hover {
+  background-color: #0d3520;
+  cursor: pointer;
+}
+
+.tarjeta-de-Ratigueya:hover {
+  background-color: #550202;
+  cursor: pointer;
+}
+
+input:checked + .tarjeta-de-Hipodoge {
+  background-color: #0e354d;
+}
+
+input:checked + .tarjeta-de-Capipepo {
+  background-color: #0d3520;
+}
+
+input:checked + .tarjeta-de-Ratigueya {
+  background-color: #550202;
+}
+
+.tarjeta-de-Hipodoge img {
+  width: 120%;
+}
+
+.tarjeta-de-Capipepo img {
+  width: 120%;
+}
+
+.tarjeta-de-Ratigueya img {
+  width: 120%;
+}
+
+#boton-mascota {
+  width: 180px;
+  height: 40px;
+  border-radius: 50px;
+  background: #ed4e6c;
+  color: white;
+  padding: 2px;
+  box-sizing: border-box;
+  margin: 10px;
+  border: 2px solid white;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 15px;
+  transition: background-color .5s;
+}
+
+#boton-mascota:hover {
+  background-color: rgb(180, 155, 11);
+  cursor: pointer;
+}
+
+input {
+  display: none;
+}
+
+#seleccionar-ataque {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.boton-de-ataque {
+  background-color: #30434e;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 20px;
+  border-color: white;
+  width: 102px;
+  color: white;
+  font-family: 'Press Start 2P', cursive;
+}
+
+#boton-fuego:hover {
+  background-color: #550202;
+  cursor: pointer;
+}
+
+#boton-agua:hover {
+  background-color: #0e3a55;
+  cursor: pointer;
+}
+
+#boton-tierra:hover {
+  background-color: #0e2e1d;
+  cursor: pointer;
+}
+
+#mensajes {
+  width: 43em;
+  background: #2A3650;
+  padding: 2em;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  margin: 2em;
+}
+
+#boton-reiniciar {
+  background: #ed4e6c;
+  color: white;
+  width: 10em;
+  height: 3em;
+  border-radius: 50px;
+  border: 2px solid white;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 15px;
+  transition: background-color .5s;
+  margin-top: 1em;
+}
+
+#boton-reiniciar:hover {
+  background-color: rgb(180, 155, 11);
+  cursor: pointer;
+}
+
+.caja-ataques {
+  display: flex;
+}
+
+.ataques-caja-jugador {
+  display: grid;
+  grid-template-columns: 100px 100px;
+  width: 24em;
+  background: #2A3650;
+  padding: 1em;
+  border-radius: 20px;
+  color: white;
+  margin: 2em;
+  justify-content: space-around;
+}
+
+.ataques-caja-enemigo {
+  display: grid;
+  grid-template-columns: 100px 100px;
+  width: 24em;
+  background: #2A3650;
+  padding: 1em;
+  border-radius: 20px;
+  color: white;
+  margin: 2em;
+  justify-content: space-around;
+}
+
+#vidas-jugador {
+  font-size: 32px;
+  margin-bottom: 0;
+  margin-top: 10px;
+}
+
+#vidas-enemigo {
+  font-size: 32px;
+  margin-bottom: 0;
+  margin-top: 10px;
+}
+
+.ataques-jugador {
+  display: flex;
+  flex-direction: column;
+  width: 19em;
+  align-items: center;
+}
+
+.ataques-enemigo {
+  display: flex;
+  flex-direction: column;
+  width: 19em;
+  align-items: center;
+}
+
+#ver-mapa {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#ver-mapa button {
+  width: 80px;
+  height: 57px;
+  border-radius: 50px;
+  background: #ed4e6c;
+  color: white;
+  box-sizing: border-box;
+  margin: 6px 0;
+  border: 2px solid white;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 35px;
+  transition: background-color .5s;
+}
+
+#ver-mapa button:hover {
+  background-color: rgb(180, 155, 11);
+  cursor: pointer;
+}
+
+@media (max-width: 760px) {
+  .tarjetas {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    margin: 13px;
+  }
+
+  .subtitulo {
+    margin-bottom: 22px;
+  }
+
+  .tarjeta-de-Hipodoge img {
+    position: relative;
+    width: 120%;
+    bottom: 22px;
+  }
+
+  #boton-fuego:hover, #boton-fuego:active {
+    background-color: #550202;
+    cursor: pointer;
+  }
+  
+  #boton-agua:active {
+    background-color: #0e3a55;
+    cursor: pointer;
+  }
+  
+  #boton-tierra:active {
+    background-color: #0e2e1d;
+    cursor: pointer;
+  }
+
+  #mensajes {
+    width: 80%;
+    height: 3em;
+    margin: 10px;
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  .boton-reiniciar {
+    width: 11em;
+    height: 3em;
+    font-size: 10px;
+    margin-top: 2.5em;
+  }
+
+  .caja-ataques {
+    display: flex;
+    flex-direction: row;
+    margin-top: 2em;
+  }
+
+  .ataques-caja-enemigo, .ataques-caja-jugador {
+    display: grid;
+    grid-template-columns: 100px 100px;
+    width: 8em;
+    background: #2A3650;
+    padding: 1em;
+    border-radius: 20px;
+    color: white;
+    margin: 1em;
+    justify-content: space-around;
+  }
+
+  .ataques-jugador, .ataques-enemigo {
+    display: flex;
+    flex-direction: column;
+    width: 24em;
+    font-size: 50%;
+    align-items: center;
+    padding: 3px;
+  }
+
+  .vidas-jugador, .vidas-enemigo {
+    font-size: 3em;
+  }
+
+  .tarjeta-de-Hipodoge, .tarjeta-de-Capipepo, .tarjeta-de-Ratigueya {
+    width: 170px;
+    height: 141px;
+    flex-direction: column;
+    display: flex;
+    margin-bottom: 33px;
+  }
+}
+
+@media (max-width: 300px) {
+  #ver-mapa div{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+} 
