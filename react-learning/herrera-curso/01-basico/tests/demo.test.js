@@ -1,4 +1,3 @@
-/* eslint-disable */
 describe('Pruebas en <DemoComponent />', () => { 
 
     

@@ -1,12 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import './index.css'
-// import { App } from './App'
-import CounterApp from './CounterApp.jsx'
+import GifExpertApp from './GifExpertApp'
+import './styles.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
 	<React.StrictMode>
-		{/* <App title={'Hola, soy Goku'} /> */}
-		<CounterApp value={10} />
+		<GifExpertApp />
 	</React.StrictMode>,
 )

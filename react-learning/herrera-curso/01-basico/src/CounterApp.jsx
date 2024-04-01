@@ -14,14 +14,14 @@ export default function CounterApp( {value} ) {
     return (
         <>
             <h1>CounterApp</h1>
-            <h2>{ counter }</h2>
+            <h2 data-testid='test-counter'>{ counter }</h2>
             <button onClick={ handleAdd }>
                 +1
             </button>
             <button onClick={ handleSub }>
                 -1
             </button>
-            <button onClick={ handleReset }>
+            <button aria-label='btn-reset' onClick={ handleReset }>
                 Reset
             </button>
         </>
