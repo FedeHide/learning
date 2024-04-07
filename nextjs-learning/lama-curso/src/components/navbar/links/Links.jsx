@@ -1,8 +1,9 @@
 'use client'
 
 import { NavLink } from "./navLink/NavLink"
-import styles from './links.module.css'
 import { useState } from "react"
+import styles from './links.module.css'
+import Image from "next/image"
 
 export const Links = () => {
 
@@ -51,7 +52,7 @@ export const Links = () => {
                     )
                 }
             </div>
-            <button className={styles.menuButton} onClick={() => setOpen((prev) => !prev)}>Menu</button>
+            <Image className={styles.menuButton} src='/menu.png' alt="" width={30} height={30} onClick={() => setOpen((prev) => !prev)} />
             {
                 open 
                 && 
