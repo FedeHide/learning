@@ -1,0 +1,16 @@
+{
+    "IndexPage": {
+        "title": "next-intl ejemplo",
+        "description": "Bienvenido al ejemplo de Next.js Internacionalizacion (i18n)"
+    },
+    "NotFoundPage": {
+        "title": "Página no encontrada",
+        "description": "Oops! Parece que la página que estas buscando no existe"
+    },
+    "Navigation": {
+        "home": "Inicio"
+    },
+    "Footer": {
+        "copyright": "©️ 2024 Tu Aplicación. Todos los derechos reservados"
+    }
+}
