@@ -1,6 +1,6 @@
 const fs = require('node:fs')
 
-const stats = fs.statSync('./holaMundo.txt')
+const stats = fs.statSync('./text1.txt')
 
 console.log(
     `File: ${stats.isFile()} -`,
