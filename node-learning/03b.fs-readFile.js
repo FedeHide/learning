@@ -1,7 +1,7 @@
 const fs = require('node:fs');
 
 console.log('Leyendo el primer archivo...')
-fs.readFile('./holaMundo.txt', 'utf-8', (err, text) => {  //  <-- ejecutas este callback, readFile es asyncrono
+fs.readFile('./holaMundo.txt', 'utf-8', (err, text) => {  //  <-- ejecutas este callback cuando se completa una tarea asincrona, readFile es asyncrono
     console.log('primer texto:', text)
 });
 
