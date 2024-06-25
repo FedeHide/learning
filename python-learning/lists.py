@@ -14,7 +14,21 @@ print(my_list, len(my_list)) # [1, 2, 3, 4, 5] 5
 my_other_list = ["apple", 10, 5.6]
 
 
-# Accessing Items
+
+##### list destructuring
+a, b, c = my_other_list
+
+# list destructuring
+a, b, c = my_other_list[0], my_other_list[1], my_other_list[2]
+
+# list destructuring with *
+a, *b, c = my_list # a = 1, b = [2, 3, 4], c = 5
+
+# list destructuring with * and _ (ignoring some values)
+a, *_, c = my_list # a = 1, c = 5
+
+
+##### Accessing Items
 print(my_list[0])   # First item
 
 # Negative Indexing
@@ -26,6 +40,7 @@ print(my_list[1:3]) # [2, 3]
 # Change Item Value
 my_list[1] = 10
 print(my_list)      # [1, 10, 3, 4, 5]
+
 
 
 #### List Methods
@@ -74,6 +89,12 @@ print(new_list) # [6, 7, 8, 22, 50]
 matrix = [[1, 2], [3, 4], [5, 6]]
 flattened = [num for row in matrix for num in row]
 print(flattened) # [1, 2, 3, 4, 5, 6]
+
+
+## Concatenating Lists
+list1 = [1, 2, 3]
+list2 = [4, 5, 6]
+list3 = list1 + list2 # [1, 2, 3, 4, 5, 6]
 
 
 
