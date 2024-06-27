@@ -41,6 +41,15 @@ print(my_list[1:3]) # [2, 3]
 my_list[1] = 10
 print(my_list)      # [1, 10, 3, 4, 5]
 
+# delete item
+del my_list[1]      # [1, 3, 4, 5]
+
+# change an item
+my_list[1] = 10     # [1, 10, 3, 4, 5]
+
+# change multiple items (change the second and third items)
+my_list[1:3] = [10, 20]    # [1, 10, 20, 4, 5]
+
 
 
 #### List Methods
@@ -70,11 +79,14 @@ my_list.insert(1, 10)   # [1, 10, 2, 3, 4, 5, 6, 7, 8]
 # pop()	Removes the element at the specified position
 my_list.pop(1)  # [1, 2, 3, 4, 5, 6, 7, 8]
 
-# remove()	Removes the item with the specified value
+# remove()	Removes the item with the specified value (only the first occurrence)
 my_list.remove(3)   # [1, 2, 4, 5, 6, 7, 8]
 
 # reverse()	Reverses the order of the list
 my_list.reverse()   # [8, 7, 6, 5, 4, 2, 1]
+
+# other way to reverse a list
+my_list = my_list[::-1]
 
 # sort()	Sorts the list
 my_new_list = [4, 22, 1, 50, 6, 7, 8]
@@ -95,9 +107,3 @@ print(flattened) # [1, 2, 3, 4, 5, 6]
 list1 = [1, 2, 3]
 list2 = [4, 5, 6]
 list3 = list1 + list2 # [1, 2, 3, 4, 5, 6]
-
-
-
-
-
-
