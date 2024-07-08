@@ -17,6 +17,7 @@ my_other_dict = {
     "age": 30,
     "city": "Buenos Aires",
     "country": "Argentina",
+    "is_student": False
 }
 
 print(len(my_dict)) # 3
