@@ -15,8 +15,11 @@ my_dict = {
 my_other_dict = {
     "name": "Orion",
     "age": 30,
-    "city": "Buenos Aires",
-    "country": "Argentina",
+    "languages": {
+        1: "Python",
+        2: "JavaScript",
+    },
+    "fav_colors": { "black", "red" },
     "is_student": False
 }
 
@@ -25,6 +28,7 @@ print(len(my_dict)) # 3
 ### check if item exists
 # You can check if a specified key exists in a dictionary by using the in keyword:
 print("brand" in my_dict) # True
+print("Ford" in my_dict) # False , because "Ford" is a value, not a key
 
 
 ### Accessing Items
@@ -77,6 +81,9 @@ print(my_dict.items()) # dict_items([('brand', 'Ford'), ('year', 2018), ('color'
 # keys() Returns a list containing the dictionary's keys
 print(my_dict.keys()) # dict_keys(['brand', 'year', 'color'])
 
+# values() Returns a list of all the values in the dictionary
+print(my_dict.values()) # dict_values(['Ford', 2018, 'red'])
+
 # popitem() Removes the last inserted key-value pair
 my_dict.popitem()
 print(my_dict) # {'brand': 'Ford', 'year': 2018}
@@ -87,9 +94,6 @@ print(my_dict.setdefault("brand", "Toyota")) # Ford
 # update() Updates the dictionary with the specified key-value pairs
 my_dict.update({"year": 2020})
 print(my_dict) # {'brand': 'Ford', 'year': 2020}
-
-# values() Returns a list of all the values in the dictionary
-print(my_dict.values()) # dict_values(['Ford', 2020])+
 
 # del keyword removes the item with the specified key name:
 del my_dict["brand"]
