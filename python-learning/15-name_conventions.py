@@ -17,7 +17,7 @@ my_dict_variable = {"name": "John", "age": 30}
 
 ## class names convention is to use PascalCase
 # Example:
-class Dog:
+class MyDog:
     # Class Attribute
     species = "Canis familiaris"
 

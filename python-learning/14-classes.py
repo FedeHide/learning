@@ -5,7 +5,7 @@
 
 # Example:
 class Dog:
-    pass
+    pass  # pass is a null statement in Python. Nothing happens when it is executed. It is used as a placeholder.
 
 # Here, we use the class keyword to define an empty class Dog. From classes,
 # we can construct instances. An instance is a specific object created from a particular class.
