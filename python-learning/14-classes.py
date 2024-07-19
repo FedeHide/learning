@@ -12,13 +12,29 @@ class Dog:
 
 
 # Example:
+class Person:
+    def __init__(self, name, surname, nickname = "no nickname"):
+        self.full_name = f"{name} {surname} ({nickname})"
+
+    def walk(self):
+        print(f"{self.full_name} is walking")
+
+my_person = Person("John", "Doe")
+print(my_person.full_name) # John Doe (no nickname)
+my_person.walk() # John Doe (no nickname) is walking
+my_other_person = Person("Jane", "Doe", "JD")
+print(my_other_person.full_name) # Jane Doe (JD)
+my_other_person.full_name = "Ruko"
+print(my_other_person.full_name) # Ruko
+
+# Other Example:
 class Dog:
     # Class Attribute
     species = "Canis familiaris"
 
     # Initializer / Instance Attributes
-    def __init__(self, name, age):
-        self.name = name
+    def __init__(self, name, age): # __init__ is a special method in Python classes and used to initialize the object's state.
+        self.name = name   # self represents the instance of the class. By using the "self" keyword we can access the attributes and methods of the class in python.
         self.age = age
 
 # In the above example, Dog is the class, which has two attributes: species and name.
@@ -31,6 +47,9 @@ philo = Dog("Philo", 5)
 mikey = Dog("Mikey", 6)
 
 # Access the instance attributes
+print(philo.name) # Philo
+print(philo.age) # 5
+print(f"{mikey.name} is {mikey.age} years old.") # Mikey is 6 years old.
 print("{} is {} and {} is {}.".format(philo.name, philo.age, mikey.name, mikey.age)) # Philo is 5 and Mikey is 6.
 
 # Is Philo a mammal?

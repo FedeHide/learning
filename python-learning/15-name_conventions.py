@@ -26,8 +26,8 @@ class MyDog:
 ## method names convention is to use snake_case
 # Example:
     # Initializer / Instance Attributes
-    def __init__(self, name, age):
-        self.name = name
+    def __init__(self, name, age): 
+        self.name = name       
         self.age = age
 
     # instance method in snake_case
