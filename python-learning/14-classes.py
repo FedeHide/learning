@@ -13,14 +13,24 @@ class Dog:
 
 # Example:
 class Person:
-    def __init__(self, name, surname, nickname = "no nickname"):
+    def __init__(self, name, surname, nickname = "no nickname", age = 10):
         self.full_name = f"{name} {surname} ({nickname})"
+        self.__age = age # private attribute (encapsulation)
+
+    def get_age(self):
+        return self.__age
+    
+    def set_age(self, age):
+        self.__age = age
 
     def walk(self):
         print(f"{self.full_name} is walking")
 
 my_person = Person("John", "Doe")
 print(my_person.full_name) # John Doe (no nickname)
+print(my_person.get_age()) # 10
+my_person.set_age(20)
+print(my_person.get_age()) # 20
 my_person.walk() # John Doe (no nickname) is walking
 my_other_person = Person("Jane", "Doe", "JD")
 print(my_other_person.full_name) # Jane Doe (JD)
