@@ -25,9 +25,9 @@ y = 5
 x = "10"
 
 try:
-    print(x + y) 
+    print("Example 1:", x + y) 
 except:
-    print("An exception occurred")
+    print("Example 1: An exception occurred")
 
 # Output:
 # An exception occurred
@@ -37,11 +37,11 @@ except:
 try:
     print(x + y)
 except TypeError: # TypeError is the type of exception that will be caught 
-    print("An exception occurred")
+    print("Example 2: An exception occurred")
 except NameError: # NameError is the type of exception that will be caught
-    print("Name Error occurred")
+    print("Example 2: Name Error occurred")
 except:
-    print("Some other error occurred")
+    print("Example 2: Some other error occurred")
 
 # typeError and NameError are the types of exceptions that will be caught and the difference between the two is that the NameError is not raised in the code
 
@@ -52,18 +52,18 @@ except:
 # Example 3:
 try:
     print(x + y)
-    print("No exception occurred")
+    print("Example 3: No exception occurred")
 except:
-    print("An exception occurred")
+    print("Example 3: An exception occurred")
 else: # optional
-    print("The code continued to run")
+    print("Example 3: The code continued to run")
     # this else block will run if there is no exception
 finally: # optional
-    print("The code has finished running")
+    print("Example 3: The code has finished running")
     # this finally block will always run
 
 
-### except errors list:
+### Except errors list:
 # ArithmeticError - Base class for math-related errors.
 # AssertionError - Raised when an assert statement fails.
 # AttributeError - Raised when an attribute reference or assignment fails.
@@ -130,3 +130,13 @@ finally: # optional
 # ValueError - Raised when a function receives an argument of the correct type but inappropriate value.
 # Warning - Base class for warning-related exceptions.
 # ZeroDivisionError - Raised when the second operand of a division or modulo operation is zero.
+
+
+# Example 4:
+try:
+    print("Example 4:", x + y)
+except TypeError as error:
+    print("Example 4:", "An exception occurred ->", error)
+
+# ValueError is the type of exception that will be caught and "as e" is used to store the exception in a variable called e
+# that variable can be used to print the error message
