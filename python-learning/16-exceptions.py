@@ -19,3 +19,15 @@
 
 # Example:
 
+x = 10
+
+try:
+    print(x)
+except:
+    print("An exception occurred")
+
+# Output:
+# An exception occurred
+
+
+
