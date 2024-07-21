@@ -55,9 +55,9 @@ try:
     print("No exception occurred")
 except:
     print("An exception occurred")
-else:
+else: # optional
     print("The code continued to run")
     # this else block will run if there is no exception
-finally:
+finally: # optional
     print("The code has finished running")
     # this finally block will always run
