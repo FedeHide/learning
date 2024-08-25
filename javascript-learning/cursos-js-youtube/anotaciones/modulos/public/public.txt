@@ -1,2 +1,0 @@
-En la carpeta de public vamos a tener archivos publicos para el navegador
-por ejemplo: el archivo compilado final que le vamos a pasar al html (bundle), archivos .css, favicon, imagenes publicas, etc
