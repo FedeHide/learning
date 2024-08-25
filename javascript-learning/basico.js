@@ -1,44 +1,6 @@
 
 
 
-// try catch
-
-// try {
-//     // ejecutamos una porcion de codigo
-//     console.log('llamando al backend');
-//     setTimeout (() => {
-//         console.log('el backend no responde');
-//         console.log('cliente apto para la comprea');
-//     }, 1000);
-// } catch(error) {
-//     // tomamos el error y hacemos algo con el
-//     console.log('algo fallo', error);
-// } finally {
-//     // se ejecuta siempre por mas que falle o no falle
-//     console.log('se ejecuta siempre');
-// }
-
-
-// /////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-// callback
-
-// function mostrarConsola(num) {
-//     console.log(num);
-// };
-
-// function calcular(num1, num2, callback) {
-//     let suma = num1 + num2;
-//     callback(suma);
-// }
-
-// calcular(1, 3, mostrarConsola);
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
-
 // promises
 
 
