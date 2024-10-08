@@ -25,5 +25,5 @@ class PruebaDeCristalTest(unittest.TestCase):
         self.assertEqual(resultado, False)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

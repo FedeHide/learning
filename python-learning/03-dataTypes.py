@@ -1,4 +1,4 @@
-# Integers 
+# Integers
 a = 10
 
 # Float

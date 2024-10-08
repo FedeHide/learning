@@ -21,13 +21,11 @@ class MyDog:
     # Class Attribute
     species = "Canis familiaris"
 
-
-
-## method names convention is to use snake_case
-# Example:
+    ## method names convention is to use snake_case
+    # Example:
     # Initializer / Instance Attributes
-    def __init__(self, name, age): 
-        self.name = name       
+    def __init__(self, name, age):
+        self.name = name
         self.age = age
 
     # instance method in snake_case
@@ -49,6 +47,7 @@ GRAVITY = 9.8
 def greeting(name):
     return "Hello, " + name
 
+
 # 4. Import the module and use the greeting function:
 # import my_module
 # print(my_module.greeting("John")) # Hello, John
@@ -68,6 +67,7 @@ def greeting(name):
 # 4. Add the following code to the my_module.py file:
 def greeting(name):
     return "Hello, " + name
+
 
 # 5. Import the module and use the greeting function:
 # from my_package import my_module

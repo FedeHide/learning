@@ -17,7 +17,7 @@ div = 10 / 5
 mod = 10 % 5
 
 # Exponentiation
-exp = 10 ** 5
+exp = 10**5
 
 # Floor Division
 fdiv = 10 // 5
@@ -63,10 +63,10 @@ b = [1, 2, 3]
 c = a
 
 # is
-is_op = (a is b) # false
+is_op = a is b  # false
 
 # is not
-is_not_op = (a is not b) # true
+is_not_op = a is not b  # true
 
 #!-----------------------------!#
 
@@ -163,5 +163,4 @@ assign_bit_rshift >>= 5
 
 #### Ternary Operator
 # Syntax: [on_true] if [expression] else [on_false]
-ternary = "Greater" if 10 > 5 else "Lesser" # Greater
-
+ternary = "Greater" if 10 > 5 else "Lesser"  # Greater

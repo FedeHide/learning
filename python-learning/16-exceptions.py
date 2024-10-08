@@ -18,14 +18,13 @@
 #     # always run this code
 
 
-
 # Example:
 x = 10
 y = 5
 x = "10"
 
 try:
-    print("Example 1:", x + y) 
+    print("Example 1:", x + y)
 except:
     print("Example 1: An exception occurred")
 
@@ -36,9 +35,9 @@ except:
 # Example 2:
 try:
     print(x + y)
-except TypeError: # TypeError is the type of exception that will be caught 
+except TypeError:  # TypeError is the type of exception that will be caught
     print("Example 2: An exception occurred")
-except NameError: # NameError is the type of exception that will be caught
+except NameError:  # NameError is the type of exception that will be caught
     print("Example 2: Name Error occurred")
 except:
     print("Example 2: Some other error occurred")
@@ -55,10 +54,10 @@ try:
     print("Example 3: No exception occurred")
 except:
     print("Example 3: An exception occurred")
-else: # optional
+else:  # optional
     print("Example 3: The code continued to run")
     # this else block will run if there is no exception
-finally: # optional
+finally:  # optional
     print("Example 3: The code has finished running")
     # this finally block will always run
 

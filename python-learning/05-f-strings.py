@@ -3,4 +3,6 @@
 
 name = "John"
 age = 30
-print(f"Hello, My name is {name} and I am {age} years old.") # Hello, My name is John and I am 30 years old.
+print(
+    f"Hello, My name is {name} and I am {age} years old."
+)  # Hello, My name is John and I am 30 years old.

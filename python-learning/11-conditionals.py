@@ -12,7 +12,7 @@
 a = 33
 b = 200
 if b > a:
-    print("b is greater than a") # b is greater than a
+    print("b is greater than a")  # b is greater than a
 
 ### if...else statement
 # The if...else statement is used to execute a block of code if the condition is true, and another block if the condition is false.
@@ -26,9 +26,9 @@ if b > a:
 a = 200
 b = 33
 if b > a:
-    print("b is greater than a") # b is not greater than a
+    print("b is greater than a")  # b is not greater than a
 else:
-    print("b is not greater than a") # b is not greater than a
+    print("b is not greater than a")  # b is not greater than a
 
 ### if...elif...else statement
 # The if...elif...else statement is used to execute a block of code if the first condition is true, and another block if the first condition is false but the second condition is true, and another block if both conditions are false.
@@ -44,11 +44,11 @@ else:
 a = 200
 b = 33
 if b > a:
-    print("b is greater than a") # b is not greater than a
+    print("b is greater than a")  # b is not greater than a
 elif a == b:
-    print("a and b are equal") # a and b are not equal
+    print("a and b are equal")  # a and b are not equal
 else:
-    print("a is greater than b") # a is greater than b
+    print("a is greater than b")  # a is greater than b
 
 ### Short Hand If
 # If you have only one statement to execute, you can put it on the same line as the if statement.
@@ -56,7 +56,8 @@ else:
 # if condition: block
 
 # Example:
-if a > b: print("a is greater than b") 
+if a > b:
+    print("a is greater than b")
 
 ### Short Hand If...Else
 # If you have only one statement to execute, one for if, and one for else, you can put it all on the same line.
@@ -64,7 +65,9 @@ if a > b: print("a is greater than b")
 # print("A") if a > b else print("B")
 
 # Example:
-print("a is greater than b") if a > b else print("a is not greater than b") # a is greater than b
+(
+    print("a is greater than b") if a > b else print("a is not greater than b")
+)  # a is greater than b
 
 ### And
 # The and keyword is a logical operator, and is used to combine conditional statements.
@@ -77,7 +80,7 @@ a = 200
 b = 33
 c = 500
 if a > b and c > a:
-    print("Both conditions are True") # Both conditions are True
+    print("Both conditions are True")  # Both conditions are True
 
 ### Or
 # The or keyword is a logical operator, and is used to combine conditional statements.
@@ -88,7 +91,9 @@ if a > b and c > a:
 
 # Example:
 if a > b or a > c:
-    print("At least one of the conditions is True") # At least one of the conditions is True
+    print(
+        "At least one of the conditions is True"
+    )  # At least one of the conditions is True
 
 
 ### Nested If
@@ -102,11 +107,11 @@ if a > b or a > c:
 # Example:
 x = 41
 if x > 10:
-    print("Above ten,") # Above ten,
-    if x > 20: 
-        print("and also above 20!") # and also above 20!
+    print("Above ten,")  # Above ten,
+    if x > 20:
+        print("and also above 20!")  # and also above 20!
     else:
-        print("but not above 20.") # but not above 20.
+        print("but not above 20.")  # but not above 20.
 
 ### The pass Statement
 # if statements cannot be empty, but if you for some reason have an if statement with no content, put in the pass statement to avoid getting an error.

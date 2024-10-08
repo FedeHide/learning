@@ -4,7 +4,7 @@ contador_interno = 0
 
 while contador_externo < 5:
     while contador_interno < 6:
-        print (contador_externo, contador_interno)
+        print(contador_externo, contador_interno)
         contador_interno += 1  # ==  contador_interno = contador_interno + 1 // en js = contadorInterno++
 
         if contador_interno >= 3:
@@ -12,6 +12,3 @@ while contador_externo < 5:
 
     contador_externo += 1
     contador_interno = 0
-
-   
-
