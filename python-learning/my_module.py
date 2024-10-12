@@ -1,2 +1,2 @@
-def calculatePower(x, n):
+def calculate_power(x, n):
     return x**n

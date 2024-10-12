@@ -6,17 +6,17 @@
 
 import my_module  # import module
 from modules.my_module2 import (
-    calculateFactorial,
-    calculateFibo,
+    calculate_factorial,
+    calculate_fibo,
 )  # import function from module
 
-result1 = my_module.calculatePower(50, 10)
+result1 = my_module.calculate_power(50, 10)
 print(result1)  # 97656250000000000
 
-result2 = calculateFactorial(10)
+result2 = calculate_factorial(10)
 print(result2)  # 3628800
 
-result3 = calculateFibo(10)
+result3 = calculate_fibo(10)
 print(result3)  # 55
 
 
