@@ -59,6 +59,11 @@ def greeting(name):
     return "Hello, " + name
 
 
+# Better example with a larger name for the function:
+def greeting_for_a_person(name):
+    return "Hello, " + name
+
+
 ## package names convention is to use snake_case
 # Example:
 # 1. Create a package named my_package
