@@ -63,6 +63,11 @@ timestamp = datetime.timestamp(now)
 print("timestamp:", timestamp)
 
 
+### Converting Timestamps
+fromtimestamp = datetime.fromtimestamp(timestamp)
+print("fromtimestamp:", fromtimestamp)
+
+
 ### Formatting Dates
 # The date object has a method for formatting date objects into readable strings.
 
