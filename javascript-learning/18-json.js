@@ -38,7 +38,7 @@ const datos = `
     ]
 }
 `;
-const object = JSON.parse(datos);
+const object = JSON.parse(datos); // parse: convert the JSON string to a JavaScript object
 console.log(object.name);
 
 
@@ -49,5 +49,5 @@ const user = {
     favoriteColors: ['blue', 'red', 'black'],
 };
 
-const userJson = JSON.stringify(user);
+const userJson = JSON.stringify(user); // stringify: convert the JavaScript object to a JSON string
 console.log(userJson); // Output: {"name":"Ruki","email":"elpurrigmail.com","favoriteColors":["blue","red","black"]}
