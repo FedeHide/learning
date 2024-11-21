@@ -7,8 +7,8 @@
 
 # The list comprehension always returns a result list.
 
-# Syntax:
-# [expression for item in iterable if condition == True]
+# * Syntax:
+# * [expression for item in iterable if condition == True]
 
 # Example:
 # Create a list of squares of numbers from 0 to 9 using list comprehension
@@ -24,14 +24,14 @@ new_list1 = [
 ]  # List comprehension to get even numbers from my_list
 print("new_list: ", new_list1)  # Output: [2, 4, 6, 8, 10]
 
-# List comprehension can be used to iterate over strings as well
+# * List comprehension can be used to iterate over strings as well
 my_string = "Hello, World!"
 new_list2 = [
     i for i in my_string if i.isupper()
 ]  # List comprehension to get uppercase letters from my_string
 print("new_list2: ", new_list2)  # Output: ['H', 'W']
 
-# List comprehension can be used to iterate over dictionaries as well
+# * List comprehension can be used to iterate over dictionaries as well
 my_dict = {"a": 1, "b": 2, "c": 3, "d": 4}
 new_list3 = [k for k in my_dict.keys()]  # List comprehension to get keys from my_dict
 print("new_list3: ", new_list3)  # Output: ['a', 'b', 'c', 'd']
@@ -46,7 +46,7 @@ new_list5 = [
 ]  # List comprehension to get key-value pairs from my_dict
 print("new_list5: ", new_list5)  # Output: ['a: 1', 'b: 2', 'c: 3', 'd: 4']
 
-# Nested list comprehension
+# * Nested list comprehension
 # List comprehension can be nested inside another list comprehension
 matrix1 = [[1, 2], [3, 4], [5, 6], [7, 8]]
 flattened_matrix = [
@@ -54,7 +54,7 @@ flattened_matrix = [
 ]  # List comprehension to flatten the matrix
 print("flattened_matrix: ", flattened_matrix)  # Output: [1, 2, 3, 4, 5, 6, 7, 8]
 
-# List comprehension can be used to create a list of lists
+# * List comprehension can be used to create a list of lists
 matrix2 = [
     [i for i in range(5)] for j in range(5)
 ]  # List comprehension to create a 5x5 matrix
@@ -68,7 +68,7 @@ print("matrix2: ", matrix2)
 # ]
 
 
-### other examples
+###* other examples
 list_example = [0, 1, 2, 3, 4, 5, 6, 7]
 print([i for i in list_example])  # Output: [0, 1, 2, 3, 4, 5, 6, 7]
 
