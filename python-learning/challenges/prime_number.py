@@ -17,3 +17,6 @@ def is_prime(n):
 print(is_prime(2))  # True
 print(is_prime(17))  # True
 print(is_prime(21))  # False
+
+for i in range(51):
+    print(i, is_prime(i))
