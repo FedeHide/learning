@@ -17,8 +17,10 @@
 # ! recursion is not the best way to solve this problem
 # ? using a loop would be better in terms of space complexity and time complexity
 # *#
+
+
 def fizzbuzz(n):
-    if n <= 0 or n >= 100:
+    if n <= 0 or n >= 101:
         return 1
 
     if n % 3 == 0 and n % 5 == 0:
@@ -34,3 +36,24 @@ def fizzbuzz(n):
 
 
 fizzbuzz(1)
+
+print("**********")
+
+# better solution
+
+
+def better_fizzbuzz(limit=100):
+    if not (1 <= limit <= 100):
+        raise ValueError("limit must be between 1 and 100")
+
+    for n in range(1, limit + 1):
+        output = ""
+        if n % 3 == 0:
+            output += "fizz"
+        if n % 5 == 0:
+            output += "buzz"
+
+        print(output or n)
+
+
+better_fizzbuzz()
