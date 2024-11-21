@@ -8,8 +8,12 @@
 
 # Example:
 x = lambda a: a + 10
-print(x(5))
+print(x(5))  # Output: 15
 
 # Example 2:
 y = lambda a, b: a * b
-print(y(5, 6))
+print(y(5, 6))  # Output: 30
+
+# Example 3:
+z = lambda a, b, c: print(a + b + c)
+z(5, 6, 7)  # Output: 18
