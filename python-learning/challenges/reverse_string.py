@@ -10,10 +10,10 @@ print(reverse_string("Hello World"))
 
 
 def reverse_string_hard(text):
-    reversed = []
+    reversed = ""
 
     for i in range(len(text) - 1, -1, -1):
-        reversed.append(text[i])
+        reversed += text[i]
 
     return "".join(reversed)
 
