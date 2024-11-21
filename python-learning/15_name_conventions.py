@@ -3,7 +3,7 @@
 # 2. Variable names must start with a letter or an underscore.
 
 
-## variables convention is to use snake_case
+##* variables convention is to use snake_case
 # Example:
 my_int_variable = 5
 my_float_variable = 5.5
@@ -15,7 +15,7 @@ my_set_variable = {1, 2, 3, 4, 5}
 my_dict_variable = {"name": "John", "age": 30}
 
 
-## class names convention is to use PascalCase
+##* class names convention is to use PascalCase
 # Example:
 class MyDog:
     # Class Attribute
@@ -33,13 +33,13 @@ class MyDog:
         return "{} is {} years old".format(self.name, self.age)
 
 
-## constants convention is to use UPPERCASE
+##* constants convention is to use UPPERCASE
 # Example:
 PI = 3.14
 GRAVITY = 9.8
 
 
-## module names convention is to use snake_case
+##* module names convention is to use snake_case
 # Example:
 # 1. Create a module named my_module.py
 # 2. Create a function named greeting
@@ -53,7 +53,7 @@ def greeting(name):
 # print(my_module.greeting("John")) # Hello, John
 
 
-## function names convention is to use snake_case
+##* function names convention is to use snake_case
 # Example:
 def greeting(name):
     return "Hello, " + name
@@ -64,7 +64,7 @@ def greeting_for_a_person(name):
     return "Hello, " + name
 
 
-## package names convention is to use snake_case
+##* package names convention is to use snake_case
 # Example:
 # 1. Create a package named my_package
 # 2. Create a module named my_module.py
