@@ -6,7 +6,7 @@ from datetime import datetime  # import date class from datetime module
 
 # A date in Python is not a data type of its own, but we can import a module named datetime to work with dates as date objects.
 
-### Get current date and time
+###* Get current date and time
 now = datetime.now()  # get current date and time
 print("now:", now)
 
@@ -43,7 +43,7 @@ microsecond = now.microsecond
 print("microsecond:", microsecond)
 
 
-### Creating Date Objects
+###* Creating Date Objects
 # To create a date, we can use the datetime() class (constructor) of the datetime module.
 # The datetime() class requires three parameters to create a date: year, month, day.
 # The datetime() class also takes parameters for time and timezone (hour, minute, second, microsecond, tzone), but they are optional, and has a default value of 0, (None for timezone).
@@ -53,7 +53,7 @@ my_custom_date = datetime(2020, 5, 17)
 print("my_custom_date:", my_custom_date)
 
 
-### The timestamp is the number of seconds from the Unix epoch (January 1, 1970) to the time specified.
+###* The timestamp is the number of seconds from the Unix epoch (January 1, 1970) to the time specified.
 # The timestamp is a way to represent time independent of timezones.
 # A Unix timestamp is the number of seconds between a particular date and the Unix epoch.
 # This is important because it allows you to perform date calculations without worrying about timezones.
@@ -63,12 +63,12 @@ timestamp = datetime.timestamp(now)
 print("timestamp:", timestamp)
 
 
-### Converting Timestamps
+###* Converting Timestamps
 fromtimestamp = datetime.fromtimestamp(timestamp)
 print("fromtimestamp:", fromtimestamp)
 
 
-### Formatting Dates
+###* Formatting Dates
 # The date object has a method for formatting date objects into readable strings.
 
 # Format date using strftime() method that formats date objects into readable strings.
@@ -107,7 +107,7 @@ month_name = now.strftime("%B")
 print("month_name:", month_name)
 
 
-### Import time class from datetime module
+###* Import time class from datetime module
 from datetime import time
 
 # Creating Time Objects
@@ -125,7 +125,7 @@ my_custom_time = time(17, 41, 0)
 print("my_custom_time:", my_custom_time)
 
 
-### Import date class from datetime module
+###* Import date class from datetime module
 from datetime import date
 
 # Creating Date Objects
@@ -144,7 +144,7 @@ print("current_date-month:", current_date.month)
 print("current_date-day:", current_date.day)
 
 
-### Import timedelta class from datetime module
+###* Import timedelta class from datetime module
 from datetime import timedelta
 
 
@@ -156,7 +156,7 @@ init_timedelta = timedelta(days=365, hours=8, minutes=15)
 print("timedelta:", init_timedelta)
 
 
-### Date and Time Arithmetic
+###* Date and Time Arithmetic
 # We can perform arithmetic on date objects to check for past and future dates.
 # We can also calculate the difference between two dates.
 # The result of the arithmetic will be a timedelta object.
