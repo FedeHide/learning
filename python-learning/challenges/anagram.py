@@ -18,3 +18,4 @@ def is_anagram(s1: str, s2: str) -> bool:
 print(is_anagram("listen", "silent"))  # True
 print(is_anagram("listen", "Silent"))  # True
 print(is_anagram("hello", "world"))  # False
+print(is_anagram("rail safety", "fairy tales"))  # True
