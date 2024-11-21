@@ -12,13 +12,15 @@
 
 # Example:
 # Create a list of squares of numbers from 0 to 9 using list comprehension
-squares = [i**2 for i in range(10)]
+squares = [i**2 for i in range(10)]  # [<expression> for <element> in <iterable>]
 print("sqaures: ", squares)  # Output: [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
 
 
 my_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 new_list1 = [
-    i for i in my_list if i % 2 == 0
+    i
+    for i in my_list
+    if i % 2 == 0  # [<expression> for <element> in <iterable> if <condition>]
 ]  # List comprehension to get even numbers from my_list
 print("new_list: ", new_list1)  # Output: [2, 4, 6, 8, 10]
 
