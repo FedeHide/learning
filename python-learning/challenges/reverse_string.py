@@ -7,3 +7,15 @@ def reverse_string(text: str) -> str:
 
 
 print(reverse_string("Hello World"))
+
+
+def reverse_string_hard(text):
+    reversed = []
+
+    for i in range(len(text) - 1, -1, -1):
+        reversed.append(text[i])
+
+    return "".join(reversed)
+
+
+print(reverse_string_hard("Hello fucking World"))
