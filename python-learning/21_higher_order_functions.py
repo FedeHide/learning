@@ -1,6 +1,5 @@
 ### higher order functions
-# A function that takes another function as an argument
-# or returns a function as a result is called a higher order function.
+# A function that takes another function as an argument or returns a function as a result is called a higher order function.
 
 ## * receiving a function as an argument
 
@@ -63,3 +62,45 @@ from functools import reduce
 
 sum = reduce(lambda x, y: x + y, numbers)
 print(sum)  # 15
+
+
+## * closures
+# A closure is a nested function that captures the environment in which it was defined.
+# The closure 'remembers' the environment in which it was created.
+# This means that the closure can access variables from the outer function even after the outer function has finished executing.
+
+
+def outer_function():
+    message = "Hello"
+
+    def inner_function():
+        print(message)
+
+    return inner_function
+
+
+my_func = outer_function()
+my_func()  # Hello
+
+# in the above example, the inner_function is a closure that captures the message variable from the outer_function.
+
+
+# example 2
+
+
+def make_multiplier(factor):
+    def multiply(number):
+        return number * factor
+
+    return multiply
+
+
+print(make_multiplier(2)(10))  # 20
+print(make_multiplier(3)(10))  # 30
+
+double_number = make_multiplier(2)
+triple_number = make_multiplier(3)
+print(double_number(10))  # 20
+print(triple_number(10))  # 30
+
+## * decorators
