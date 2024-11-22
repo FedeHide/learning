@@ -78,7 +78,7 @@ if philo.species == "Canis familiaris":
     )  # Philo is a Canis familiaris!
 
 
-### Methods
+###* Methods
 # Methods are functions defined inside the body of a class. They are used to define the behaviors of an object.
 # Example:
 
@@ -109,7 +109,7 @@ print(mikey.description())  # Mikey is 6 years old
 print(mikey.speak("Gruff Gruff"))  # Gruff Gruff
 
 
-### Modifying Attributes
+###* Modifying Attributes
 # You can change the value of attributes based on some behavior:
 class Email:
     def __init__(self):
@@ -125,7 +125,7 @@ my_email.send_email()
 print(my_email.is_sent)  # True
 
 
-### Inheritance
+###* Inheritance
 # Inheritance is a way to form new classes using classes that have already been defined.
 # The newly formed classes are called derived classes, the classes that we derive from are called base classes.
 # Important benefits of inheritance are code reuse and reduction of complexity of a program.
@@ -169,7 +169,7 @@ felix = Cat("Felix", 5)
 print(felix.make_sound())  # Felix says Meow Meow
 
 
-### Encapsulation
+###* Encapsulation
 # Encapsulation is an another powerful way to extend the functionality of classes.
 # In encapsulation, the variables of a class will be hidden from other classes, and can be accessed only through the methods of their current class.
 # This is one of the most important concepts that is used in Object-Oriented Programming (OOP) to restrict the access to the variables and prevent the data from being modified directly.
@@ -199,7 +199,7 @@ c.setMaxPrice(1000)
 c.sell()  # Selling Price: 1000
 
 
-### Polymorphism
+###* Polymorphism
 # Polymorphism is an ability (in OOP) to use a common interface for multiple forms (data types).
 
 
