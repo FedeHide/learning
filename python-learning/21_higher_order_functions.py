@@ -5,8 +5,8 @@
 ## * receiving a function as an argument
 
 
-def apply_function(func, value):
-    return func(value)
+def apply_function(func, value1, value2):
+    return func(value1 + value2)
 
 
 # define a function that doubles the number
@@ -14,8 +14,8 @@ def square(x):
     return x * x
 
 
-result = apply_function(square, 5)
-print(result)  # 25
+result = apply_function(square, 5, 2)
+print(result)  # 49
 
 
 # in the above example, apply_function is a higher order function that takes a function as an argument.
