@@ -60,8 +60,8 @@ print(list(even))  # [2, 4]
 
 from functools import reduce
 
-sum = reduce(lambda x, y: x + y, numbers)
-print(sum)  # 15
+sum_numbers = reduce(lambda x, y: x + y, numbers)
+print(sum_numbers)  # 15
 
 
 ## * closures
@@ -102,5 +102,72 @@ double_number = make_multiplier(2)
 triple_number = make_multiplier(3)
 print(double_number(10))  # 20
 print(triple_number(10))  # 30
+
+# in the above example, the multiply function is a closure that captures the factor variable from the make_multiplier function.
+
+
+## * built-in higher order functions (like map, filter, reduce)
+
+# sorted
+# sorted is used to sort the elements of a list.
+
+numbers = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5]
+sorted_numbers = sorted(numbers)
+print(sorted_numbers)  # [1, 1, 2, 3, 3, 4, 5, 5, 5, 6, 9]
+
+# max
+# max returns the largest item in an iterable.
+
+max_number = max(numbers)
+print(max_number)  # 9
+
+# min
+# min returns the smallest item in an iterable.
+
+min_number = min(numbers)
+print(min_number)  # 1
+
+# any
+# any returns True if any element of an iterable is true.
+
+print(any([False, False, True]))  # True
+
+# all
+# all returns True if all elements of an iterable are true.
+
+print(all([True, True, True]))  # True
+
+# enumerate
+# enumerate adds a counter to an iterable and returns it.
+
+for index, value in enumerate(numbers):
+    print(index, value)  # 0 3, 1 1, 2 4, 3 1, 4 5, 5 9, 6 2, 7 6, 8 5, 9 3, 10 5
+
+# zip
+# zip returns an iterator of tuples, where the i-th tuple contains the i-th element from each of the argument sequences or iterables.
+
+letters = ["a", "b", "c"]
+numbers2 = [1, 2, 3]
+zipped = zip(letters, numbers2)
+print(list(zipped))  # [('a', 1), ('b', 2), ('c', 3)]
+
+# reversed
+# reversed returns a reverse iterator.
+
+reversed_numbers = reversed(numbers)
+print(list(reversed_numbers))  # [5, 3, 5, 6, 2, 9, 5, 1, 4, 1, 3]
+
+# sum
+# sum adds the items of an iterable.
+
+total = sum(numbers)
+print(total)  # 44
+
+# len
+# len returns the number of items in an object.
+
+length = len(numbers)
+print(length)  # 11
+
 
 ## * decorators
