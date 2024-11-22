@@ -171,3 +171,63 @@ print(length)  # 11
 
 
 ## * decorators
+# A decorator is a function that takes another function as an argument and extends its behavior without modifying it.
+# Decorators allow you to add functionality to an existing function without changing its structure.
+
+
+def my_decorator(func):
+    def wrapper():
+        print("Something is happening before the function is called.")
+        func()
+        print("Something is happening after the function is called.")
+
+    return wrapper
+
+
+@my_decorator
+def say_hello():
+    print("Hello!")
+
+
+say_hello()
+
+# in the above example, the my_decorator function is a decorator that adds functionality to the say_hello function.
+
+
+# example 2
+
+
+def call_counter(func):
+    count = 0  # initialize the counter
+
+    def wrapper(*args, **kwargs):
+        nonlocal count  # use the count variable from the outer function
+        count += 1
+        print(f"the function '{func.__name__}' has been called {count} times.")
+        return func(*args, **kwargs)
+
+    # Add a method to reset the counter
+    def reset_counter():
+        nonlocal count
+        count = 0
+        print(f"the counter '{func.__name__}' has been reset.")
+
+    # Assign the reset_counter method to the wrapper function
+    wrapper.reset_counter = reset_counter
+
+    return wrapper
+
+
+@call_counter
+def say_hello(name):
+    print(f"Hello, {name}!")
+
+
+# call the function multiple times
+say_hello("Ruki")
+say_hello("Ori")
+say_hello.reset_counter()
+say_hello("Nix")
+say_hello("Anya")
+
+# in the above example, the call_counter function is a decorator that counts the number of times a function is called.
