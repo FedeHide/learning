@@ -45,18 +45,21 @@ numbers = [1, 2, 3, 4, 5]
 
 # map
 # map applies a function to all the items in an input_list.
+# map(function, iterable)
 
 squared = map(lambda x: x**2, numbers)
 print(list(squared))  # [1, 4, 9, 16, 25]
 
 # filter
 # filter creates a list of elements for which a function returns true.
+# filter(function, iterable)
 
 even = filter(lambda x: x % 2 == 0, numbers)
 print(list(even))  # [2, 4]
 
 # reduce
 # reduce is used to apply a function to all the elements in the list.
+# reduce(function, iterable[, initializer])
 
 from functools import reduce
 
@@ -110,6 +113,7 @@ print(triple_number(10))  # 30
 
 # sorted
 # sorted is used to sort the elements of a list.
+# sorted(iterable, key=None, reverse=False)
 
 numbers = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5]
 sorted_numbers = sorted(numbers)
@@ -117,34 +121,40 @@ print(sorted_numbers)  # [1, 1, 2, 3, 3, 4, 5, 5, 5, 6, 9]
 
 # max
 # max returns the largest item in an iterable.
+# max(iterable, *[, key, default])
 
 max_number = max(numbers)
 print(max_number)  # 9
 
 # min
 # min returns the smallest item in an iterable.
+# min(iterable, *[, key, default])
 
 min_number = min(numbers)
 print(min_number)  # 1
 
 # any
 # any returns True if any element of an iterable is true.
+# any(iterable)
 
 print(any([False, False, True]))  # True
 
 # all
 # all returns True if all elements of an iterable are true.
+# all(iterable)
 
 print(all([True, True, True]))  # True
 
 # enumerate
 # enumerate adds a counter to an iterable and returns it.
+# enumerate(iterable, start=0)
 
 for index, value in enumerate(numbers):
     print(index, value)  # 0 3, 1 1, 2 4, 3 1, 4 5, 5 9, 6 2, 7 6, 8 5, 9 3, 10 5
 
 # zip
 # zip returns an iterator of tuples, where the i-th tuple contains the i-th element from each of the argument sequences or iterables.
+# zip(*iterables)
 
 letters = ["a", "b", "c"]
 numbers2 = [1, 2, 3]
@@ -153,18 +163,21 @@ print(list(zipped))  # [('a', 1), ('b', 2), ('c', 3)]
 
 # reversed
 # reversed returns a reverse iterator.
+# reversed(sequence)
 
 reversed_numbers = reversed(numbers)
 print(list(reversed_numbers))  # [5, 3, 5, 6, 2, 9, 5, 1, 4, 1, 3]
 
 # sum
 # sum adds the items of an iterable.
+# sum(iterable, start=0)
 
 total = sum(numbers)
 print(total)  # 44
 
 # len
 # len returns the number of items in an object.
+# len(s)
 
 length = len(numbers)
 print(length)  # 11
