@@ -58,7 +58,8 @@ even = filter(lambda x: x % 2 == 0, numbers)
 print(list(even))  # [2, 4]
 
 # reduce
-# reduce is used to apply a function to all the elements in the list.
+# reduce is used to apply a function that takes two arguments to the elements of an iterable. It returns a single value.
+# The function is called with the first two elements from the iterable, then with the result and the next element, and so on.
 # reduce(function, iterable[, initializer])
 
 from functools import reduce
