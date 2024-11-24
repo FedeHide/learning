@@ -10,12 +10,13 @@
 # "a" - Append - Opens a file for appending, creates the file if it does not exist
 # "w" - Write - Opens a file for writing, creates the file if it does not exist
 # "x" - Create - Creates the specified file, returns an error if the file exists
+# "+" - Open a file for reading and writing (can be added to other modes)
 
 # In addition you can specify if the file should be handled as binary or text mode
 # "t" - Text - Default value. Text mode
 # "b" - Binary - Binary mode (e.g. images)
 
-f = open("modules/my_file.txt", "rt")
+f = open("modules/my_file.txt", "r+")  # --> open file in read and write mode
 
 ## * methods
 # methods will be commented because you can only use one method at a time
