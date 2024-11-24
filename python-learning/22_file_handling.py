@@ -16,7 +16,7 @@
 # "t" - Text - Default value. Text mode
 # "b" - Binary - Binary mode (e.g. images)
 
-f = open("modules/my_file.txt", "r+")  # --> open file in read and write mode
+f = open("schemas/my_file.txt", "r+")  # --> open file in read and write mode
 
 ## * methods
 # methods will be commented because you can only use one method at a time
@@ -67,12 +67,12 @@ f.close()
 # You can specify how many characters you want to write.
 # If you don't specify, the whole content will be written.
 
-f = open("modules/my_file.txt", "w")
+f = open("schemas/my_file.txt", "w")
 f.write("i love cats")
 f.close()
 
 # open and read the file after the appending:
-f = open("modules/my_file.txt", "r")
+f = open("schemas/my_file.txt", "r")
 print(f.read())
 f.close()
 
@@ -82,7 +82,7 @@ f.close()
 # You can specify how many characters you want to append.
 # If you don't specify, the whole content will be appended.
 
-f = open("modules/my_file.txt", "a")
+f = open("schemas/my_file.txt", "a")
 f.write(
     """
 Ruki is a 4 years old, black cat
@@ -93,7 +93,7 @@ is miss Orion and Nyx, my two cats that passed away ...
 f.close()
 
 # open and read the file after the appending:
-f = open("modules/my_file.txt", "r")
+f = open("schemas/my_file.txt", "r")
 print(f.read())
 f.close()
 
@@ -104,13 +104,13 @@ f.close()
 # If you don't specify, the whole content will be created.
 # if the file already exists, the operation will fail.
 
-f = open("modules/my_file2.txt", "x")
+f = open("schemas/my_file2.txt", "x")
 print("file created successfully")
 f.write("i love dogs")
 f.close()
 
 # open and read the file after the appending:
-f = open("modules/my_file2.txt", "r")
+f = open("schemas/my_file2.txt", "r")
 print(f.read())
 f.close()
 
@@ -122,7 +122,7 @@ f.close()
 
 import os
 
-os.remove("modules/my_file2.txt")
+os.remove("schemas/my_file2.txt")
 print("file deleted successfully")
 
 
