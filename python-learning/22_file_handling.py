@@ -205,6 +205,9 @@ csv_data = [
 csv_writer = csv.writer(csv_file)
 csv_writer.writerows(csv_data)
 
+# write a single row
+# csv_writer.writerow(["name", "age", "color", "favorite food"])
+
 csv_file.close()
 
 
