@@ -67,9 +67,10 @@ f.close()
 # You can specify how many characters you want to write.
 # If you don't specify, the whole content will be written.
 
-f = open("schemas/my_file.txt", "w")
-f.write("i love cats")
-f.close()
+with open(
+    "schemas/my_file.txt", "w"
+) as f:  # --> with statement to close the file automatically
+    f.write("i love cats so much")
 
 # open and read the file after the appending:
 f = open("schemas/my_file.txt", "r")
@@ -128,3 +129,93 @@ print("file deleted successfully")
 
 # Note: You can only remove a file if it is not opened and if it exists.
 # Note: You can use the os.rmdir() method to remove directories.
+
+
+## ? json file
+# JSON is a syntax for storing and exchanging data.
+# JSON is text, written with JavaScript object notation.
+# Python has a built-in package called json, which can be used to work with JSON data.
+
+import json
+
+json_file = open("schemas/my_data.json", "w+")
+# fmt: off
+json_data = {
+    "name": "Ruki", 
+    "age": 4, 
+    "color": "black", 
+    "nick": "el purris"
+}
+# fmt: on
+
+# * json.dump()
+# is used to write JSON data to a file.
+# The json.dump() method can be used to write to a file.
+# json.dump(data, file, indent=4)
+
+json.dump(json_data, json_file, indent=4)
+
+json_file.close()
+
+
+## * json.dumps()
+# is used to convert a Python object into a JSON string.
+# The json.dumps() method can be used to convert a Python object into a JSON string.
+# json.dumps(data)
+
+json_string = json.dumps(json_data)
+print("json dumps method:", json_string)
+
+
+## * json.load()
+# is used to read JSON data from a file.
+# The json.load() method can be used to read from a file.
+# json.load(file)
+
+json_file = open("schemas/my_data.json", "r")
+json_data = json.load(json_file)
+print("json load method:", json_data)
+json_file.close()
+
+
+## ? csv file
+# CSV stands for Comma Separated Values.
+# CSV is a simple file format used to store tabular data, such as a spreadsheet or database.
+# CSV file can be opened in Excel, Google Sheets, etc.
+
+import csv
+
+csv_file = open("schemas/my_data.csv", "w+")
+# fmt: off
+csv_data = [
+    ["name", "age", "color", "favorite food"],
+    ["Ruki", 4, "black", "chicken liver"],
+    ["Anya", 2, "white", "meat"],
+    ["Orion", 5, "black", "ham"],
+    ["Nyx", 3, "black", "cat food"]
+]
+# fmt: on
+
+
+# * csv.writer()
+# is used to write to a CSV file.
+# The csv.writer() method can be used to write to a file.
+# csv.writer(file)
+
+csv_writer = csv.writer(csv_file)
+csv_writer.writerows(csv_data)
+
+csv_file.close()
+
+
+# * csv.reader()
+# is used to read from a CSV file.
+# The csv.reader() method can be used to read from a file.
+# csv.reader(file)
+
+csv_file = open("schemas/my_data.csv", "r")
+csv_reader = csv.reader(csv_file)
+for row in csv_reader:
+    print("csv reader method:", row)
+
+csv_file.close()
