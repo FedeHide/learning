@@ -18,6 +18,10 @@ my_string = "the black cat is bigger than the white cat"
 pattern = "the"
 result = re.match(pattern, my_string)
 print(result)  # <re.Match object; span=(0, 3), match='the'>
+spam = result.span()
+print(spam)  # (0, 3)
+match = result.group()
+print(match)  # the
 
 # span=(0, 3) - The match is found at the start of the string.
 # match='the' - The match is found at the start of the string.
