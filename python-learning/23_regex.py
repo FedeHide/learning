@@ -93,6 +93,43 @@ print(result)  # the black dog is bigger than the white dog
 # The pattern "cat" is replaced with "dog" in the string.
 
 
+## ? Flags
+# Flags are used to modify the behavior of a regular expression.
+
+# - re.IGNORECASE - Perform case-insensitive matching.
+pattern = "Cat"
+result = re.findall(pattern, my_string, re.IGNORECASE)
+print(result)  # ['cat', 'cat']
+
+# The pattern "Cat" is matched with "cat" in the string.
+
+
+# - re.MULTILINE - Treats beginning and end characters (^ and $) as working across multiple lines.
+pattern = "^the"
+result = re.findall(pattern, my_string, re.MULTILINE)
+print(result)  # ['the']
+
+
+# - re.DOTALL - Allows the dot (.) to match newline characters.
+pattern = "cat."
+result = re.findall(pattern, my_string, re.DOTALL)
+print(result)  # ['cat ', 'cat']
+
+# The pattern "cat." matches "cat " and "cat" in the string.
+
+
+# - re.VERBOSE - Allows you to write regular expressions that look nicer and are more readable.
+pattern = """
+c # match c
+a # match a
+t # match t
+"""
+result = re.findall(pattern, my_string, re.VERBOSE)
+print(result)  # []
+
+# The pattern "cat" is not matched with "c", "a", and "t" in the string.
+
+
 ## ? Patterns
 
 # * Metacharacters
@@ -314,44 +351,7 @@ print(result)  # ['c', 'c']
 # The pattern "c?" matches all occurrences of c in the string.
 
 
-## ? Flags
-# Flags are used to modify the behavior of a regular expression.
-
-# - re.IGNORECASE - Perform case-insensitive matching.
-pattern = "Cat"
-result = re.findall(pattern, my_string, re.IGNORECASE)
-print(result)  # ['cat', 'cat']
-
-# The pattern "Cat" is matched with "cat" in the string.
-
-
-# - re.MULTILINE - Treats beginning and end characters (^ and $) as working across multiple lines.
-pattern = "^the"
-result = re.findall(pattern, my_string, re.MULTILINE)
-print(result)  # ['the']
-
-
-# - re.DOTALL - Allows the dot (.) to match newline characters.
-pattern = "cat."
-result = re.findall(pattern, my_string, re.DOTALL)
-print(result)  # ['cat ', 'cat']
-
-# The pattern "cat." matches "cat " and "cat" in the string.
-
-
-# - re.VERBOSE - Allows you to write regular expressions that look nicer and are more readable.
-pattern = """
-c # match c
-a # match a
-t # match t
-"""
-result = re.findall(pattern, my_string, re.VERBOSE)
-print(result)  # []
-
-# The pattern "cat" is not matched with "c", "a", and "t" in the string.
-
-
-# * Example
+# * Examples
 # Find all words that start with the letter "b".
 pattern = r"\b[b]\w+"
 result = re.findall(pattern, my_string)
