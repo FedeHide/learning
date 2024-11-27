@@ -97,6 +97,30 @@ print("sub:", result)  # the black dog is bigger than the white dog
 # The pattern "cat" is replaced with "dog" in the string.
 
 
+# * subn() - Replace the matches with the text of your choice and return the number of replacements.
+# Syntax: re.subn(pattern, replace, string)
+# Return value: Returns a tuple containing the new string and the number of replacements.
+
+# Example:
+pattern = "cat"
+replace = "dog"
+result = re.subn(pattern, replace, my_string)
+print("subn:", result)  # ('the black dog is bigger than the white dog', 2)
+
+# The pattern "cat" is replaced with "dog" in the string.
+# The number of replacements is 2.
+
+
+# * compile() - Compile a regular expression pattern into a regular expression object.
+# Syntax: re.compile(pattern)
+# Return value: Returns a regular expression object.
+
+# Example:
+pattern = re.compile("cat")
+result = pattern.findall(my_string)
+print("compile:", result)  # ['cat', 'cat']
+
+
 ## ? Flags
 # Flags are used to modify the behavior of a regular expression.
 
