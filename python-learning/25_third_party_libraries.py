@@ -1,3 +1,7 @@
+#!./venv/bin/python
+#! add shebang line to run the script directly code runner
+#! or change the settings.json file to run the script directly
+
 ### third-party libraries
 # There are tens of thousands of third-party Python libraries that can be installed and used in your programs. Some of the most popular ones are numpy, pandas, requests, and matplotlib.
 # To install a library, you can use pip, a package manager for Python.
@@ -26,3 +30,13 @@
 
 # * deactivate the virtual environment
 # deactivate
+
+
+## ? numpy - numerical computing library
+# numpy is a popular library for numerical computing. It provides support for large, multi-dimensional arrays and matrices, along with a collection of mathematical functions to operate on these arrays.
+
+import numpy
+
+# create an array
+a = numpy.array([1, 2, 3])
+print(a)  # [1 2 3]
