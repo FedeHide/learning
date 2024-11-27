@@ -17,11 +17,11 @@ my_string = "the black cat is bigger than the white cat"
 # Example:
 pattern = "the"
 result = re.match(pattern, my_string)
-print(result)  # <re.Match object; span=(0, 3), match='the'>
+print("march:", result)  # <re.Match object; span=(0, 3), match='the'>
 spam = result.span()
-print(spam)  # (0, 3)
+print("match.spam:", spam)  # (0, 3)
 match = result.group()
-print(match)  # the
+print("match.match:", match)  # the
 
 # span=(0, 3) - The match is found at the start of the string.
 # match='the' - The match is found at the start of the string.
@@ -36,7 +36,7 @@ print(match)  # the
 # Example:
 pattern = "cat"
 result = re.search(pattern, my_string)
-print(result)  # <re.Match object; span=(10, 13), match='cat'>
+print("search:", result)  # <re.Match object; span=(10, 13), match='cat'>
 
 # span=(10, 13) - The match is found at index 10 to 13.
 # match='cat' - The match is found at index 10 to 13.
@@ -51,7 +51,7 @@ print(result)  # <re.Match object; span=(10, 13), match='cat'>
 # Example:
 pattern = "cat"
 result = re.findall(pattern, my_string)
-print(result)  # ['cat', 'cat']
+print("findall:", result)  # ['cat', 'cat']
 
 # The pattern "cat" is found twice in the string.
 
@@ -65,7 +65,7 @@ pattern = "cat"
 result = re.finditer(pattern, my_string)
 for match in result:
     print(
-        match
+        "finditer:", match
     )  # <re.Match object; span=(10, 13), match='cat'>, <re.Match object; span=(34, 37), match='cat'>
 
 # The pattern "cat" is found twice in the string.
@@ -78,7 +78,7 @@ for match in result:
 # Example:
 pattern = "cat"
 result = re.split(pattern, my_string)
-print(result)  # ['the black ', ' is bigger than the white ', '']
+print("split:", result)  # ['the black ', ' is bigger than the white ', '']
 
 # The string is split at the pattern "cat".
 # The pattern "cat" is removed from the string.
@@ -92,7 +92,7 @@ print(result)  # ['the black ', ' is bigger than the white ', '']
 pattern = "cat"
 replace = "dog"
 result = re.sub(pattern, replace, my_string)
-print(result)  # the black dog is bigger than the white dog
+print("sub:", result)  # the black dog is bigger than the white dog
 
 # The pattern "cat" is replaced with "dog" in the string.
 
@@ -103,7 +103,7 @@ print(result)  # the black dog is bigger than the white dog
 # - re.IGNORECASE - Perform case-insensitive matching.
 pattern = "Cat"
 result = re.findall(pattern, my_string, re.IGNORECASE)
-print(result)  # ['cat', 'cat']
+print("IGNORECASE:", result)  # ['cat', 'cat']
 
 # The pattern "Cat" is matched with "cat" in the string.
 
@@ -111,13 +111,13 @@ print(result)  # ['cat', 'cat']
 # - re.MULTILINE - Treats beginning and end characters (^ and $) as working across multiple lines.
 pattern = "^the"
 result = re.findall(pattern, my_string, re.MULTILINE)
-print(result)  # ['the']
+print("MULTILINE:", result)  # ['the']
 
 
 # - re.DOTALL - Allows the dot (.) to match newline characters.
 pattern = "cat."
 result = re.findall(pattern, my_string, re.DOTALL)
-print(result)  # ['cat ', 'cat']
+print("DOTALL:", result)  # ['cat ', 'cat']
 
 # The pattern "cat." matches "cat " and "cat" in the string.
 
@@ -129,7 +129,7 @@ a # match a
 t # match t
 """
 result = re.findall(pattern, my_string, re.VERBOSE)
-print(result)  # []
+print("VERBOSE:", result)  # ['cat']
 
 # The pattern "cat" is not matched with "c", "a", and "t" in the string.
 
@@ -143,7 +143,7 @@ print(result)  # []
 # - . - A period matches any single character except a newline.
 pattern = "c.t"
 result = re.findall(pattern, my_string)
-print(result)  # ['cat']
+print("metachar - . :", result)  # ['cat']
 
 # The pattern "c.t" matches "cat" in the string.
 
@@ -151,7 +151,7 @@ print(result)  # ['cat']
 # - ^ - A caret matches the start of the string.
 pattern = "^the"
 result = re.findall(pattern, my_string)
-print(result)  # ['the']
+print("metachar - ^ :", result)  # ['the']
 
 # The pattern "^the" matches "the" at the start of the string.
 
@@ -159,7 +159,7 @@ print(result)  # ['the']
 # - $ - A dollar matches the end of the string.
 pattern = "cat$"
 result = re.findall(pattern, my_string)
-print(result)  # ['cat']
+print("metachar - $ :", result)  # ['cat']
 
 # The pattern "cat$" matches "cat" at the end of the string.
 
@@ -167,32 +167,33 @@ print(result)  # ['cat']
 # - * - An asterisk matches zero or more occurrences of the pattern left to it.
 pattern = "c*t"
 result = re.findall(pattern, my_string)
-print(result)  # ['ct', 'cat']
+print("metachar - * :", result)  # ['ct', 'cat']
 
 
 # - + - A plus matches one or more occurrences of the pattern left to it.
 pattern = "c+t"
 result = re.findall(pattern, my_string)
-print(result)  # ['cat']
+print("metachar - + :", result)  # ['ct', 'cat']
 
 
 # - ? - A question mark matches zero or one occurrence of the pattern left to it.
 pattern = "c?t"
 result = re.findall(pattern, my_string)
-print(result)  # ['ct', 'cat']
+print("metachar - ? :", result)  # ['ct', 'cat']
 
 
 # - {} - Curly braces are used to specify the number of occurrences of a pattern.
 pattern = "c{1}t"
 result = re.findall(pattern, my_string)
+print("metachar - {} :", result)  # ['cat']
 
 
 # - [] - Square brackets are used to specify a set of characters.
 pattern = "[b-w]"
 result = re.findall(pattern, my_string)
 print(
-    result
-)  # ['b', 'c', 'k', 'c', 't', 'i', 'b', 'g', 'g', 'r', 't', 'h', 'n', 't', 'h', 'w', 'h', 't', 'c', 't']
+    "metachar - [] :", result
+)  # ['b', 'c', 'k', 'c', 'a', 'i', 'b', 'g', 'g', 'e', 'h', 'e', 'i', 'e', 'c', 'a']
 
 # The pattern "[b-w]" matches all characters from b to w in the string.
 
@@ -200,7 +201,7 @@ print(
 # - | - A pipe is used to match one of many expressions.
 pattern = "cat|dog"
 result = re.findall(pattern, my_string)
-print(result)  # ['cat', 'cat']
+print("metachar - | :", result)  # ['cat', 'cat']
 
 # The pattern "cat|dog" matches "cat" and "dog" in the string.
 
@@ -211,55 +212,51 @@ print(result)  # ['cat', 'cat']
 # - \d - Matches any digit (0-9).
 pattern = "\d"
 result = re.findall(pattern, my_string)
-print(result)  # []
+print("\d:", result)  # []
 
 
 # - \D - Matches any non-digit character.
 pattern = "\D"
 result = re.findall(pattern, my_string)
 print(
-    result
+    "\D:", result
 )  # ['t', 'h', 'e', ' ', 'b', 'l', 'a', 'c', 'k', ' ', 'c', 'a', 't', ' ', 'i', 's', ' ', 'b', 'i', 'g', 'g', 'e', 'r', ' ', 't', 'h', 'a', 'n', ' ', 't', 'h', 'e', ' ', 'w', 'h', 'i', 't', 'e', ' ', 'c', 'a', 't']
-
 
 # - \s - Matches any whitespace character.
 pattern = "\s"
 result = re.findall(pattern, my_string)
-print(result)  # [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+print("\s:", result)  # [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 
 
 # - \S - Matches any non-whitespace character.
 pattern = "\S"
 result = re.findall(pattern, my_string)
 print(
-    result
+    "\S:", result
 )  # ['t', 'h', 'e', 'b', 'l', 'a', 'c', 'k', 'c', 'a', 't', 'i', 's', 'b', 'i', 'g', 'g', 'e', 'r', 't', 'h', 'a', 'n', 't', 'h', 'e', 'w', 'h', 'i', 't', 'e', 'c', 'a', 't']
-
 
 # - \w - Matches any word character (alphanumeric character).
 pattern = "\w"
 result = re.findall(pattern, my_string)
 print(
-    result
+    "\w:", result
 )  # ['t', 'h', 'e', 'b', 'l', 'a', 'c', 'k', 'c', 'a', 't', 'i', 's', 'b', 'i', 'g', 'g', 'e', 'r', 't', 'h', 'a', 'n', 't', 'h', 'e', 'w', 'h', 'i', 't', 'e', 'c', 'a', 't']
-
 
 # - \W - Matches any non-word character.
 pattern = "\W"
 result = re.findall(pattern, my_string)
-print(result)  # [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-
+print("\W:", result)  # [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 
 # - \b - Matches the empty string at the beginning or end of a word.
 pattern = r"\bcat"
 result = re.findall(pattern, my_string)
-print(result)  # ['cat', 'cat']
+print("b:", result)  # ['cat', 'cat']
 
 
 # - \B - Matches the empty string not at the beginning or end of a word.
 pattern = r"\Bcat"
 result = re.findall(pattern, my_string)
-print(result)  # []
+print("\B:", result)  # []
 
 
 # * Sets
@@ -268,7 +265,7 @@ print(result)  # []
 # - [arn] - Matches any character in the set (a, r, or n).
 pattern = "[arn]"
 result = re.findall(pattern, my_string)
-print(result)  # ['a', 'n', 'r', 'a', 'n', 'r', 'a', 'n', 'n']
+print("set - [arn] :", result)  # ['a', 'n', 'a', 'n', 'a', 'n']
 
 # The pattern "[arn]" matches all characters a, r, and n in the string.
 
@@ -277,8 +274,8 @@ print(result)  # ['a', 'n', 'r', 'a', 'n', 'r', 'a', 'n', 'n']
 pattern = "[a-n]"
 result = re.findall(pattern, my_string)
 print(
-    result
-)  # ['h', 'e', 'b', 'c', 'k', 'c', 'a', 'i', 'b', 'g', 'g', 'e', 'h', 'e', 'i', 'e', 'a', 'n', 'h', 'e', 'h', 'i', 'e', 'c', 'a']
+    "set - [a-n] :", result
+)  # ['b', 'c', 'k', 'c', 'a', 'i', 'b', 'g', 'g', 'e', 'h', 'e', 'i', 'e', 'c', 'a']
 
 # The pattern "[a-n]" matches all characters from a to n in the string.
 
@@ -287,8 +284,8 @@ print(
 pattern = "[^arn]"
 result = re.findall(pattern, my_string)
 print(
-    result
-)  # ['t', 'h', 'e', ' ', 'b', 'l', 'c', 'k', ' ', 'c', 't', ' ', 'i', 's', ' ', 'b', 'i', 'g', 'g', 'e', 'r', ' ', 't', 'h', 'n', ' ', 't', 'h', 'e', ' ', 'w', 'h', 'i', 't', 'e', ' ', 'c', 't']
+    "set - [^arn] :", result
+)  # ['t', 'h', 'e', ' ', 'b', 'l', 'c', ' ', 't', ' ', 'i', 's', ' ', 'b', 'i', 'g', 'g', 'e', ' ', 't', 'h', ' ', 'w', 'h', 'i', 't', 'e', ' ', 'c', 't']
 
 # The pattern "[^arn]" matches all characters except a, r, and n in the string.
 
@@ -299,7 +296,7 @@ print(
 # - (a|b|c) - Matches either a, b, or c.
 pattern = "(cat|dog)"
 result = re.findall(pattern, my_string)
-print(result)  # ['cat', 'cat']
+print("group - (cat|dog) :", result)  # ['cat', 'cat']
 
 # The pattern "(cat|dog)" matches "cat" and "dog" in the string.
 
@@ -310,7 +307,7 @@ print(result)  # ['cat', 'cat']
 # - a{2} - Matches exactly two occurrences of a.
 pattern = "c{1}"
 result = re.findall(pattern, my_string)
-print(result)  # ['c', 'c']
+print("quantifiers - a{2} :", result)  # ['c', 'c']
 
 # The pattern "c{1}" matches all occurrences of c in the string.
 
@@ -318,7 +315,7 @@ print(result)  # ['c', 'c']
 # - a{2,3} - Matches between two and three occurrences of a.
 pattern = "c{1,2}"
 result = re.findall(pattern, my_string)
-print(result)  # ['c', 'c']
+print("quantifiers - a{2,3} :", result)  # ['c', 'c']
 
 # The pattern "c{1,2}" matches all occurrences of c in the string.
 
@@ -326,7 +323,7 @@ print(result)  # ['c', 'c']
 # - a{2,} - Matches two or more occurrences of a.
 pattern = "c{1,}"
 result = re.findall(pattern, my_string)
-print(result)  # ['c', 'c']
+print("quantifiers - a{2,} :", result)  # ['c', 'c']
 
 # The pattern "c{1,}" matches all occurrences of c in the string.
 
@@ -334,7 +331,7 @@ print(result)  # ['c', 'c']
 # - a* - Matches zero or more occurrences of a.
 pattern = "c*"
 result = re.findall(pattern, my_string)
-print(result)
+print("quantifiers - a* :", result)  # ['c', 'c']
 
 # The pattern "c*" matches all occurrences of c in the string.
 
@@ -342,7 +339,7 @@ print(result)
 # - a+ - Matches one or more occurrences of a.
 pattern = "c+"
 result = re.findall(pattern, my_string)
-print(result)  # ['c', 'c']
+print("quantifiers - a+ :", result)  # ['c', 'c']
 
 # The pattern "c+" matches all occurrences of c in the string.
 
@@ -350,7 +347,7 @@ print(result)  # ['c', 'c']
 # - a? - Matches zero or one occurrence of a.
 pattern = "c?"
 result = re.findall(pattern, my_string)
-print(result)  # ['c', 'c']
+print("quantifiers - a? :", result)  # ['c', 'c']
 
 # The pattern "c?" matches all occurrences of c in the string.
 
@@ -359,7 +356,7 @@ print(result)  # ['c', 'c']
 # Find all words that start with the letter "b".
 pattern = r"\b[b]\w+"
 result = re.findall(pattern, my_string)
-print(result)  # ['black', 'bigger']
+print("pattern - '\b[b]\w+':", result)  # ['black', 'bigger']
 
 # The pattern "\b[b]\w+" matches "black" and "bigger" in the string.
 
@@ -367,6 +364,6 @@ print(result)  # ['black', 'bigger']
 # Find all words that end with the letter "t".
 pattern = r"\w+[t]\b"
 result = re.findall(pattern, my_string)
-print(result)  # ['cat', 'cat']
+print("pattern - '\w+[t]\b':", result)  # ['cat', 'cat']
 
 # The pattern "\w+[t]\b" matches "cat" and "cat" in the string.
