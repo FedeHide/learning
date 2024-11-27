@@ -113,3 +113,24 @@ print("requests json:", response.json())
 # print pokemon names in a list
 pokemon_names = [pokemon["name"] for pokemon in response.json()["results"]]
 print("pokemon names:", pokemon_names)
+
+
+## ? my package
+# You can create your own packages and modules in Python. A package is a directory that contains a special file called __init__.py, which can be empty. A module is a Python file that contains functions, classes, and variables.
+
+# my_package/
+# ├── __init__.py
+# ├── module1.py
+# └── module2.py
+
+# To use a module from a package, you can import it using the dot notation:
+
+# import my_package.module1
+
+# or import specific functions or classes from the module:
+from my_package import arithmetics
+
+print("my_package:", arithmetics.add(5, 3))  # 8
+print("my_package:", arithmetics.subtract(5, 3))  # 2
+print("my_package:", arithmetics.multiply(5, 3))  # 15
+print("my_package:", arithmetics.divide(10, 2))  # 5.0
