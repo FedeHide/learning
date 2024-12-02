@@ -1,7 +1,13 @@
 #!./venv/bin/python
-from typing import Union
 from fastapi import FastAPI
+
+# Pydantic is a data validation library in Python. It is used to validate the data sent to the server.
+# Define the data types of the request body and response body in FastAPI.
 from pydantic import BaseModel
+
+# The typing module provides a way to specify the type of variables, functions, and arguments in Python.
+# Union is used to specify that a variable can have multiple types.
+from typing import Union
 
 app = FastAPI()
 
