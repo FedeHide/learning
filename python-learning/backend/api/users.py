@@ -45,8 +45,17 @@ async def read_user_by_param(user_id: int):
 
 
 @app.get("/usersquery/")
-async def read_user_by_query(user_id: int):
-    users = filter(lambda user: user.id == user_id, users_list)
+async def read_user_by_query_id(id: int):
+    users = filter(lambda user: user.id == id, users_list)
+    try:
+        return list(users)[0]
+    except IndexError:
+        return "User not found"
+
+
+@app.get("/usersqueryname/")
+async def read_user_by_query_id_and_name(id: int, name: str):
+    users = filter(lambda user: user.id == id and user.name == name, users_list)
     try:
         return list(users)[0]
     except IndexError:
