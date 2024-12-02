@@ -13,6 +13,8 @@ class Item(BaseModel):
 
 
 @app.get("/")
+# tip: the app.get() decorator is used to define a GET endpoint.
+# decorator is a function that takes another function as input and returns a new function that adds some additional functionality to the original function.
 def read_root():
     return {"Hello": "World"}
 
