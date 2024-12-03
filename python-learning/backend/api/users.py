@@ -44,11 +44,13 @@ async def read_users():
 # * Path parameters are defined in the URL path using curly braces {parameter_name}.
 @app.get("/usersparams/{user_id}")
 async def read_user_by_param(user_id: int):
-    users = filter(lambda user: user.id == user_id, users_list)
-    try:
-        return list(users)[0]
-    except IndexError:
-        return "User not found"
+    user = next((user for user in users_list if user.id == user_id), None)
+    # next(generator, default)
+    # generator: A generator that produces values
+    # default: A default value to return if the generator is exhausted
+    if user:
+        return user
+    raise HTTPException(status_code=404, detail="User not found")
 
 
 ## ? Query Parameters
@@ -56,22 +58,22 @@ async def read_user_by_param(user_id: int):
 # * Query parameters are defined in the URL path using a question mark ? followed by the key-value pair.
 
 
-@app.get("/usersquery/")
+@app.get("/usersquery/", response_model=User)
 async def read_user_by_query_id(id: int):
-    users = filter(lambda user: user.id == id, users_list)
-    try:
-        return list(users)[0]
-    except IndexError:
-        return "User not found"
+    user = next((user for user in users_list if user.id == id), None)
+    if user:
+        return user
+    raise HTTPException(status_code=404, detail="User not found")
 
 
-@app.get("/usersqueryname/")
+@app.get("/usersqueryname/", response_model=User)
 async def read_user_by_query_id_and_name(id: int, name: str):
-    users = filter(lambda user: user.id == id and user.name == name, users_list)
-    try:
-        return list(users)[0]
-    except IndexError:
-        return "User not found"
+    user = next(
+        (user for user in users_list if user.id == id and user.name == name), None
+    )
+    if user:
+        return user
+    raise HTTPException(status_code=404, detail="User not found")
 
 
 # query example: http://127.0.0.1:8080/usersqueryname/?id=1&name=ruki
