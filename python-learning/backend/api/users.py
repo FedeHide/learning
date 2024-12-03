@@ -60,3 +60,7 @@ async def read_user_by_query_id_and_name(id: int, name: str):
         return list(users)[0]
     except IndexError:
         return "User not found"
+
+
+# query example: http://127.0.0.1:8080/usersqueryname/?id=1&name=ruki
+# query example: http://127.0.0.1:8080/usersqueryname/?id=2&name=anya
