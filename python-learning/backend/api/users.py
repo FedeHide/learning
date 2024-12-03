@@ -39,6 +39,7 @@ users_list: list[User] = [
 
 
 # search for a user by ID
+# podria usar esta funcion en lugar de repetir el codigo en cada endpoint, pero no la uso para ejemplificar
 def get_user_by_id(user_id: int) -> Optional[User]:
     return next((user for user in users_list if user.id == user_id), None)
 
@@ -137,3 +138,38 @@ async def update_user(user_id: int, user: Annotated[User, "User data"]):
             # ? model_copy() method is used to create a copy of the model with the specified updates.
             return {"message": "User updated successfully", "user": users_list[index]}
     raise HTTPException(status_code=404, detail="User not found")
+
+
+@app.delete("/deleteuser/{user_id}")
+async def delete_user(user_id: int):
+    user_to_delete = next((user for user in users_list if user.id == user_id), None)
+
+    if user_to_delete is None:
+        raise HTTPException(status_code=404, detail="User not found")
+
+    users_list.remove(user_to_delete)
+    return {"message": "User deleted successfully", "user": user_to_delete}
+
+
+## * Once a user is deleted and removed from the list, the user ID is not reused. The user ID is unique and is not reused even after the user is deleted.
+## * the best practice is to use a unique identifier for each user, such as a UUID, to avoid conflicts when deleting and adding users.
+
+
+# ? optimize the code
+
+"""
+ID Lookup: The current approach of using any(existing_user.id == user.id for existing_user in users_list) works fine for small lists but is inefficient for large ones (O(n) complexity). Consider using a dictionary for faster O(1) lookups.
+
+ID Generation: The method new_id = max(existing_user.id for existing_user in users_list) + 1 is simple but inefficient for large lists (O(n) complexity). A better approach would be to use a global ID counter to ensure O(1) performance.
+
+Email Lookup: The method for checking if the email already exists also has O(n) complexity. Using a dictionary with emails as keys would allow O(1) lookups.
+
+model_copy() in Update: Using model_copy() is valid, but ensure it's not introducing unnecessary overhead in your models, especially for complex data structures.
+
+User Deletion: The approach of finding and removing the user with next((user for user in users_list if user.id == user_id), None) is efficient for search, but IDs are not reused. For better long-term management, consider using UUIDs to avoid ID conflicts.
+
+Recommendations:
+Use a dictionary for faster lookups (by ID or email).
+Maintain a global ID counter to avoid searching for the max ID.
+Use UUIDs for unique user identifiers, preventing conflicts and ensuring scalability.
+"""
