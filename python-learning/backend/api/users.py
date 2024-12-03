@@ -8,7 +8,7 @@ from pydantic import BaseModel, EmailStr
 
 # The typing module provides a way to specify the type of variables, functions, and arguments in Python. Annotated is used to add metadata to the data types.
 # Annotated is used to add metadata to the data types. It is used to provide additional information about the data types.
-from typing import Annotated
+from typing import Annotated, Optional
 
 
 app = FastAPI()
@@ -27,11 +27,20 @@ class User(BaseModel):
     email: EmailStr
     age: int
 
+    class Config:
+        extra = "forbid"
+        # extra = "forbid" is used to prevent extra fields from being accepted in the request body.
+
 
 users_list: list[User] = [
     User(id=1, name="ruki", surname="purris", email="elpurris@gmail.com", age=25),
     User(id=2, name="anya", surname="mamitas", email="mananitas@gmail.com", age=20),
 ]
+
+
+# search for a user by ID
+def get_user_by_id(user_id: int) -> Optional[User]:
+    return next((user for user in users_list if user.id == user_id), None)
 
 
 @app.get("/userslist")
@@ -112,14 +121,19 @@ async def create_user(user: Annotated[User, "User data"]):
 
 @app.put("/updateuser/{user_id}")
 async def update_user(user_id: int, user: Annotated[User, "User data"]):
+    # Check if the email is already registered or is the same as the user's email
+    if any(
+        existing_user.email == user.email
+        for existing_user in users_list
+        if existing_user.id != user_id
+    ):
+        raise HTTPException(
+            status_code=400, detail="User with this email already exists"
+        )
+
     for index, existing_user in enumerate(users_list):
         if existing_user.id == user_id:
-            users_list[index] = User(
-                id=existing_user.id,
-                name=user.name,
-                surname=user.surname,
-                email=user.email,
-                age=user.age,
-            )
+            users_list[index] = user.model_copy(update={"id": existing_user.id})
+            # model_copy() method is used to create a copy of the model with the specified updates.
             return {"message": "User updated successfully", "user": users_list[index]}
     raise HTTPException(status_code=404, detail="User not found")
