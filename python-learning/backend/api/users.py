@@ -29,7 +29,7 @@ class User(BaseModel):
 
     class Config:
         extra = "forbid"
-        # extra = "forbid" is used to prevent extra fields from being accepted in the request body.
+        # ? extra = "forbid" is used to prevent extra fields from being accepted in the request body.
 
 
 users_list: list[User] = [
@@ -54,7 +54,7 @@ async def read_users():
 @app.get("/usersparams/{user_id}")
 async def read_user_by_param(user_id: int):
     user = next((user for user in users_list if user.id == user_id), None)
-    # next(generator, default)
+    # ? next(generator, default)
     # generator: A generator that produces values
     # default: A default value to return if the generator is exhausted
     if user:
@@ -134,6 +134,6 @@ async def update_user(user_id: int, user: Annotated[User, "User data"]):
     for index, existing_user in enumerate(users_list):
         if existing_user.id == user_id:
             users_list[index] = user.model_copy(update={"id": existing_user.id})
-            # model_copy() method is used to create a copy of the model with the specified updates.
+            # ? model_copy() method is used to create a copy of the model with the specified updates.
             return {"message": "User updated successfully", "user": users_list[index]}
     raise HTTPException(status_code=404, detail="User not found")
