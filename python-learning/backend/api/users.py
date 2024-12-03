@@ -106,3 +106,18 @@ async def create_user(user: Annotated[User, "User data"]):
 
     users_list.append(user)
     return {"message": "User added successfully", "user": user}
+
+
+@app.put("/updateuser/{user_id}")
+async def update_user(user_id: int, user: Annotated[User, "User data"]):
+    for index, existing_user in enumerate(users_list):
+        if existing_user.id == user_id:
+            users_list[index] = User(
+                id=existing_user.id,
+                name=user.name,
+                surname=user.surname,
+                email=user.email,
+                age=user.age,
+            )
+            return {"message": "User updated successfully", "user": users_list[index]}
+    raise HTTPException(status_code=404, detail="User not found")
