@@ -1,5 +1,5 @@
 #!./venv/bin/python
-from fastapi import FastAPI, HTTPException
+from fastapi import HTTPException, APIRouter
 
 # Pydantic is a data validation library in Python. It is used to validate the data sent to the server. Define the data types of the request body and response body in FastAPI.
 # BaseModel is a class in Pydantic that is used to define the data types of the request body and response body in FastAPI.
@@ -11,10 +11,10 @@ from pydantic import BaseModel, EmailStr
 from typing import Annotated, Optional
 
 
-app = FastAPI()
+router = APIRouter()
 
 
-@app.get("/")
+@router.get("/")
 async def read_root():
     return {"Hello": "Users"}
 
@@ -44,7 +44,7 @@ def get_user_by_id(user_id: int) -> Optional[User]:
     return next((user for user in users_list if user.id == user_id), None)
 
 
-@app.get("/userslist")
+@router.get("/userslist")
 async def read_users():
     return users_list
 
@@ -52,7 +52,7 @@ async def read_users():
 ## ? Path Parameters
 # * Path parameters are used to pass data to the server. The data is passed in the URL itself.
 # * Path parameters are defined in the URL path using curly braces {parameter_name}.
-@app.get("/usersparams/{user_id}")
+@router.get("/usersparams/{user_id}")
 async def read_user_by_param(user_id: int):
     user = next((user for user in users_list if user.id == user_id), None)
     # ? next(generator, default)
@@ -68,7 +68,7 @@ async def read_user_by_param(user_id: int):
 # * Query parameters are defined in the URL path using a question mark ? followed by the key-value pair.
 
 
-@app.get("/usersquery/", response_model=User)
+@router.get("/usersquery/", response_model=User)
 async def read_user_by_query_id(id: int):
     user = next((user for user in users_list if user.id == id), None)
     if user:
@@ -76,7 +76,7 @@ async def read_user_by_query_id(id: int):
     raise HTTPException(status_code=404, detail="User not found")
 
 
-@app.get("/usersqueryname/", response_model=User)
+@router.get("/usersqueryname/", response_model=User)
 async def read_user_by_query_id_and_name(id: int, name: str):
     user = next(
         (user for user in users_list if user.id == id and user.name == name), None
@@ -95,7 +95,7 @@ async def read_user_by_query_id_and_name(id: int, name: str):
 # * Request body is defined using the Pydantic BaseModel class.
 
 
-@app.post("/adduser/", status_code=201, response_model=User)
+@router.post("/adduser/", status_code=201, response_model=User)
 async def create_user(user: Annotated[User, "User data"]):
     # Generate a new ID for the user
     if users_list:
@@ -120,7 +120,7 @@ async def create_user(user: Annotated[User, "User data"]):
     return {"message": "User added successfully", "user": user}
 
 
-@app.put("/updateuser/{user_id}")
+@router.put("/updateuser/{user_id}")
 async def update_user(user_id: int, user: Annotated[User, "User data"]):
     # Check if the email is already registered or is the same as the user's email
     if any(
@@ -140,7 +140,7 @@ async def update_user(user_id: int, user: Annotated[User, "User data"]):
     raise HTTPException(status_code=404, detail="User not found")
 
 
-@app.delete("/deleteuser/{user_id}")
+@router.delete("/deleteuser/{user_id}")
 async def delete_user(user_id: int):
     user_to_delete = next((user for user in users_list if user.id == user_id), None)
 

@@ -9,7 +9,15 @@ from pydantic import BaseModel
 # Union is used to specify that a variable can have multiple types.
 from typing import Union
 
+# Import the routers module from the routers package.
+# The routers module contains the routers for different endpoints in the API.
+from routers import products, users
+
 app = FastAPI()
+
+# routers
+app.include_router(products.router)
+app.include_router(users.router)
 
 
 class Item(BaseModel):
@@ -136,3 +144,6 @@ def update_item(item_id: int, item: Item):
 ## * alternative API docs with redoc
 # FastAPI also provides an alternative API documentation interface called Redoc.
 # to access go to http://127.0.0.1:8000/redoc
+
+
+## ?
