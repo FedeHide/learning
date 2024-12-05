@@ -11,7 +11,9 @@ from pydantic import BaseModel, EmailStr
 from typing import Annotated, Optional, List
 
 
-router = APIRouter(prefix="/users")
+router = APIRouter(
+    prefix="/users", tags=["users"], responses={404: {"description": "Not found"}}
+)
 
 
 # User entity
