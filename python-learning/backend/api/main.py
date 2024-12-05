@@ -1,5 +1,6 @@
 #!./venv/bin/python
 from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles  # to serve static files
 
 # Pydantic is a data validation library in Python. It is used to validate the data sent to the server.
 # Define the data types of the request body and response body in FastAPI.
@@ -15,9 +16,11 @@ from routers import products, users
 
 app = FastAPI()
 
-# routers
+# routers - to organize the API endpoints into separate files
 app.include_router(products.router)
 app.include_router(users.router)
+# serve static files
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 
 class Item(BaseModel):
@@ -30,7 +33,7 @@ class Item(BaseModel):
 # tip: the app.get() decorator is used to define a GET endpoint.
 # decorator is a function that takes another function as input and returns a new function that adds some additional functionality to the original function.
 def read_root():
-    return {"Hello": "World"}
+    return {"Hello": "FastAPI"}
 
 
 @app.get("/items/{item_id}")
