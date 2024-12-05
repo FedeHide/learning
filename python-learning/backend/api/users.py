@@ -95,7 +95,7 @@ async def read_user_by_query_id_and_name(id: int, name: str):
 # * Request body is defined using the Pydantic BaseModel class.
 
 
-@app.post("/adduser/")
+@app.post("/adduser/", status_code=201, response_model=User)
 async def create_user(user: Annotated[User, "User data"]):
     # Generate a new ID for the user
     if users_list:
