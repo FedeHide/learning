@@ -1,5 +1,5 @@
 #!./venv/bin/python
-from fastapi import HTTPException, APIRouter
+from fastapi import HTTPException, APIRouter, Query
 
 # Pydantic is a data validation library in Python. It is used to validate the data sent to the server. Define the data types of the request body and response body in FastAPI.
 # BaseModel is a class in Pydantic that is used to define the data types of the request body and response body in FastAPI.
@@ -8,15 +8,10 @@ from pydantic import BaseModel, EmailStr
 
 # The typing module provides a way to specify the type of variables, functions, and arguments in Python. Annotated is used to add metadata to the data types.
 # Annotated is used to add metadata to the data types. It is used to provide additional information about the data types.
-from typing import Annotated, Optional
+from typing import Annotated, Optional, List
 
 
-router = APIRouter()
-
-
-@router.get("/")
-async def read_root():
-    return {"Hello": "Users"}
+router = APIRouter(prefix="/users")
 
 
 # User entity
@@ -44,23 +39,9 @@ def get_user_by_id(user_id: int) -> Optional[User]:
     return next((user for user in users_list if user.id == user_id), None)
 
 
-@router.get("/userslist")
+@router.get("/", response_model=List[User])
 async def read_users():
     return users_list
-
-
-## ? Path Parameters
-# * Path parameters are used to pass data to the server. The data is passed in the URL itself.
-# * Path parameters are defined in the URL path using curly braces {parameter_name}.
-@router.get("/usersparams/{user_id}")
-async def read_user_by_param(user_id: int):
-    user = next((user for user in users_list if user.id == user_id), None)
-    # ? next(generator, default)
-    # generator: A generator that produces values
-    # default: A default value to return if the generator is exhausted
-    if user:
-        return user
-    raise HTTPException(status_code=404, detail="User not found")
 
 
 ## ? Query Parameters
@@ -68,26 +49,43 @@ async def read_user_by_param(user_id: int):
 # * Query parameters are defined in the URL path using a question mark ? followed by the key-value pair.
 
 
-@router.get("/usersquery/", response_model=User)
-async def read_user_by_query_id(id: int):
-    user = next((user for user in users_list if user.id == id), None)
-    if user:
-        return user
-    raise HTTPException(status_code=404, detail="User not found")
-
-
-@router.get("/usersqueryname/", response_model=User)
-async def read_user_by_query_id_and_name(id: int, name: str):
-    user = next(
-        (user for user in users_list if user.id == id and user.name == name), None
-    )
-    if user:
-        return user
-    raise HTTPException(status_code=404, detail="User not found")
+@router.get("/search", response_model=List[User])
+async def read_users_by_query(
+    id: Optional[int] = Query(None), name: Optional[str] = Query(None)
+):
+    # check if at least one query parameter is provided
+    if id is None and name is None:
+        raise HTTPException(
+            status_code=400,
+            detail="At least one query parameter ('id' or 'name') is required",
+        )
+    # filter users based on query parameters
+    filtered_users = users_list
+    if id is not None:
+        filtered_users = [user for user in filtered_users if user.id == id]
+    if name is not None:
+        filtered_users = [user for user in filtered_users if user.name == name]
+    if not filtered_users:
+        raise HTTPException(status_code=404, detail="No users found")
+    return filtered_users
 
 
 # query example: http://127.0.0.1:8080/usersqueryname/?id=1&name=ruki
 # query example: http://127.0.0.1:8080/usersqueryname/?id=2&name=anya
+
+
+## ? Path Parameters
+# * Path parameters are used to pass data to the server. The data is passed in the URL itself.
+# * Path parameters are defined in the URL path using curly braces {parameter_name}.
+@router.get("/{user_id}", response_model=User)
+async def read_user_by_path(user_id: int):
+    user = next((user for user in users_list if user.id == user_id), None)
+    # ? next(generator, default)
+    # generator: A generator that produces values
+    # default: A default value to return if the generator is exhausted
+    if user:
+        return user
+    raise HTTPException(status_code=404, detail="User not found")
 
 
 ## ? Request Body

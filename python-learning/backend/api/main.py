@@ -26,7 +26,7 @@ class Item(BaseModel):
     is_offer: Union[bool, None] = None
 
 
-@app.get("/")
+@app.get("/")  # each route must be unique
 # tip: the app.get() decorator is used to define a GET endpoint.
 # decorator is a function that takes another function as input and returns a new function that adds some additional functionality to the original function.
 def read_root():

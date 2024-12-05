@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
 
-router = APIRouter(prefix="/products")
+router = APIRouter(prefix="/products", responses={404: {"description": "Not found"}})
 # prefix="/products" is used to add a prefix to the path of all the endpoints in the router.
 
 products_list = [
