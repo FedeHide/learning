@@ -1,5 +1,5 @@
 #!./venv/bin/python
-from fastapi import FastAPI, HTTPException, Depends, status
+from fastapi import APIRouter, HTTPException, Depends, status
 from pydantic import BaseModel, EmailStr
 
 # import the OAuth2PasswordBearer and OAuth2PasswordRequestForm classes for the OAuth2 password flow
@@ -9,7 +9,9 @@ from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 ## other hashing libraries can be used, like bcrypt, hashlib, passlib, etc.
 from argon2 import PasswordHasher
 
-app = FastAPI()
+router = APIRouter(
+    prefix="/login", tags=["login"], responses={404: {"description": "Not found"}}
+)
 
 # Configure password hashing
 ph = PasswordHasher()
@@ -92,7 +94,7 @@ async def get_current_user(token: str = Depends(oauth2_scheme)):
 # ? in this case the token is the username, but in a real application, you would use the token to get the user information from the database
 
 
-@app.post("/login")
+@router.post("/")
 async def login(form_data: OAuth2PasswordRequestForm = Depends()):
     ## Depends() is used to inject the dependency into the path operation function. Allows you to declare the dependency directly in the path operation function.
     user = search_user_in_db(form_data.username)
@@ -115,7 +117,7 @@ async def login(form_data: OAuth2PasswordRequestForm = Depends()):
     ## the token_type is the type of token, in this case, a bearer token (the most common type of token)
 
 
-@app.get("/users/me")
+@router.get("/users/me")
 async def read_users_me(current_user: User = Depends(get_current_user)):
     return current_user
     ## the current_user is returned by the get_current_user dependency, and it will be the user that is currently authenticated

@@ -1,6 +1,6 @@
 #!./venv/bin/python
 from datetime import datetime, timedelta, timezone
-from fastapi import FastAPI, HTTPException, Depends, status
+from fastapi import APIRouter, HTTPException, Depends, status
 from pydantic import BaseModel, EmailStr
 from typing import Annotated
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
@@ -58,7 +58,9 @@ pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 # schemes=["bcrypt"] tells the context to use bcrypt to hash the passwords
 # deprecated="auto" tells the context to use the latest version of bcrypt
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
-app = FastAPI()
+router = APIRouter(
+    prefix="/token", tags=["token"], responses={404: {"description": "Not found"}}
+)
 
 
 def get_password_hash(password: str):
@@ -132,7 +134,7 @@ async def get_current_active_user(
     return current_user
 
 
-@app.post("/token", response_model=Token)
+@router.post("/", response_model=Token)
 async def login_for_access_token(
     form_data: Annotated[OAuth2PasswordRequestForm, Depends()],
 ) -> Token:
@@ -144,15 +146,8 @@ async def login_for_access_token(
     return Token(access_token=access_token, token_type="bearer")
 
 
-@app.get("/users/me", response_model=User)
+@router.get("/users/me", response_model=User)
 async def read_users_me(
     current_user: Annotated[User, Depends(get_current_active_user)],
 ):
     return current_user
-
-
-@app.get("/users/me/items")
-async def read_own_items(
-    current_user: Annotated[User, Depends(get_current_active_user)],
-):
-    return {"items": [{"item_id": "Foo", "owner": current_user.username}]}

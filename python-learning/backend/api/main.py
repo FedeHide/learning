@@ -12,13 +12,15 @@ from typing import Union
 
 # Import the routers module from the routers package.
 # The routers module contains the routers for different endpoints in the API.
-from routers import products, users
+from routers import products, users, jwt_auth_users, basic_auth_users
 
 app = FastAPI()
 
 # routers - to organize the API endpoints into separate files
 app.include_router(products.router)
 app.include_router(users.router)
+app.include_router(jwt_auth_users.router)
+app.include_router(basic_auth_users.router)
 # serve static files
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
