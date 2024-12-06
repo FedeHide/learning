@@ -14,7 +14,7 @@ SECRET_KEY = "e2f274b6d03f51526948b341d249e8e696f0a72ecbb348d0e169583230018487"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 1
 
-# no relation db example with hashed passwords
+# No relation db example with hashed passwords
 users_db = {
     "purris": {
         "username": "purris",
@@ -39,7 +39,7 @@ class Token(BaseModel):
 
 
 class TokenData(BaseModel):
-    username: str | None = None
+    username: str
 
 
 class User(BaseModel):
