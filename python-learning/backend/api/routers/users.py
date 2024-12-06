@@ -170,7 +170,7 @@ User Deletion: The approach of finding and removing the user with next((user for
 - remove() method: The remove() method has O(n) complexity. Consider using a dictionary for faster removals.
 - del statement: The del statement can be used to remove an item from a list by index, which is faster than the remove() method for large lists.
 example:
-```	
+
 @app.delete("/deleteuser/{user_id}")
 async def delete_user(user_id: int):
     for index, user_to_delete in enumerate(users_list):
@@ -178,7 +178,7 @@ async def delete_user(user_id: int):
             del users_list[index]
             return {"message": "User deleted successfully", "user": user_to_delete}
     raise HTTPException(status_code=404, detail="User not found")
-```
+
 it more efficient than the remove() method for large lists but remember that the del statement is not atomic and may cause issues in concurrent environments because it modifies the list in place, so do not modify the list while iterating over it.
 
 Recommendations:

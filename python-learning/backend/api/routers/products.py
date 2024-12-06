@@ -1,3 +1,4 @@
+#!./venv/bin/python
 from fastapi import APIRouter, HTTPException
 
 router = APIRouter(
