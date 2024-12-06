@@ -6,6 +6,7 @@ from pydantic import BaseModel, EmailStr
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 
 # import the password hashing library
+## other hashing libraries can be used, like bcrypt, hashlib, passlib, etc.
 from argon2 import PasswordHasher
 
 app = FastAPI()
