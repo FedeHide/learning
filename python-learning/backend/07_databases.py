@@ -55,6 +55,7 @@
 #    sudo systemctl restart mongod  --> to restart the MongoDB server
 #    mongosh --> to connect to the MongoDB server
 # 4. connect to the MongoDB server by running the mongo command in another terminal window.
+#    mongo
 
 
 ## using MongoDB
