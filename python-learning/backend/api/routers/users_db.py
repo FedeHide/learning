@@ -3,6 +3,8 @@ from fastapi import HTTPException, APIRouter, Query, status
 from typing import Annotated, Optional, List
 from db.models.user import User
 from db.connection import db_client
+from db.schemas.user import user_schema
+from pymongo.errors import DuplicateKeyError
 
 router = APIRouter(
     prefix="/usersdb", tags=["usersdb"], responses={404: {"description": "Not found"}}
@@ -69,20 +71,32 @@ async def read_user_by_path(user_id: int):
 async def create_user(user: Annotated[User, "User data"]):
     ## * in mongodb we don't need to check the id because it will be generated automatically using the ObjectId (_id)
 
-    # Check if the email is already registered
-    if any(
-        existing_user.email == user.email
-        for existing_user in db_client.local.users.find()
-    ):
+    # Check if the email is already registered in the database
+    existing_user = db_client.local.users.find_one({"email": user.email})
+    if existing_user:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail="User with this email already exists",
         )
 
-    id = db_client.local.users.insert_one(user.model_dump()).inserted_id
-    new_user = db_client.local.users.find_one({"_id:": id})
+    # Insert the user data into the database and fetch the inserted ID
+    try:
+        id = db_client.local.users.insert_one(user.model_dump()).inserted_id
+    except DuplicateKeyError:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Duplicate key error occurred during user creation",
+        )
 
-    return {"message": "User added successfully", "user": new_user}
+    # Fetch the newly created user from the database
+    db_user = db_client.local.users.find_one({"_id": id})
+    if not db_user:
+        raise HTTPException(status_code=404, detail="User not found after creation")
+
+    # Convert the DB document to a valid schema
+    new_user = user_schema(db_user)
+
+    return User(**new_user)
 
 
 @router.put("/{user_id}")
