@@ -79,9 +79,14 @@ async def create_user(user: Annotated[User, "User data"]):
             detail="User with this email already exists",
         )
 
+    # convert the model to a dictionary and remove the id field
+    user_dict = user.model_dump()
+    user_dict.pop("id", None)
+
     # Insert the user data into the database and fetch the inserted ID
     try:
-        id = db_client.local.users.insert_one(user.model_dump()).inserted_id
+        inserted_user = db_client.local.users.insert_one(user_dict)
+        id = inserted_user.inserted_id
     except DuplicateKeyError:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
