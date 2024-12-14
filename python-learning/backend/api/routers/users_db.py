@@ -5,6 +5,7 @@ from db.models.user import User
 from db.connection import db_client
 from db.schemas.user import user_schema
 from pymongo.errors import DuplicateKeyError
+from pymongo.collection import Collection
 
 router = APIRouter(
     prefix="/usersdb", tags=["usersdb"], responses={404: {"description": "Not found"}}
@@ -14,10 +15,22 @@ router = APIRouter(
 users_list: list[User] = []
 
 
-# search for a user by ID
-# podria usar esta funcion en lugar de repetir el codigo en cada endpoint, pero no la uso para ejemplificar
-def get_user_by_id(user_id: int) -> Optional[User]:
-    return next((user for user in users_list if user.id == user_id), None)
+def get_user_by_email_or_username(
+    email: str, username: str, db_collection: Collection
+) -> Optional[dict]:
+    """
+    search for a user by email or username in the database.
+
+    Args:
+        email (str): user email to search for.
+        username (str): user username to search for.
+        db_collection (Collection): the collection to search in.
+
+    Returns:
+        Optional[dict]: the user document if found, None otherwise.
+    """
+    user = db_collection.find_one({"$or": [{"email": email}, {"username": username}]})
+    return user
 
 
 @router.get("/", response_model=List[User])
@@ -71,12 +84,14 @@ async def read_user_by_path(user_id: int):
 async def create_user(user: Annotated[User, "User data"]):
     ## * in mongodb we don't need to check the id because it will be generated automatically using the ObjectId (_id)
 
-    # Check if the email is already registered in the database
-    existing_user = db_client.local.users.find_one({"email": user.email})
+    # Check if the email or username is already registered in the database
+    existing_user = get_user_by_email_or_username(
+        user.email, user.username, db_client.local.users
+    )
     if existing_user:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
-            detail="User with this email already exists",
+            detail="User with this email or username already exists",
         )
 
     # convert the model to a dictionary and remove the id field
