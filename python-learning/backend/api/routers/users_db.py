@@ -67,6 +67,7 @@ def get_user_by_email_or_username(
         handle_pymongo_error(error, context="user search")
 
 
+# TODO: refactor the code from here
 @router.get("/", response_model=List[User])
 async def read_users():
     return users_list
@@ -114,6 +115,9 @@ async def read_user_by_path(user_id: int):
     raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
 
 
+# TODO to here
+
+
 @router.post("/", status_code=status.HTTP_201_CREATED, response_model=User)
 async def create_user(user: Annotated[User, "User data"]):
     ## * in mongodb we don't need to check the id because it will be generated automatically using the ObjectId (_id)
@@ -156,6 +160,7 @@ async def create_user(user: Annotated[User, "User data"]):
     return User(**new_user)
 
 
+# TODO: refactor the code from here
 @router.put("/{user_id}")
 async def update_user(user_id: int, user: Annotated[User, "User data"]):
     # Check if the email is already registered or is the same as the user's email
@@ -188,3 +193,6 @@ async def delete_user(user_id: int):
 
     users_list.remove(user_to_delete)
     return {"message": "User deleted successfully", "user": user_to_delete}
+
+
+# TODO to here
