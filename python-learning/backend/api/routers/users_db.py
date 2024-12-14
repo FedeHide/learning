@@ -4,7 +4,7 @@ from typing import Annotated, Optional, List
 from db.models.user import User
 from db.connection import db_client
 from db.schemas.user import user_schema
-from pymongo.errors import DuplicateKeyError
+from pymongo.errors import DuplicateKeyError, PyMongoError
 from pymongo.collection import Collection
 
 router = APIRouter(
@@ -13,6 +13,29 @@ router = APIRouter(
 
 
 users_list: list[User] = []
+
+
+def handle_pymongo_error(error: Exception, context: str):
+    """
+    handle PyMongo errors and raise the appropriate HTTPException.
+
+    Args:
+        error (Exception): The PyMongo error that occurred.
+        context (str): The context in which the error occurred.
+
+    Raises:
+        HTTPException: The appropriate HTTPException based on the error.
+    """
+    if isinstance(error, DuplicateKeyError):
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=f"Duplicate key error occurred during {context}",
+        )
+    elif isinstance(error, PyMongoError):
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Database error during {context}: {str(error)}",
+        )
 
 
 def get_user_by_email_or_username(
@@ -29,8 +52,19 @@ def get_user_by_email_or_username(
     Returns:
         Optional[dict]: the user document if found, None otherwise.
     """
-    user = db_collection.find_one({"$or": [{"email": email}, {"username": username}]})
-    return user
+    try:
+        user = db_collection.find_one(
+            {"$or": [{"email": email}, {"username": username}]}
+        )
+        if user:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="User with this email or username already exists",
+            )
+        return None
+    except PyMongoError as error:
+        # Handle internal database errors
+        handle_pymongo_error(error, context="user search")
 
 
 @router.get("/", response_model=List[User])
@@ -83,16 +117,19 @@ async def read_user_by_path(user_id: int):
 @router.post("/", status_code=status.HTTP_201_CREATED, response_model=User)
 async def create_user(user: Annotated[User, "User data"]):
     ## * in mongodb we don't need to check the id because it will be generated automatically using the ObjectId (_id)
+    """
+    Create a new user in the database.
+
+    Args:
+        user (User): The user data to create.
+
+    Returns:
+        User: The created user data.
+    """
+    db_collection = db_client.local.users
 
     # Check if the email or username is already registered in the database
-    existing_user = get_user_by_email_or_username(
-        user.email, user.username, db_client.local.users
-    )
-    if existing_user:
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="User with this email or username already exists",
-        )
+    get_user_by_email_or_username(user.email, user.username, db_collection)
 
     # convert the model to a dictionary and remove the id field
     user_dict = user.model_dump()
@@ -100,18 +137,18 @@ async def create_user(user: Annotated[User, "User data"]):
 
     # Insert the user data into the database and fetch the inserted ID
     try:
-        inserted_user = db_client.local.users.insert_one(user_dict)
+        inserted_user = db_collection.insert_one(user_dict)
         id = inserted_user.inserted_id
-    except DuplicateKeyError:
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Duplicate key error occurred during user creation",
-        )
+    except (DuplicateKeyError, PyMongoError) as error:
+        handle_pymongo_error(error, context="user creation")
 
     # Fetch the newly created user from the database
-    db_user = db_client.local.users.find_one({"_id": id})
-    if not db_user:
-        raise HTTPException(status_code=404, detail="User not found after creation")
+    try:
+        db_user = db_collection.find_one({"_id": id})
+        if not db_user:
+            raise HTTPException(status_code=404, detail="User not found after creation")
+    except PyMongoError as error:
+        handle_pymongo_error(error, context="user fetch")
 
     # Convert the DB document to a valid schema
     new_user = user_schema(db_user)
