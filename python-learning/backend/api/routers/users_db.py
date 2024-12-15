@@ -55,12 +55,7 @@ def get_user_by_email_or_username(
         user = db_collection.find_one(
             {"$or": [{"email": email}, {"username": username}]}
         )
-        if user:
-            raise HTTPException(
-                status_code=status.HTTP_400_BAD_REQUEST,
-                detail="User with this email or username already exists",
-            )
-        return None
+        return user
     except PyMongoError as error:
         # Handle internal database errors
         handle_pymongo_error(error, context="user search")
@@ -137,7 +132,13 @@ async def create_user(user: Annotated[User, "User data"]):
     """
 
     # Check if the email or username is already registered in the database
-    get_user_by_email_or_username(user.email, user.username, db_collection)
+    user_data = get_user_by_email_or_username(user.email, user.username, db_collection)
+
+    if user_data:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="User with this email or username already exists",
+        )
 
     # convert the model to a dictionary and remove the id field
     user_dict = user.model_dump()
