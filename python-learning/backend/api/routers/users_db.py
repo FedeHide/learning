@@ -61,6 +61,9 @@ def get_user_by_email_or_username(
         handle_pymongo_error(error, context="user search")
 
 
+## ! TIP: if we want to search by ID we need to use bson.ObjectId(id) to convert the id to the ObjectId type
+
+
 @router.get("/", response_model=List[User])
 async def read_users():
     users_list = db_collection.find()
@@ -185,17 +188,16 @@ async def create_user(user: Annotated[User, "User data"]):
 #     raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
 
 
-# @router.delete("/{user_id}")
-# async def delete_user(user_id: int):
-#     user_to_delete = next((user for user in users_list if user.id == user_id), None)
+@router.delete("/{user_username}", status_code=status.HTTP_204_NO_CONTENT)
+async def delete_user(user_username: str):
+    try:
+        user_to_delete = db_collection.find_one_and_delete({"username": user_username})
+        if not user_to_delete:
+            raise HTTPException(status_code=404, detail="User not found")
+    except PyMongoError as error:
+        handle_pymongo_error(error, context="user deletion")
 
-#     if user_to_delete is None:
-#         raise HTTPException(
-#             status_code=status.HTTP_404_NOT_FOUND, detail="User not found"
-#         )
-
-#     users_list.remove(user_to_delete)
-#     return {"message": "User deleted successfully", "user": user_to_delete}
+    return {"message": "User deleted successfully"}
 
 
 # TODO to here
