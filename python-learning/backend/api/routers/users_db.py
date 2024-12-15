@@ -3,7 +3,7 @@ from fastapi import HTTPException, APIRouter, Query, status
 from typing import Annotated, Optional, List
 from db.models.user import User
 from db.connection import db_client
-from backend.api.db.schemas.user_schema import user_schema, users_list_schema
+from db.schemas.user_schema import user_schema, users_list_schema
 from pymongo.errors import DuplicateKeyError, PyMongoError
 from pymongo.collection import Collection
 
