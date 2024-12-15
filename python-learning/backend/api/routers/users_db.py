@@ -67,7 +67,7 @@ def get_user_by_email_or_username(
 
 
 # TODO: refactor the code from here
-@router.get("/")
+@router.get("/", response_model=List[User])
 async def read_users():
     users_list = db_collection.find()
     parsed_users = [user_schema(user) for user in users_list]
@@ -79,27 +79,33 @@ async def read_users():
 # * Query parameters are defined in the URL path using a question mark ? followed by the key-value pair.
 
 
-# @router.get("/search", response_model=List[User])
-# async def read_users_by_query(
-#     id: Optional[int] = Query(None), name: Optional[str] = Query(None)
-# ):
-#     # check if at least one query parameter is provided
-#     if id is None and name is None:
-#         raise HTTPException(
-#             status_code=status.HTTP_400_BAD_REQUEST,
-#             detail="At least one query parameter ('id' or 'name') is required",
-#         )
-#     # filter users based on query parameters
-#     filtered_users = users_list
-#     if id is not None:
-#         filtered_users = [user for user in filtered_users if user.id == id]
-#     if name is not None:
-#         filtered_users = [user for user in filtered_users if user.name == name]
-#     if not filtered_users:
-#         raise HTTPException(
-#             status_code=status.HTTP_404_NOT_FOUND, detail="User not found"
-#         )
-#     return filtered_users
+@router.get("/search", response_model=User)
+async def read_users_by_query(
+    username: Optional[str] = Query(None), email: Optional[str] = Query(None)
+):
+    # check if at least one query parameter is provided
+    if username is None and email is None:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="At least one query parameter must be provided",
+        )
+
+    # filter users based on query parameters
+    query = {}
+    if username is not None:
+        query["username"] = username
+    if email is not None:
+        query["email"] = email
+
+    user_data = db_collection.find_one(query)
+
+    if not user_data:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND, detail="User not found"
+        )
+
+    parsed_user = user_schema(user_data)
+    return User(**parsed_user)
 
 
 ## ? Path Parameters
