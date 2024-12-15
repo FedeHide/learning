@@ -14,3 +14,17 @@ def user_schema(user) -> dict:
         "username": user["username"],
         "email": user["email"],
     }
+
+
+# Function for converting a list of MongoDB user documents to a list of Pydantic model schemas
+def users_list_schema(users) -> list[dict]:
+    """
+    Converts a list of MongoDB user documents to a list of Pydantic model schemas.
+
+    Args:
+        users (list): The list of MongoDB user documents.
+
+    Returns:
+        list: The converted list of user data in the form of Pydantic model schemas.
+    """
+    return [user_schema(user) for user in users]

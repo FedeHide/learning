@@ -3,7 +3,7 @@ from fastapi import HTTPException, APIRouter, Query, status
 from typing import Annotated, Optional, List
 from db.models.user import User
 from db.connection import db_client
-from db.schemas.user import user_schema
+from db.schemas.user import user_schema, users_list_schema
 from pymongo.errors import DuplicateKeyError, PyMongoError
 from pymongo.collection import Collection
 
@@ -64,8 +64,7 @@ def get_user_by_email_or_username(
 @router.get("/", response_model=List[User])
 async def read_users():
     users_list = db_collection.find()
-    parsed_users = [user_schema(user) for user in users_list]
-    return [User(**user) for user in parsed_users]
+    return users_list_schema(users_list)
 
 
 ## ? Query Parameters
