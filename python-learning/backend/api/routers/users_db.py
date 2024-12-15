@@ -49,7 +49,7 @@ def get_user_by_email_or_username(
         db_collection (Collection): the collection to search in.
 
     Returns:
-        Optional[dict]: the user document if found, None otherwise.
+        Optional[dict]: The user data if found, otherwise None.
     """
     try:
         user = db_collection.find_one(
@@ -84,14 +84,10 @@ async def read_users_by_query(
             detail="At least one query parameter must be provided",
         )
 
-    # filter users based on query parameters
-    query = {}
-    if username is not None:
-        query["username"] = username
-    if email is not None:
-        query["email"] = email
-
-    user_data = db_collection.find_one(query)
+    # Use the function to check if the user exists by either email or username
+    user_data = get_user_by_email_or_username(
+        email=email, username=username, db_collection=db_collection
+    )
 
     if not user_data:
         raise HTTPException(
@@ -107,14 +103,17 @@ async def read_users_by_query(
 # * Path parameters are defined in the URL path using curly braces {parameter_name}.
 @router.get("/{user_username}", response_model=User)
 async def read_user_by_path(user_username: str):
-    user = db_collection.find_one({"username": user_username})
+    # Use the function to check if the user exists by username
+    user_data = get_user_by_email_or_username(
+        email=None, username=user_username, db_collection=db_collection
+    )
 
-    if not user:
+    if not user_data:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND, detail="User not found"
         )
 
-    parsed_user = user_schema(user)
+    parsed_user = user_schema(user_data)
     return User(**parsed_user)
 
 
