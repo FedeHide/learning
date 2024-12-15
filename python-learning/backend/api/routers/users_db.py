@@ -196,8 +196,3 @@ async def delete_user(user_username: str):
             raise HTTPException(status_code=404, detail="User not found")
     except PyMongoError as error:
         handle_pymongo_error(error, context="user deletion")
-
-    return {"message": "User deleted successfully"}
-
-
-# TODO to here
