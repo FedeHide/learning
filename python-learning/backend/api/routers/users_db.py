@@ -66,7 +66,6 @@ def get_user_by_email_or_username(
         handle_pymongo_error(error, context="user search")
 
 
-# TODO: refactor the code from here
 @router.get("/", response_model=List[User])
 async def read_users():
     users_list = db_collection.find()
@@ -111,18 +110,17 @@ async def read_users_by_query(
 ## ? Path Parameters
 # * Path parameters are used to pass data to the server. The data is passed in the URL itself.
 # * Path parameters are defined in the URL path using curly braces {parameter_name}.
-# @router.get("/{user_id}", response_model=User)
-# async def read_user_by_path(user_id: int):
-#     user = next((user for user in users_list if user.id == user_id), None)
-#     # ? next(generator, default)
-#     # generator: A generator that produces values
-#     # default: A default value to return if the generator is exhausted
-#     if user:
-#         return user
-#     raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
+@router.get("/{user_username}", response_model=User)
+async def read_user_by_path(user_username: str):
+    user = db_collection.find_one({"username": user_username})
 
+    if not user:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND, detail="User not found"
+        )
 
-# TODO to here
+    parsed_user = user_schema(user)
+    return User(**parsed_user)
 
 
 @router.post("/", status_code=status.HTTP_201_CREATED, response_model=User)
