@@ -35,6 +35,11 @@ def handle_pymongo_error(error: Exception, context: str):
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Database error during {context}: {str(error)}",
         )
+    elif isinstance(error, Exception):
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"An error occurred during {context}: {str(error)}",
+        )
 
 
 def get_user_by_email_or_username(
@@ -156,7 +161,9 @@ async def create_user(user: Annotated[User, "User data"]):
     try:
         db_user = db_collection.find_one({"_id": id})
         if not db_user:
-            raise HTTPException(status_code=404, detail="User not found after creation")
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND, detail="User not found"
+            )
     except PyMongoError as error:
         handle_pymongo_error(error, context="user fetch")
 
@@ -166,33 +173,90 @@ async def create_user(user: Annotated[User, "User data"]):
     return User(**new_user)
 
 
-# TODO: refactor the code from here
-# @router.put("/{user_id}")
-# async def update_user(user_id: int, user: Annotated[User, "User data"]):
-#     # Check if the email is already registered or is the same as the user's email
-#     if any(
-#         existing_user.email == user.email
-#         for existing_user in users_list
-#         if existing_user.id != user_id
-#     ):
-#         raise HTTPException(
-#             status_code=status.HTTP_400_BAD_REQUEST,
-#             detail="User with this email already exists",
-#         )
+@router.put("/{user_username}", response_model=User)
+async def update_user(
+    user_username: str, user_data_to_update: Annotated[User, "User data"]
+):
+    """
+    Update a user in the database.
 
-#     for index, existing_user in enumerate(users_list):
-#         if existing_user.id == user_id:
-#             users_list[index] = user.model_copy(update={"id": existing_user.id})
-#             # ? model_copy() method is used to create a copy of the model with the specified updates.
-#             return {"message": "User updated successfully", "user": users_list[index]}
-#     raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
+    Args:
+        user_username (str): The username of the user to update.
+        user_data_to_update (User): The updated user data.
+
+    Returns:
+        User: The updated user data.
+    """
+
+    # Check if the user to update exists in the database
+    user_data = get_user_by_email_or_username(
+        email=None, username=user_username, db_collection=db_collection
+    )
+
+    if not user_data:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND, detail="User not found"
+        )
+
+    # Convert the model to a dictionary and remove the 'id' field
+    user_dict = user_data_to_update.model_dump()
+    user_dict.pop("id", None)
+
+    # Check if the new email or username already exists in another user
+    existing_user = db_collection.find_one(
+        {
+            "$or": [
+                {"email": user_data_to_update.email},
+                {"username": user_data_to_update.username},
+            ],
+            "username": {
+                "$ne": user_username
+            },  # Exclude the current user from the check
+        }
+    )
+
+    if existing_user:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="User with this email or username already exists",
+        )
+
+    # existing_user = valid_user_data_to_update.to_list(length=None)
+    # if len(existing_user) > 0:
+    #     raise HTTPException(
+    #         status_code=status.HTTP_400_BAD_REQUEST,
+    #         detail="User with this email or username already exists",
+    #     )
+
+    # Try to update the user in the database
+    try:
+        user_to_update = db_collection.find_one_and_replace(
+            {"username": user_username}, user_dict, return_document=True
+        )
+        if not user_to_update:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND, detail="User not found"
+            )
+    except PyMongoError as error:
+        handle_pymongo_error(error, context="user update")
+
+    updated_user = user_schema(user_to_update)
+    return User(**updated_user)
 
 
 @router.delete("/{user_username}", status_code=status.HTTP_204_NO_CONTENT)
 async def delete_user(user_username: str):
+    """
+    Delete a user from the database.
+
+    Args:
+        user_username (str): The username of the user to delete.
+    """
     try:
         user_to_delete = db_collection.find_one_and_delete({"username": user_username})
         if not user_to_delete:
-            raise HTTPException(status_code=404, detail="User not found")
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND, detail="User not found"
+            )
     except PyMongoError as error:
         handle_pymongo_error(error, context="user deletion")
