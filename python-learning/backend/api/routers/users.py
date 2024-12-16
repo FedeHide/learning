@@ -8,7 +8,7 @@ from pydantic import BaseModel, EmailStr
 
 # The typing module provides a way to specify the type of variables, functions, and arguments in Python. Annotated is used to add metadata to the data types.
 # Annotated is used to add metadata to the data types. It is used to provide additional information about the data types.
-from typing import Annotated, Optional, List
+from typing import Annotated, List
 
 
 router = APIRouter(
@@ -37,7 +37,7 @@ users_list: list[User] = [
 
 # search for a user by ID
 # podria usar esta funcion en lugar de repetir el codigo en cada endpoint, pero no la uso para ejemplificar
-def get_user_by_id(user_id: int) -> Optional[User]:
+def get_user_by_id(user_id: int) -> User | None:
     return next((user for user in users_list if user.id == user_id), None)
 
 
@@ -53,7 +53,7 @@ async def read_users():
 
 @router.get("/search", response_model=List[User])
 async def read_users_by_query(
-    id: Optional[int] = Query(None), name: Optional[str] = Query(None)
+    id: int | None = Query(None), name: str | None = Query(None)
 ):
     # check if at least one query parameter is provided
     if id is None and name is None:

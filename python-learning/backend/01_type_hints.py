@@ -33,7 +33,7 @@ from typing import List, Tuple, Dict, Set, Any, Union, Optional
 # Set: set of elements of a specific type
 # Any: any type
 # Union: union of types
-# Optional: optional type
+# Optional: optional type (is not modern, use | instead ; for example -> dict | None)
 
 # example:
 

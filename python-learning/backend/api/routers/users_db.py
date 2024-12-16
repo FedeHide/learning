@@ -1,6 +1,6 @@
 #!./venv/bin/python
 from fastapi import HTTPException, APIRouter, Query, status
-from typing import Annotated, Optional, List
+from typing import Annotated, List
 from db.models.user import User
 from db.connection import db_client
 from db.schemas.user_schema import user_schema, users_list_schema
@@ -44,7 +44,7 @@ def handle_pymongo_error(error: Exception, context: str):
 
 def get_user_by_email_or_username(
     email: str, username: str, db_collection: Collection
-) -> Optional[dict]:
+) -> dict | None:
     """
     search for a user by email or username in the database.
 
@@ -54,7 +54,7 @@ def get_user_by_email_or_username(
         db_collection (Collection): the collection to search in.
 
     Returns:
-        Optional[dict]: The user data if found, otherwise None.
+        dict | None: The user data if found, otherwise None.
     """
     try:
         user = db_collection.find_one(
@@ -82,7 +82,7 @@ async def read_users():
 
 @router.get("/search", response_model=User)
 async def read_users_by_query(
-    username: Optional[str] = Query(None), email: Optional[str] = Query(None)
+    username: str | None = Query(None), email: str | None = Query(None)
 ):
     # check if at least one query parameter is provided
     if username is None and email is None:
@@ -111,7 +111,7 @@ async def read_users_by_query(
 @router.get("/{user_username}", response_model=User)
 async def read_user_by_path(user_username: str):
     # Use the function to check if the user exists by username
-    user_data = get_user_by_email_or_username(
+    user_data: dict | None = get_user_by_email_or_username(
         email=None, username=user_username, db_collection=db_collection
     )
 
