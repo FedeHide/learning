@@ -11,7 +11,7 @@ router = APIRouter(
     prefix="/usersdb", tags=["usersdb"], responses={404: {"description": "Not found"}}
 )
 
-db_collection = db_client.local.users
+db_collection = db_client.users
 
 
 def handle_pymongo_error(error: Exception, context: str):
