@@ -44,7 +44,7 @@
 # MongoDB uses collections to store data, which are similar to tables in relational databases.
 # Each collection contains documents that represent individual records and can have a different schema.
 
-## installing MongoDB
+## * installing MongoDB
 # 1. go to the MongoDB website and download the Community Server edition.
 # 2. install MongoDB on your system by following the installation instructions.
 # 3. start the MongoDB server by running the mongod command in your terminal with systemd.
@@ -58,7 +58,7 @@
 #    mongo
 
 
-## using MongoDB
+## * using MongoDB
 # 1. create a new database by running the use command.
 #    use mydatabase
 # 2. create a new collection by running the db.createCollection command.
@@ -72,7 +72,7 @@
 # 6. delete a document from the collection by running the db.collection.deleteOne command.
 #    db.users.deleteOne({name: 'Alice'})
 
-## connecting to MongoDB using Python
+## * connecting to MongoDB using Python
 # 1. install the pymongo package using pip.
 #    pip install pymongo
 # 2. import the pymongo package in your Python code.
@@ -88,3 +88,9 @@
 #    collection.find_one()
 #    collection.update_one({'name': 'Alice'}, {'$set': {'age': 31}})
 #    collection.delete_one({'name': 'Alice'})
+
+## * using MongoDB Atlas
+# MongoDB Atlas is a cloud-based database service that provides a fully managed MongoDB database.
+# It allows you to deploy, manage, and scale MongoDB databases in the cloud without having to worry about the infrastructure.
+# To use MongoDB Atlas, you need to create an account on the MongoDB website and set up a new cluster.
+# You can then connect to the cluster using the connection string provided by MongoDB Atlas and start using the database.
