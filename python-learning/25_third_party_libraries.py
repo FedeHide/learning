@@ -44,7 +44,7 @@
 # It is recommended to install all third-party libraries in a virtual environment to avoid conflicts between different projects. You can create a virtual environment by running the following command:
 
 # * create a virtual environment
-# python3 -m venv name_of_virtual_environment (convention .venv)
+# python -m venv name_of_virtual_environment (convention .venv)
 
 # * activate the virtual environment
 # source name_of_virtual_environment/bin/activate
