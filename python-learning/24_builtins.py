@@ -6,6 +6,7 @@ import builtins
 
 # list all built-in functions
 print(dir(builtins))
+print(dir(str))
 
 
 # ? Popular Built-in Functions in Python
@@ -68,3 +69,4 @@ repr()  # Returns a readable representation of an object, useful for debugging.
 exec()  # Executes Python code from a string or code object.
 eval()  # Evaluates a Python expression from a string.
 staticmethod(), classmethod()  # Decorators to define static or class methods within a class.
+help()  # Invokes the built-in help system.
