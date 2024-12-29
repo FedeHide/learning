@@ -56,6 +56,33 @@ for x in fruits:
 for x in "banana":
     print(x)  # b, a, n, a, n, a
 
+# Looping Through a dictionary
+# When looping through a dictionary, the return value are the keys of the dictionary, but there are methods to return the values as well.
+# Example:
+thisdict = {"brand": "Ford", "model": "Mustang", "year": 1964}
+for (
+    x
+) in thisdict:  # by default, thisdict will return keys, is the same as thisdict.keys()
+    print(x)  # brand, model, year
+for x in thisdict.values():
+    print(x)  # Ford, Mustang, 1964
+for x, y in thisdict.items():
+    print(x, y)  # brand Ford, model Mustang, year 1964
+
+# Looping Through a Set
+# A set is a collection which is both unordered and unindexed.
+# Example:
+thisset = {"apple", "banana", "cherry"}
+for x in thisset:
+    print(x)  # apple, banana, cherry
+
+# Looping Through a Tuple
+# A tuple is a collection which is ordered and unchangeable.
+# Example:
+thistuple = ("apple", "banana", "cherry")
+for x in thistuple:
+    print(x)  # apple, banana, cherry
+
 # The break Statement
 # With the break statement we can stop the loop before it has looped through all the items.
 # Example:
