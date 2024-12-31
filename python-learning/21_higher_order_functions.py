@@ -220,6 +220,10 @@ def call_counter(func):
         print(f"the function '{func.__name__}' has been called {count} times.")
         return func(*args, **kwargs)
 
+    # ! *args and **kwargs are used to pass a variable number of arguments to the function.
+    # ! *args is used to pass a variable number of non-keyword arguments to the function.
+    # ! **kwargs is used to pass a variable number of keyword arguments to the function.
+
     # Add a method to reset the counter
     def reset_counter():
         nonlocal count
