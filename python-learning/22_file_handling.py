@@ -61,6 +61,13 @@ f = open("schemas/my_file.txt", "r+")  # --> open file in read and write mode
 
 f.close()
 
+# ! Note: when you open a file the cursor is at the beginning of the file. If you read the file, the cursor moves to the end of the file.
+# ! To read the file again, you must reset the cursor to the beginning using the seek(0) method.
+# f.seek(0) # --> reset the cursor to the beginning of the file
+# print(f.read()) # --> read whole content
+# f.close() # --> close the file
+# print(f.closed) # --> check if the file is closed
+
 
 ## * write()
 # is used to write content to a file.
