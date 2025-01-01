@@ -21,7 +21,7 @@ print(result3)  # 55
 
 
 ###* there are many built-in modules in python
-import math  # math module provides mathematical functions
+import math  # ? math module provides mathematical functions
 
 result4 = math.sqrt(16)
 print(result4)  # 4.0
@@ -36,7 +36,7 @@ result7 = math.pow(2, 3)
 print(result7)  # 8.0
 
 
-import random  # random module provides random number generator
+import random  # ? random module provides random number generator
 
 result8 = random.randint(1, 10)
 print(result8)  # random number between 1 and 10
@@ -48,3 +48,11 @@ from math import (
 
 result9 = PI_VALUE
 print(result9)  # 3.141592653589793
+
+
+import time  # ? time module provides time related functions
+
+my_list = [1, 2, 3, 4, 5]
+for i in my_list:
+    print(i)
+    time.sleep(3)  # pause for 3 second
