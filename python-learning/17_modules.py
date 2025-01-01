@@ -56,3 +56,17 @@ my_list = [1, 2, 3, 4, 5]
 for i in my_list:
     print(i)
     time.sleep(3)  # pause for 3 second
+
+
+import os  # ? os module provides operating system related functions
+
+result10 = os.getcwd()  # get current working directory
+print(result10)  # /Users/username/Desktop/python-tutorial
+
+while True:
+    if os.path.exists("schemas/my_file.txt"):
+        with open("schemas/my_file.txt", "r") as file:
+            print(file.read())
+    else:
+        print("File not found")
+    time.sleep(3)  # pause for 3 second
