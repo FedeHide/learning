@@ -68,6 +68,8 @@ f.close()
 # f.close() # --> close the file
 # print(f.closed) # --> check if the file is closed
 
+# ! you can store the content of the file in a variable to avoid closing the file or resetting the cursor
+
 
 ## * write()
 # is used to write content to a file.
