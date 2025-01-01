@@ -92,6 +92,20 @@ print("pandas:", "\n", df)
 # 1      Bob   30
 # 2  Charlie   35
 
+# get the column names
+print("pandas:", df.columns)  # Index(['Name', 'Age'], dtype='object')
+
+# get the row names
+print("pandas:", df.index)  # RangeIndex(start=0, stop=3, step=1)
+
+
+# other example with pandas and csv file
+
+# read a CSV file
+df = pandas.read_csv("schemas/temp_data.csv")
+print(df.mean())  # calculate the mean of each column
+print(df.mean()["st1"])  # calculate the mean of a specific column
+
 
 ## ? requests - HTTP library
 # requests is a popular library for making HTTP requests in Python. It allows you to send HTTP requests and handle responses easily.
