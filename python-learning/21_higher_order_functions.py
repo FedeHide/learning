@@ -221,8 +221,8 @@ def call_counter(func):
         return func(*args, **kwargs)
 
     # ! *args and **kwargs are used to pass a variable number of arguments to the function.
-    # ! *args is used to pass a variable number of non-keyword arguments to the function.
-    # ! **kwargs is used to pass a variable number of keyword arguments to the function.
+    # ! *args is used to pass a variable number of non-keyword arguments to the function. A tuple is created to hold the arguments.
+    # ! **kwargs is used to pass a variable number of keyword arguments to the function. A dictionary is created to hold the arguments.
 
     # Add a method to reset the counter
     def reset_counter():
@@ -249,3 +249,20 @@ say_hello("Nix")
 say_hello("Anya")
 
 # in the above example, the call_counter function is a decorator that counts the number of times a function is called.
+
+
+## ? example with *args and **kwargs
+
+
+def to_upper(*args):  # can receive any number of arguments
+    return sorted([arg.upper() for arg in args])
+
+
+print(to_upper("apple", "banana", "cherry"))  # ['APPLE', 'BANANA', 'CHERRY']
+
+
+def find_sum(**kwargs):  # can receive any number of keyword arguments
+    return sum(kwargs.values())
+
+
+print(find_sum(a=3, b=5, c=1))  # 9
