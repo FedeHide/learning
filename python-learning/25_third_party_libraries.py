@@ -98,6 +98,14 @@ print("pandas:", df.columns)  # Index(['Name', 'Age'], dtype='object')
 # get the row names
 print("pandas:", df.index)  # RangeIndex(start=0, stop=3, step=1)
 
+df2 = pandas.DataFrame(
+    [[1, 2], [3, 4]], columns=["A", "B"], index=["X", "Y"]
+)  # create a DataFrame with custom column names
+print("pandas:", "\n", df2)
+#    A  B
+# X  1  2
+# Y  3  4
+
 
 # other example with pandas and csv file
 
