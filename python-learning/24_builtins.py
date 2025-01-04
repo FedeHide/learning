@@ -3,6 +3,13 @@
 # The builtins module is automatically imported when Python starts up.
 
 import builtins
+import sys
+
+builtins_list = sys.builtin_module_names  # list of built-in modules
+print(builtins_list)
+
+## ! TIP: standard library modules can be find in sys.prefix/Lib directory
+
 
 # list all built-in functions
 print(dir(builtins))
