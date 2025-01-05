@@ -61,13 +61,13 @@ print("df_excel:", "\n", df_excel)
 ## * some methods to manipulate data
 
 # get the first n rows
-print("df_csv_head:", "\n", df_csv.head(2))
+print("df_csv_head:", "\n", df_csv.head(1))
 
 # get the last n rows
-print("df_csv_tail:", "\n", df_csv.tail(2))
+print("df_csv_tail:", "\n", df_csv.tail(1))
 
 # get the shape of the DataFrame
-print("df_csv_shape:", "\n", df_csv.shape)
+print("df_csv_shape:", df_csv.shape)
 
 # get the data types of each column
 print("df_csv_dtypes:", "\n", df_csv.dtypes)
@@ -76,10 +76,20 @@ print("df_csv_dtypes:", "\n", df_csv.dtypes)
 print("df_csv_describe:", "\n", df_csv.describe())
 
 # get the unique values of a column
-print("df_csv_unique:", "\n", df_csv["st1"].unique())
+print("df_csv_unique:", df_csv["st1"].unique())
 
 # set index of the DataFrame
 df_csv.set_index("st1", inplace=True)
 
 # filter rows based on a condition
 print("df_csv_filtered:", "\n", df_csv[df_csv["st2"] > 2])
+
+# filter specific rows and columns
+print(
+    "df_csv_filtered2:",
+    "\n",
+    df_json.loc["735 Dolores St":"332 Hill St", "Country":"ID"],
+)
+
+# sort the DataFrame by a column
+print("df_csv_sorted:", "\n", df_csv.sort_values("st2"))
