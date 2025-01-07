@@ -61,35 +61,54 @@ print("df_excel:", "\n", df_excel)
 ## * some methods to manipulate data
 
 # get the first n rows
-print("df_csv_head:", "\n", df_csv.head(1))
+print("df_csv_head:", "\n", df_csv.head(1))  # get the first row
 
 # get the last n rows
-print("df_csv_tail:", "\n", df_csv.tail(1))
+print("df_csv_tail:", "\n", df_csv.tail(1))  # get the last row
 
 # get the shape of the DataFrame
-print("df_csv_shape:", df_csv.shape)
+print("df_csv_shape:", df_csv.shape)  # get the shape of the DataFrame
 
 # get the data types of each column
-print("df_csv_dtypes:", "\n", df_csv.dtypes)
+print("df_csv_dtypes:", "\n", df_csv.dtypes)  # get the data types of each column
 
 # get the summary statistics of the DataFrame
-print("df_csv_describe:", "\n", df_csv.describe())
+print(
+    "df_csv_describe:", "\n", df_csv.describe()
+)  # get the summary statistics of the DataFrame
 
 # get the unique values of a column
-print("df_csv_unique:", df_csv["st1"].unique())
+print("df_csv_unique:", df_csv["st1"].unique())  # get unique values of st1
 
 # set index of the DataFrame
-df_csv.set_index("st1", inplace=True)
+df_csv.set_index("st1", inplace=True)  # set st1 as the index
 
 # filter rows based on a condition
-print("df_csv_filtered:", "\n", df_csv[df_csv["st2"] > 2])
+print("df_csv_filtered:", "\n", df_csv[df_csv["st2"] > 2])  # filter by st2 > 2
 
 # filter specific rows and columns
 print(
-    "df_csv_filtered2:",
+    "df_json_filtered2:",
     "\n",
-    df_json.loc["735 Dolores St":"332 Hill St", "Country":"ID"],
+    df_json.loc[
+        "735 Dolores St":"332 Hill St", "Country":"ID"
+    ],  # filter by index and column
 )
 
 # sort the DataFrame by a column
-print("df_csv_sorted:", "\n", df_csv.sort_values("st2"))
+print("df_csv_sorted:", "\n", df_csv.sort_values("st2"))  # sort by st2
+
+# select specific rows and columns
+print(
+    "df_json_filtered_by_rows_and_colums", "\n", df_json.iloc[1:3, 1:3]
+)  # select rows 1 and 2 and columns 1 and 2
+
+# delete a column or row
+df_csv.drop(
+    "st2", axis=1, inplace=True
+)  # axis=1 means column and axis=0 means row // inplace=True means that the changes are applied to the DataFrame
+print("df_csv_deleted_column:", "\n", df_csv)
+
+# delete by index
+df_csv.drop(df_csv.index[0:3], axis=0, inplace=True)  # delete the first 3 rows
+print("df_csv_deleted_rows:", "\n", df_csv)
