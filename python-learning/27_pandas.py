@@ -112,3 +112,16 @@ print("df_csv_deleted_column:", "\n", df_csv)
 # delete by index
 df_csv.drop(df_csv.index[0:3], 0)  # delete the first 3 rows, 0 means row
 print("df_csv_deleted_rows:", "\n", df_csv)
+
+
+# add columns
+len(df_csv.index)  # get the number of rows
+df_csv["new_column"] = df_csv.shape[0] * [
+    "new_value"
+]  # add a new column populated with "new_value"
+print("df_csv_added_column:", "\n", df_csv)
+
+
+# update values
+df_csv["new_column"] = df_csv["st1"] + " " + df_csv["st3"]  # update the new column
+print("df_csv_updated_column:", "\n", df_csv)
