@@ -110,5 +110,5 @@ df_csv.drop(
 print("df_csv_deleted_column:", "\n", df_csv)
 
 # delete by index
-df_csv.drop(df_csv.index[0:3], axis=0, inplace=True)  # delete the first 3 rows
+df_csv.drop(df_csv.index[0:3], 0)  # delete the first 3 rows, 0 means row
 print("df_csv_deleted_rows:", "\n", df_csv)
