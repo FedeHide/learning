@@ -125,3 +125,8 @@ print("df_csv_added_column:", "\n", df_csv)
 # update values
 df_csv["new_column"] = df_csv["st1"] + " " + df_csv["st3"]  # update the new column
 print("df_csv_updated_column:", "\n", df_csv)
+
+
+# add a row
+df_csv.loc["new_row"] = ["new_value"] * df_csv.shape[1]  # add a new row
+print("df_csv_added_row:", "\n", df_csv)
