@@ -59,3 +59,11 @@ print("reshape_3d:", "\n", my_reshape_3d)
 # linspace - create an array with a range of values
 my_linspace = numpy.linspace(0, 10, 5)  # 5 values between 0 and 10
 print("linspace:", my_linspace)  # [ 0.   2.5  5.   7.5 10. ]
+
+
+# asarray - convert a list to an array
+my_list = [1, 2, 3]
+my_asarray = numpy.asarray(my_list)
+print("asarray:", my_asarray)  # [1 2 3]
+
+#! this is useful because arrays support mathematical operations, while lists do not
