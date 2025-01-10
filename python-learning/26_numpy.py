@@ -84,3 +84,39 @@ print("image:", "\n", image)
 # write an image
 # create a new image , the second argument is the image data, it can be a numpy array or a list
 cv2.imwrite("schemas/newsmallgray.png", image)
+
+
+# slice an image
+# get the first two rows and the last three columns
+sliced_image = image[0:2, 2:5]
+print("sliced_image:", "\n", sliced_image)
+# [[104 121 143]
+#  [255 255 147]]
+
+
+# iterate over an image
+# iterate over the rows
+print("image_rows:", "\n")
+for row in image:
+    print(row)
+# [187 158 104 121 143]
+# [198 125 255 255 147]
+# [209 134 255  97 182]
+
+
+# iterate over the columns
+print("image_columns:", "\n")
+for column in image.T:
+    print(column)
+# [187 198 209]
+# [158 125 134]
+# [104 255 255]
+# [121 255  97]
+# [143 147 182]
+
+
+# iterate over the values
+print("image_values:", "\n")
+for value in image.flat:
+    print(value)
+# 187 158 104 121 143 198 125 255 255 147 209 134 255 97 182
