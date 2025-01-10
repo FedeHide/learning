@@ -67,3 +67,20 @@ my_asarray = numpy.asarray(my_list)
 print("asarray:", my_asarray)  # [1 2 3]
 
 #! this is useful because arrays support mathematical operations, while lists do not
+
+
+## ? cv2 - OpenCV is a popular computer vision library that provides support for image processing and computer vision tasks. It is widely used in the field of computer vision for tasks such as object detection, image segmentation, and image classification.
+
+import cv2
+
+# read an image
+image = cv2.imread("schemas/smallgray.png", 0)  # 0 - grayscale, 1 - color
+print("image:", "\n", image)
+# [[187 158 104 121 143]
+#  [198 125 255 255 147]
+#  [209 134 255  97 182]]
+
+
+# write an image
+# create a new image , the second argument is the image data, it can be a numpy array or a list
+cv2.imwrite("schemas/newsmallgray.png", image)
