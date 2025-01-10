@@ -120,3 +120,37 @@ print("image_values:", "\n")
 for value in image.flat:
     print(value)
 # 187 158 104 121 143 198 125 255 255 147 209 134 255 97 182
+
+
+# stack images - combine two or more images with same dimensions
+# stack two images horizontally
+h_stacked_image = numpy.hstack(
+    (image, image)
+)  # arguments are a tuple or it will throw an error
+print("h_stacked_image:", "\n", h_stacked_image)
+# [[187 158 104 121 143 187 158 104 121 143]
+#  [198 125 255 255 147 198 125 255 255 147]
+#  [209 134 255 97 182 209 134 255 97 182]]
+
+# stack two images vertically
+v_stacked_image = numpy.vstack((image, image))
+print("v_stacked_image:", "\n", v_stacked_image)
+# [[187 158 104 121 143]
+#  [198 125 255 255 147]
+#  [209 134 255 97 182]
+#  [187 158 104 121 143]
+#  [198 125 255 255 147]
+#  [209 134 255 97 182]]
+
+
+# split an image
+# split the image horizontally - arguments are the image and the number of splits
+h_split_image = numpy.hsplit(image, 5)
+print("h_split_image:", "\n", h_split_image)
+# [array([[187], [198], [209]], dtype=uint8), array([[158], [125], [134]], dtype=uint8), array([[104], [255], [255]], dtype=uint8), array([[121], [255], [97]], dtype=uint8), array([[143], [147], [182]], dtype=uint8)]
+
+
+# split the image vertically
+v_split_image = numpy.vsplit(image, 3)
+print("v_split_image:", "\n", v_split_image)
+# [array([[187, 158, 104, 121, 143]], dtype=uint8), array([[198, 125, 255, 255, 147]], dtype=uint8), array([[209, 134, 255,  97, 182]], dtype=uint8)]
