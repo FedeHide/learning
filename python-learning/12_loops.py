@@ -170,3 +170,12 @@ for x in adj:
 # Example:
 for x in [0, 1, 2]:
     pass  # having an empty for loop like this, would raise an error without the pass statement
+
+
+# * loop through 2 lists at the same time using zip
+# zip() function is used to combine two lists into a list of tuples.
+# Example:
+names = ["John", "Eric", "Jessica"]
+ages = [22, 35, 58]
+for name, age in zip(names, ages):
+    print(name, age)  # John 22, Eric 35, Jessica 58
