@@ -5,8 +5,8 @@
 
 
 import cv2
+import os
 
-"""
 # * imread() - read an image
 # * parameters: image path, flag
 # * flag: 0 - grayscale, 1 - color, -1 - alpha channel
@@ -44,10 +44,6 @@ cv2.waitKey(0)
 
 # * destroyAllWindows() - destroy all windows
 cv2.destroyAllWindows()
-"""
-
-
-import os
 
 
 def resize_all_images_to_100x100(folder):
