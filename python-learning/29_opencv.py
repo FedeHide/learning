@@ -46,6 +46,7 @@ cv2.waitKey(0)
 cv2.destroyAllWindows()
 
 
+# ! create a function to resize all images in a folder to 100x100
 def resize_all_images_to_100x100(folder):
 
     for file in os.listdir(folder):
@@ -55,3 +56,41 @@ def resize_all_images_to_100x100(folder):
 
 
 resize_all_images_to_100x100("schemas/sample_images")
+
+
+# ! same function with glob to find all images in a folder
+import glob
+
+# * glob - find all the pathnames matching a specified pattern according to the rules used by the Unix shell
+# * glob.glob() - returns a list of pathnames matching the pattern
+# * parameters: pattern
+# * pattern: * - zero or more characters, ? - single character
+# * pattern: [seq] - any character in seq, [!seq] - any character not in seq
+# * pattern: {p,q} - p or q
+
+
+def resize_all_images_to_100x100_glob(folder):
+    # create a folder to store the resized images
+    output_folder = os.path.join(folder, "resized")
+    os.makedirs(output_folder, exist_ok=True)
+
+    for file in glob.glob(f"{folder}/*.jpg"):
+        try:
+            # read the image
+            img = cv2.imread(file, 1)
+            if img is None:
+                print(f"Error: image {file} not found.")
+                continue
+
+            # resize the image
+            resized_img = cv2.resize(img, (100, 100))
+
+            # save the resized image
+            output_path = os.path.join(
+                output_folder,
+                f"resized-{os.path.basename(file)}",  # basename - return the base name of the file
+            )
+            cv2.imwrite(output_path, resized_img)
+            print(f"Image {file} resized successfully.")
+        except Exception as e:
+            print(f"Error to resize image {file}: {e}")
