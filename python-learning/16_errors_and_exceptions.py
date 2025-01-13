@@ -62,6 +62,26 @@ finally:  # optional
     # this finally block will always run
 
 
+# Example 4:
+try:
+    print("Example 4:", x + y)
+except TypeError as error:
+    print("Example 4:", "An exception occurred ->", error)
+
+# "as error" is used to store the error message in a variable called error and then print it out
+
+
+# Example 5: catch various types of exceptions
+def division(a, b):
+    try:
+        return a / b
+    except (ZeroDivisionError, NameError) as error:
+        return "An exception occurred ->", error
+
+
+print(division(10, 0))
+
+
 ###* Except errors list:
 # ArithmeticError - Base class for math-related errors.
 # AssertionError - Raised when an assert statement fails.
@@ -129,13 +149,3 @@ finally:  # optional
 # ValueError - Raised when a function receives an argument of the correct type but inappropriate value.
 # Warning - Base class for warning-related exceptions.
 # ZeroDivisionError - Raised when the second operand of a division or modulo operation is zero.
-
-
-# Example 4:
-try:
-    print("Example 4:", x + y)
-except TypeError as error:
-    print("Example 4:", "An exception occurred ->", error)
-
-# ValueError is the type of exception that will be caught and "as e" is used to store the exception in a variable called e
-# that variable can be used to print the error message
