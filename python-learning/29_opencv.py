@@ -6,6 +6,7 @@
 
 import cv2
 
+"""
 # * imread() - read an image
 # * parameters: image path, flag
 # * flag: 0 - grayscale, 1 - color, -1 - alpha channel
@@ -33,7 +34,7 @@ cv2.imshow("Galaxy", resized_img)
 
 # * imwrite() - write an image
 # * parameters: image path, image
-cv2.imwrite("schemas/galaxy_resized.jpg", resized_img)
+cv2.imwrite("schemas/galaxy_resized100.jpg", resized_img)
 
 
 # * waitKey() - wait for a key event
@@ -43,3 +44,18 @@ cv2.waitKey(0)
 
 # * destroyAllWindows() - destroy all windows
 cv2.destroyAllWindows()
+"""
+
+
+import os
+
+
+def resize_all_images_to_100x100(folder):
+
+    for file in os.listdir(folder):
+        img = cv2.imread(f"{folder}/{file}", 1)
+        resized_img = cv2.resize(img, (100, 100))
+        cv2.imwrite(f"{folder}/resized-{file}", resized_img)
+
+
+resize_all_images_to_100x100("schemas/sample_images")
