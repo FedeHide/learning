@@ -7,7 +7,6 @@
 import cv2
 import os
 
-"""
 # * imread() - read an image
 # * parameters: image path, flag
 # * flag: 0 - grayscale, 1 - color, -1 - alpha channel
@@ -16,15 +15,19 @@ galaxy_img = cv2.imread("schemas/galaxy.jpg", 1)
 
 # * what is the img?
 
-print(type(galaxy_img))  # <class 'numpy.ndarray'>
-print(galaxy_img)
-print(galaxy_img.shape)  # (1485, 990, 3) - 1485 rows, 990 columns, 3 channels (RGB)
-print(galaxy_img.ndim)  # 3 - 3 channels (RGB)
-print(galaxy_img.size)  # 4407300 - total number of pixels
+print("galaxy_img_type:", type(galaxy_img))  # <class 'numpy.ndarray'>
+print("galaxy_img:", "\n", galaxy_img)
+print(
+    "galaxy_img_shape:", galaxy_img.shape
+)  # (1485, 990, 3) - 1485 rows, 990 columns, 3 channels (RGB)
+print("galaxy_img_ndim:", galaxy_img.ndim)  # 3 - 3 channels (RGB)
+print("galaxy_img_size:", galaxy_img.size)  # 4407300 - total number of pixels
 
 # * resize() - resize an image
 # * parameters: image, (width, height)
-galaxy_resized_img = cv2.resize(img, (int(img.shape[1] / 2), int(img.shape[0] / 2)))
+galaxy_resized_img = cv2.resize(
+    galaxy_img, (int(galaxy_img.shape[1] / 2), int(galaxy_img.shape[0] / 2))
+)
 
 
 # * imshow() - display an image
@@ -44,7 +47,6 @@ cv2.waitKey(0)
 
 # * destroyAllWindows() - destroy all windows
 cv2.destroyAllWindows()
-"""
 
 
 # ! create a function to resize all images in a folder to 100x100
@@ -115,7 +117,7 @@ face_cascade = cv2.CascadeClassifier(
 )
 
 # load the image
-face_img = cv2.imread("schemas/face_detection/photo.jpg")
+face_img = cv2.imread("schemas/face_detection/news.jpg")
 
 
 # * cvtColor() - convert an image to another color space
@@ -129,12 +131,12 @@ face_gray_img = cv2.cvtColor(face_img, cv2.COLOR_BGR2GRAY)
 # * parameters: image, scaleFactor, minNeighbors
 # * scaleFactor: parameter specifying how much the image size is reduced at each image scale
 # * minNeighbors: parameter specifying how many neighbors each candidate rectangle should have to retain it
-faces = face_cascade.detectMultiScale(face_gray_img, scaleFactor=1.05, minNeighbors=5)
+faces = face_cascade.detectMultiScale(face_gray_img, scaleFactor=1.1, minNeighbors=5)
 
-print(faces)  # [(x, y, width, height), ...]
-print(type(faces))  # <class 'numpy.ndarray'>
-print(faces.ndim)  # 2
-print(faces.shape)  # (1, 4) - 1 face, 4 coordinates
+print("faces_obj:", faces)  # [(x, y, width, height), ...]
+print("faces_obj_type:", type(faces))  # <class 'numpy.ndarray'>
+print("faces_obj_ndim:", faces.ndim)  # 2
+print("faces_obj_shape:", faces.shape)  # (1, 4) - 1 face, 4 coordinates
 
 
 # * rectangle() - draw a rectangle on an image
@@ -146,7 +148,45 @@ print(faces.shape)  # (1, 4) - 1 face, 4 coordinates
 for x, y, w, h in faces:
     face_img = cv2.rectangle(face_img, (x, y), (x + w, y + h), (0, 255, 0), 3)
 
+resized_face_img = cv2.resize(
+    face_img, (int(face_img.shape[1] / 2), int(face_img.shape[0] / 2))
+)
 
-cv2.imshow("Face Detection", face_img)
+
+cv2.imshow("Face Detection", resized_face_img)
 cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+
+# ? video capture
+
+# * VideoCapture() - create a video capture object
+# * parameters: video path
+# * video path: path to the video file or camera index
+# * video path: 0 - default camera, 1 - external camera
+# * returns: video capture object
+video = cv2.VideoCapture(0)  # 0 - default camera
+
+while True:
+    # * read() - read the next frame
+    # * returns: boolean, frame
+    check, frame = video.read()
+
+    # * imshow() - display the frame
+    # * parameters: window name, frame
+    cv2.imshow("Video", frame)
+
+    # wait for a key event
+    key = cv2.waitKey(1)
+
+    # * ord() - return the Unicode code point for a one-character string
+    # * parameters: character
+    # * character: a string of length 1
+    # * returns: Unicode code point
+    # break the loop if 'q' is pressed
+    if key == ord("q"):
+        break
+
+# * release() - release the video capture object
+video.release()
 cv2.destroyAllWindows()
