@@ -70,6 +70,7 @@ print("asarray:", my_asarray)  # [1 2 3]
 
 
 ## ? cv2 - OpenCV is a popular computer vision library that provides support for image processing and computer vision tasks. It is widely used in the field of computer vision for tasks such as object detection, image segmentation, and image classification.
+# pip install opencv-python
 
 import cv2
 

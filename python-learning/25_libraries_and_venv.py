@@ -48,6 +48,7 @@
 
 # * activate the virtual environment
 # source name_of_virtual_environment/bin/activate
+# in windows: .\name_of_virtual_environment\Scripts\activate
 
 # * check if the virtual environment is activated
 # echo $VIRTUAL_ENV or which python3

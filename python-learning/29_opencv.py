@@ -165,12 +165,33 @@ cv2.destroyAllWindows()
 # * video path: path to the video file or camera index
 # * video path: 0 - default camera, 1 - external camera
 # * returns: video capture object
-video = cv2.VideoCapture(0)  # 0 - default camera
+# video = cv2.VideoCapture(0)  # 0 - default camera
+
+# open the camera with WSL 2
+video = cv2.VideoCapture(0, cv2.CAP_DSHOW)  # 0 - default camera
+
+# check if the camera is opened
+if not video.isOpened():
+    print("Error: camera not opened")
+    exit()
+
+
+import time
+
+frames = 0
+start_time = time.time()  # start timer
 
 while True:
+    frames += 1
     # * read() - read the next frame
     # * returns: boolean, frame
     check, frame = video.read()
+    # check - True if the frame is read correctly
+    # frame - the frame read
+
+    if not check:
+        print("Failed to read frame")
+        break
 
     # * imshow() - display the frame
     # * parameters: window name, frame
@@ -186,6 +207,16 @@ while True:
     # break the loop if 'q' is pressed
     if key == ord("q"):
         break
+
+end_time = time.time()  # end timer
+duration = end_time - start_time
+
+if duration > 0:
+    fps = frames / duration
+    print(f"fps: {fps:.2f}")
+else:
+    print("No time elapsed to calculate fps")
+
 
 # * release() - release the video capture object
 video.release()
