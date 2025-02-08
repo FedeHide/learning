@@ -63,3 +63,33 @@ output_file("weather.html")
 
 # Write the plot in the figure object
 show(weather_figure)
+
+
+# ? url example
+# Read data from a url
+df_financial = pandas.read_csv("schemas/bokeh_financial_data.csv")
+df_financial["Date"] = pandas.to_datetime(df_financial["Date"], format="mixed")
+df_financial["Close"] = df_financial["Close"]
+
+
+# Create a figure object
+financial_figure = figure(x_axis_type="datetime")
+
+
+financial_figure.title.text = "Adobe Price"
+financial_figure.title.text_color = "Gray"
+financial_figure.title.text_font = "times"
+financial_figure.title.text_font_style = "bold"
+financial_figure.title.text_font_size = "20pt"
+financial_figure.title.align = "center"
+financial_figure.xaxis.axis_label = "Date"
+financial_figure.yaxis.axis_label = "Closing Price"
+
+# create a line plot
+financial_figure.line(df_financial["Date"], df_financial["Close"])
+
+# prepare the output file
+output_file("financial.html")
+
+# Write the plot in the figure object
+show(financial_figure)
