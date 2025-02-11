@@ -7,7 +7,7 @@ import pandas
 import matplotlib.pyplot as plt
 
 
-# create a DataFrame
+# create an example DataFrame
 data_example = {"Name": ["Alice", "Bob", "Charlie"], "Age": [25, 30, 35]}
 
 df_data_example = pandas.DataFrame(data_example)
@@ -36,7 +36,7 @@ print("df_example_2:", "\n", df_example_2)
 # Y  3  4
 
 
-## * other example with pandas and csv file
+## * read data from a file
 
 # read a CSV file
 df_csv = pandas.read_csv("schemas/temp_data.csv")
@@ -46,18 +46,30 @@ print(
 )  # calculate the mean of a specific column
 
 
-## * other example with pandas and json file
-
 # read a JSON file
 df_json = pandas.read_json("schemas/supermarkets.json")
 print("df_json:", "\n", df_json)
 
 
-## * other example with pandas and excel file
-
 # read an Excel file
 df_excel = pandas.read_excel("schemas/supermarkets.xlsx")
 print("df_excel:", "\n", df_excel)
+
+
+## * filter data
+
+# filter rows based on a condition
+print(
+    "df_csv_filtered:", "\n", df_csv[df_csv["st2"] > 2].count()
+)  # filter by st2 > 2 and count the number of rows
+
+
+# filter data based on multiple conditions
+print(
+    "df_csv_filtered2:",
+    "\n",
+    df_csv[(df_csv["st2"] > 2) & (df_csv["st3"] == 3)],
+)  # filter by st2 > 2 and st3 == 3
 
 
 ## * some methods to manipulate data
