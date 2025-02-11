@@ -4,6 +4,8 @@
 # pandas is a powerful library for data manipulation and analysis. It provides data structures like Series and DataFrame that allow you to work with structured data easily.
 
 import pandas
+import matplotlib.pyplot as plt
+
 
 # create a DataFrame
 data_example = {"Name": ["Alice", "Bob", "Charlie"], "Age": [25, 30, 35]}
@@ -77,6 +79,10 @@ print(
     "df_csv_describe:", "\n", df_csv.describe()
 )  # get the summary statistics of the DataFrame
 
+# hist
+df_csv["st2"].hist()  # plot a histogram of st2
+plt.show()
+
 # get the unique values of a column
 print("df_csv_unique:", df_csv["st1"].unique())  # get unique values of st1
 
@@ -99,18 +105,6 @@ print("df_csv_sorted:", "\n", df_csv.sort_values("st2"))  # sort by st2
 print(
     "df_json_filtered_by_rows_and_colums", "\n", df_json.iloc[1:3, 1:3]
 )  # select rows 1 and 2 and columns 1 and 2
-
-# delete a column or row
-df_csv.drop(
-    "st2", axis=1, inplace=True
-)  # axis=1 means column and axis=0 means row // inplace=True means that the changes are applied to the DataFrame
-print("df_csv_deleted_column:", "\n", df_csv)
-
-# delete by index
-df_csv.drop(
-    df_csv.index[0:3], axis=0, inplace=True
-)  # delete the first 3 rows, 0 means row
-print("df_csv_deleted_rows:", "\n", df_csv)
 
 
 # add columns
@@ -140,3 +134,15 @@ print("df_csv_upper:", "\n", df_csv)
 
 # set index of the DataFrame
 df_csv.set_index("st1", inplace=True)  # set st1 as the index
+
+# delete a column or row
+df_csv.drop(
+    "st2", axis=1, inplace=True
+)  # axis=1 means column and axis=0 means row // inplace=True means that the changes are applied to the DataFrame
+print("df_csv_deleted_column:", "\n", df_csv)
+
+# delete by index
+df_csv.drop(
+    df_csv.index[0:3], axis=0, inplace=True
+)  # delete the first 3 rows, 0 means row
+print("df_csv_deleted_rows:", "\n", df_csv)
