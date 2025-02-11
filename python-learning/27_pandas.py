@@ -80,9 +80,6 @@ print(
 # get the unique values of a column
 print("df_csv_unique:", df_csv["st1"].unique())  # get unique values of st1
 
-# set index of the DataFrame
-df_csv.set_index("st1", inplace=True)  # set st1 as the index
-
 # filter rows based on a condition
 print("df_csv_filtered:", "\n", df_csv[df_csv["st2"] > 2])  # filter by st2 > 2
 
@@ -110,7 +107,9 @@ df_csv.drop(
 print("df_csv_deleted_column:", "\n", df_csv)
 
 # delete by index
-df_csv.drop(df_csv.index[0:3], 0)  # delete the first 3 rows, 0 means row
+df_csv.drop(
+    df_csv.index[0:3], axis=0, inplace=True
+)  # delete the first 3 rows, 0 means row
 print("df_csv_deleted_rows:", "\n", df_csv)
 
 
@@ -123,7 +122,9 @@ print("df_csv_added_column:", "\n", df_csv)
 
 
 # update values
-df_csv["new_column"] = df_csv["st1"] + " " + df_csv["st3"]  # update the new column
+df_csv["new_column"] = (
+    df_csv["st1"].astype(str) + " " + df_csv["st3"].astype(str)
+)  # update the new column
 print("df_csv_updated_column:", "\n", df_csv)
 
 
@@ -132,5 +133,10 @@ df_csv.loc["new_row"] = ["new_value"] * df_csv.shape[1]  # add a new row
 print("df_csv_added_row:", "\n", df_csv)
 
 # apply a function to a column
-df_csv["st1"] = df_csv["st1"].apply(lambda x: x.upper())  # apply a function to st1
+df_csv["st1"] = (
+    df_csv["st1"].astype(str).apply(lambda x: x.upper())
+)  # apply a function to st1
 print("df_csv_upper:", "\n", df_csv)
+
+# set index of the DataFrame
+df_csv.set_index("st1", inplace=True)  # set st1 as the index
