@@ -14,7 +14,7 @@ console.log("myName: ", myName); // Doe
 // convention: UPPERCASE_WITH_UNDERSCORES
 
 const MY_FAVORITE_NUMBER = 7;
-console.log("MY_FAVORITE_NUMBER :", MY_FAVORITE_NUMBER); // 7
+console.log("MY_FAVORITE_NUMBER: ", MY_FAVORITE_NUMBER); // 7
 
 //! MY_FAVORITE_NUMBER = 10; // TypeError: Assignment to constant variable.
 

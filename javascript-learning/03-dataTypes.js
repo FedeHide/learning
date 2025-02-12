@@ -9,36 +9,36 @@
 
 
 // 1.1. Number: is a data type that represents numeric values.
-let a = 5;
-let b = 3.14;
-let c = NaN;
-let d = Infinity;
-let e = -Infinity;
+let number1 = 5;
+let number2 = 3.14;
+let number3 = NaN;
+let number4 = Infinity;
+let number5 = -Infinity;
 
 
 // 1.2. String: is a data type that represents a sequence of characters.
-let f = 'JavaScript';
-let g = "Learning";
-let h = `Programming`;
-let i = 'I\'m learning JavaScript';
+let string1 = 'JavaScript';
+let string2 = "Learning";
+let string3 = `Programming`;
+let string4 = 'I\'m learning JavaScript';
 
 
 // 1.3. Boolean: is a data type that can have one of two values: true or false.
-let j = true;
-let k = false;
+let boolean1 = true;
+let boolean2 = false;
 
 
 // 1.4. Undefined: is a variable that has been declared but not assigned a value. 
-let l;
-let m = undefined;
+let undefined1;
+let undefined2 = undefined;
 
 
 // 1.5. Null: is a variable that has been explicitly assigned no value.
-let n = null;
+let null1 = null;
 
 
 // 1.6. Symbol: is a data type that represents a unique identifier.
-let o = Symbol('symbol'); 
+let symbol = Symbol('symbol'); 
 
 
 //*/ 2. Object Data Type
@@ -47,80 +47,82 @@ let o = Symbol('symbol');
 
 
 // 2.1. Object: is a data type that represents a collection of key-value pairs.
-let p = { name: 'JavaScript', type: 'Programming Language' };
+let object = { name: 'JavaScript', type: 'Programming Language' };
 
 
 // 2.2. Array: is a data type that represents a list of elements.
-let q = [1, 2, 3, 4, 5];
+let array = [1, 2, 3, 4, 5];
 
 
 // 2.3. Function: is a data type that represents a block of code that can be called.
-let r = function() {
+let function1 = function() {
     return 'Hello, World!';
 };
 
 
 // 2.4. Date: is a data type that represents a date and time.
-let s = new Date();
+let date = new Date();
 
 
 // 2.5. RegExp: is a data type that represents a regular expression.
-let t = /\w+/;
+let regExp = /\w+/;
 
 
 // 2.6. Error: is a data type that represents an error object.
-let u = new Error('Error Message');
+let error = new Error('Error Message');
 
 
 
 //*/ 3. Data Type Conversion
 // Data type conversion is the process of converting one data type to another data type.
 
-Number (); // numero
-parseInt (); // integer
-parseFloat (); // float
-string (); // string
+let numberMethod = Number('89'); // number
+let stringMethod = String(123); // string
+let booleanMethod = Boolean(1); // boolean
+let intMethod = parseInt('42'); // integer
+let floatMethod = parseFloat("3.52"); // float
+
+// ! the main difference between Number() and parseInt() is that Number() will return NaN if the string cannot be converted to a number, while parseInt() will return the integer part of the string.
 
 
 // 3.1. Implicit Conversion
 // Implicit conversion is done automatically by JavaScript.
-let v = 5 + '5';
-console.log(v); // 55
+let implicitConversion = 5 + '5';
+console.log("implicit conversion: ", implicitConversion); // 55
 
 
 // 3.2. Explicit Conversion
 // Explicit conversion is done manually by the developer.
-let w = 5;
-let x = String(w);
-console.log(x); // '5'
+let dataToConvert = 5;
+let explicitConversion = String(dataToConvert);
+console.log("explicit conversion: ", explicitConversion); // '5'
 
 
 // 3.3. Type Coercion
 // Type coercion is the process of converting one data type to another data type automatically by JavaScript.
-let y = 5;
-let z = y + '';
-console.log(z); // '5'
+let dataToConvert2 = 5;
+let typeCoercion = dataToConvert + '';
+console.log("type Coercion: ", typeCoercion); // '5'
 
 
 // 3.4. Truthy and Falsy Values
 // Truthy values are values that are considered true in JavaScript.
 // Falsy values are values that are considered false in JavaScript.
-let aa = true;
-let bb = false;
-let cc = 0;
-let dd = '';
-let ee = null;
-let ff = undefined;
-let gg = NaN;
-let hh = [];
-let ii = {};
+let truthy1 = true;
+let falsy1 = false;
+let falsy2 = 0;
+let falsy3 = '';
+let falsy4 = null;
+let falsy5 = undefined;
+let falsy6 = NaN;
+let truthy2 = [];
+let truthy3 = {};
 
-console.log(Boolean(aa)); // true
-console.log(Boolean(bb)); // false
-console.log(Boolean(cc)); // false
-console.log(Boolean(dd)); // false
-console.log(Boolean(ee)); // false
-console.log(Boolean(ff)); // false
-console.log(Boolean(gg)); // false
-console.log(Boolean(hh)); // true
-console.log(Boolean(ii)); // true
+console.log("truthy1: ", Boolean(truthy1)); // true
+console.log("falsy1: ", Boolean(falsy1)); // false
+console.log("falsy2: ", Boolean(falsy2)); // false
+console.log("falsy3: ", Boolean(falsy3)); // false
+console.log("falsy4: ", Boolean(falsy4)); // false
+console.log("falsy5: ", Boolean(falsy5)); // false
+console.log("falsy6: ", Boolean(falsy6)); // false
+console.log("truthy2: ", Boolean(truthy2)); // true
