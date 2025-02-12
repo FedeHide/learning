@@ -1,17 +1,20 @@
 //?/ Variables
 // Variables are containers for storing data values.
-// convention: camelCase
 
 //*/ let: can be reassigned, but not redeclared.
+// convention: camelCase
 
 let myName = 'John';
-console.log(myName); // John
+console.log("myName: ", myName); // John
 myName = 'Doe';
-console.log(myName); // Doe
+console.log("myName: ", myName); // Doe
 
 
 //*/ const: cannot be reassigned, and not redeclared.
+// convention: UPPERCASE_WITH_UNDERSCORES
 
-const myAge = 30;
-console.log(myAge); // 30
-// myAge = 31; // TypeError: Assignment to constant variable.
+const MY_FAVORITE_NUMBER = 7;
+console.log("MY_FAVORITE_NUMBER :", MY_FAVORITE_NUMBER); // 7
+
+//! MY_FAVORITE_NUMBER = 10; // TypeError: Assignment to constant variable.
+
