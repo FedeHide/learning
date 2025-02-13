@@ -35,10 +35,22 @@ let undefined2 = undefined;
 
 // 1.5. Null: is a variable that has been explicitly assigned no value.
 let null1 = null;
+//! null is an object, but it is a primitive data type.
 
 
 // 1.6. Symbol: is a data type that represents a unique identifier.
 let symbol = Symbol('symbol'); 
+// example 
+let symbol1 = Symbol('symbol');
+let symbol2 = Symbol('symbol');
+console.log(symbol1 === symbol2); // false
+
+
+
+// 1.7. BigInt: is a data type that represents large integers.
+let bigInt = 1234567890123456789012345678901234567890n;
+let bigInt2 = BigInt(1234567890123456789012345678901234567890n);
+
 
 
 //*/ 2. Object Data Type
@@ -126,3 +138,4 @@ console.log("falsy4: ", Boolean(falsy4)); // false
 console.log("falsy5: ", Boolean(falsy5)); // false
 console.log("falsy6: ", Boolean(falsy6)); // false
 console.log("truthy2: ", Boolean(truthy2)); // true
+console.log("truthy3: ", Boolean(truthy3)); // true
