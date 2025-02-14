@@ -3,6 +3,7 @@
 
 //*/ 1. Arithmetic Operators
 // Arithmetic operators are used to perform arithmetic on numbers.
+console.log("Arithmetic Operators");
 
 let x1 = 5;
 let y1 = 2;
@@ -43,13 +44,14 @@ console.log("decrement: ", y1); // 1
 
 //*/ 2. Assignment Operators
 // Assignment operators are used to assign values to variables.
+console.log("\n", "Assignment Operators");
 
 let x2 = 5;
 let y2 = 2;
 
 // Assignment (=)
 let assignment = x2 + y2;
-console.log(assignment); // 7
+console.log("assignment: ", assignment); // 7
 
 // Addition assignment (+=)
 x2 += y2;
@@ -79,6 +81,7 @@ console.log("exponentiation assignment: ", x2); // 1
 
 //*/ 3. Comparison Operators
 // Comparison operators are used to compare two values.
+console.log("\n", "Comparison Operators");
 
 let x3 = 5;
 let y3 = 2;
@@ -111,6 +114,7 @@ console.log("less than or equal to: ", x3 <= y3); // false
 
 //*/ 4. Logical Operators
 // Logical operators are used to determine the logic between variables or values.
+console.log("\n", "Logical Operators");
 
 let x4 = true;
 let y4 = false;
@@ -128,6 +132,7 @@ console.log("logical NOT: ", !x4); // false
 
 //*/ 5. Bitwise Operators
 // Bitwise operators are used to perform bitwise operations on variables.
+console.log("\n", "Bitwise Operators");
 
 let x5 = 5; // 101
 let y5 = 2; // 010
@@ -164,6 +169,7 @@ console.log("zero-fill right shift: ", zeroFillRightShift); // 2
 
 //*/ 6. Conditional (Ternary) Operator
 // The conditional operator assigns a value to a variable based on a condition.
+console.log("\n", "Conditional (Ternary) Operator");
 
 let x6 = 5;
 let y6 = 2;
@@ -175,6 +181,7 @@ console.log("ternary operator: ", ternaryResult); // Yes
 
 //*/ 7. Type Operators
 // Type operators are used to determine the type of a variable.
+console.log("\n", "Type Operators");
 
 let x7 = 5;
 let y7 = 'Hello';
@@ -195,6 +202,7 @@ console.log("instanceof z7: ", z7 instanceof Number); // true
 //*/ 8. Comma Operator
 // The comma operator is used to evaluate multiple expressions.
 // The comma operator evaluates each of its operands (from left to right) and returns the value of the last operand.
+console.log("\n", "Comma Operator");
 
 let x8 = 5;
 let y8 = 2;
@@ -204,7 +212,7 @@ console.log("comma operator: ", commaResult); // returns just the last operand, 
 
 // in a for loop
 for (let i = 0, j = 10; i <= j; i++, j--) { // increment i, decrement j in each iteration
-    console.log(i, j);
+    console.log("i: ", i, "j: ", j);
 }
 
 // in a return statement
@@ -218,6 +226,7 @@ console.log("comma operator in a return statement: ", myFunction()); // 42
 
 //*/ 9. Unary Operators
 // Unary operators are used to perform operations on a single operand.
+console.log("\n", "Unary Operators");
 
 let x9 = 5;
 
@@ -243,6 +252,7 @@ console.log("bitwise NOT: ", ~x9); // -6
 
 //*/ 10. Relational Operators
 // Relational operators are used to compare two values.
+console.log("\n", "Relational Operators");
 
 // in
 let cars = ['BMW', 'Volvo', 'Mini'];
@@ -260,6 +270,7 @@ console.log("instanceof: ", date instanceof Date); // true
 
 //*/ 11. Spread Operator
 // The spread operator is used to expand elements of an iterable object.
+console.log("\n", "Spread Operator");
 
 let arr1 = [1, 2, 3];
 let arr2 = [...arr1, 4, 5];
@@ -269,6 +280,7 @@ console.log("spread operator: ", arr2); // [1, 2, 3, 4, 5]
 
 //*/ 12. Nullish Coalescing Operator
 // The nullish coalescing operator is used to provide a default value when a variable is null or undefined.
+console.log("\n", "Nullish Coalescing Operator (??)");
 
 let x12 = null;
 let y12 = x12 ?? 'default value';
@@ -278,7 +290,9 @@ console.log("nullish coalescing operator: ", y12); // default value
 
 //*/ 13. Optional Chaining Operator
 // The optional chaining operator is used to access nested properties without causing an error if a property is null or undefined.
+console.log("\n", "Optional Chaining Operator (?.)");
+
 
 let person2 = { name: 'John', address: { city: 'New York' } };
-let city = person.address?.city;
+let city = person2.address?.city;
 console.log("optional chaining operator: ", city); // New York
