@@ -4,227 +4,281 @@
 //*/ 1. Arithmetic Operators
 // Arithmetic operators are used to perform arithmetic on numbers.
 
-let x = 5;
-let y = 2;
+let x1 = 5;
+let y1 = 2;
 
 // Addition (+)
-let sum = x + y;
-console.log(sum); // 7
+let sum = x1 + y1;
+console.log("addition: ", sum); // 7
 
 // Subtraction (-)
-let difference = x - y;
-console.log(difference); // 3
+let difference = x1 - y1;
+console.log("subtraction: ", difference); // 3
 
 // Multiplication (*)
-let product = x * y;
-console.log(product); // 10
+let product = x1 * y1;
+console.log("multiplication: ", product); // 10
 
 // Division (/)
-let quotient = x / y;
-console.log(quotient); // 2.5
+let quotient = x1 / y1;
+console.log("division: ", quotient); // 2.5
 
 // Modulus (%)
-let remainder = x % y;
-console.log(remainder); // 1
-
-// Increment (++)
-x++;
-console.log(x); // 6
-
-// Decrement (--)
-y--;
-console.log(y); // 1
+let remainder = x1 % y1;
+console.log("modulus: ", remainder); // 1
 
 // Exponentiation (**)
-let power = x ** y;
-console.log(power); // 5
+let power = x1 ** y1;
+console.log("exponentiation: ", power); // 5
+
+// Increment (++)
+x1++;
+console.log("increment: ", x1); // 6
+
+// Decrement (--)
+y1--;
+console.log("decrement: ", y1); // 1
+
 
 
 //*/ 2. Assignment Operators
 // Assignment operators are used to assign values to variables.
 
-let a = 5;
-let b = 2;
+let x2 = 5;
+let y2 = 2;
 
 // Assignment (=)
-let c = a + b;
-console.log(c); // 7
+let assignment = x2 + y2;
+console.log(assignment); // 7
 
 // Addition assignment (+=)
-a += b;
-console.log(a); // 7
+x2 += y2;
+console.log("addition assignment: ", x2); // 7
 
 // Subtraction assignment (-=)
-a -= b;
-console.log(a); // 5
+x2 -= y2;
+console.log("subtraction assignment: ", x2); // 5
 
 // Multiplication assignment (*=)
-a *= b;
-console.log(a); // 10
+x2 *= y2;
+console.log("multiplication assignment: ", x2); // 10
 
 // Division assignment (/=)
-a /= b;
-console.log(a); // 5
+x2 /= y2;
+console.log("division assignment: ", x2); // 5
 
 // Modulus assignment (%=)
-a %= b;
-console.log(a); // 1
+x2 %= y2;
+console.log("modulus assignment: ", x2); // 1
 
 // Exponentiation assignment (**=)
-a **= b;
-console.log(a); // 5
+x2 **= y2;
+console.log("exponentiation assignment: ", x2); // 1
+
 
 
 //*/ 3. Comparison Operators
 // Comparison operators are used to compare two values.
 
-let d = 5;
-let e = 2;
+let x3 = 5;
+let y3 = 2;
 
 // Equal to (==)
-console.log(d == e); // false
+console.log("equality (value): ", x3 == y3); // false
+
+// Equal value and equal type (===)
+console.log("strict equality (value and type): ", x3 === y3); // false
 
 // Not equal (!=)
-console.log(d != e); // true
+console.log("inequality (value): ", x3 != y3); // true
+
+// Not equal value or not equal type (!==)
+console.log("strict inequality (value and type): ", x3 !== y3); // true
 
 // Greater than (>)
-console.log(d > e); // true
+console.log("greater than: ", x3 > y3); // true
 
 // Less than (<)
-console.log(d < e); // false
+console.log("less than: ", x3 < y3); // false
 
 // Greater than or equal to (>=)
-console.log(d >= e); // true
+console.log("greater than or equal to: ", x3 >= y3); // true
 
 // Less than or equal to (<=)
-console.log(d <= e); // false
+console.log("less than or equal to: ", x3 <= y3); // false
+
 
 
 //*/ 4. Logical Operators
 // Logical operators are used to determine the logic between variables or values.
 
-let f = true;
-let g = false;
+let x4 = true;
+let y4 = false;
 
 // Logical AND (&&)
-console.log(f && g); // false
+console.log("logical AND: ", x4 && y4); // false
 
 // Logical OR (||)
-console.log(f || g); // true
+console.log("logical OR: ", x4 || y4); // true
 
 // Logical NOT (!)
-console.log(!f); // false
+console.log("logical NOT: ", !x4); // false
+
 
 
 //*/ 5. Bitwise Operators
 // Bitwise operators are used to perform bitwise operations on variables.
 
-let h = 5; // 101
-let i = 2; // 010
+let x5 = 5; // 101
+let y5 = 2; // 010
 
 // Bitwise AND (&)
-let bitwiseAnd = h & i;
-console.log(bitwiseAnd); // 0
+let bitwiseAnd = x5 & y5;
+console.log("bitwise AND: ", bitwiseAnd); // 0
 
 // Bitwise OR (|)
-let bitwiseOr = h | i;
-console.log(bitwiseOr); // 7
+let bitwiseOr = x5 | y5;
+console.log("bitwise OR: ", bitwiseOr); // 7
 
 // Bitwise XOR (^)
-let bitwiseXor = h ^ i;
-console.log(bitwiseXor); // 7
+let bitwiseXor = x5 ^ y5;
+console.log("bitwise XOR: ", bitwiseXor); // 7
 
 // Bitwise NOT (~)
-let bitwiseNot = ~h;
-console.log(bitwiseNot); // -6
+let bitwiseNot = ~x5;
+console.log("bitwise NOT: ", bitwiseNot); // -6
 
 // Left shift (<<)
-let leftShift = h << 1;
-console.log(leftShift); // 10
+let leftShift = x5 << 1;
+console.log("left shift: ", leftShift); // 10
 
 // Sign-propagating right shift (>>)
-let rightShift = h >> 1;
-console.log(rightShift); // 2
+let rightShift = x5 >> 1;
+console.log("right shift: ", rightShift); // 2
 
 // Zero-fill right shift (>>>)
-let zeroFillRightShift = h >>> 1;
-console.log(zeroFillRightShift); //
+let zeroFillRightShift = x5 >>> 1;
+console.log("zero-fill right shift: ", zeroFillRightShift); // 2
+
 
 
 //*/ 6. Conditional (Ternary) Operator
 // The conditional operator assigns a value to a variable based on a condition.
 
-let j = 5;
-let k = 2;
+let x6 = 5;
+let y6 = 2;
 
-let result = j > k ? 'Yes' : 'No';
-console.log(result); // Yes
+let ternaryResult = x6 > y6 ? 'Yes' : 'No';
+console.log("ternary operator: ", ternaryResult); // Yes
+
 
 
 //*/ 7. Type Operators
 // Type operators are used to determine the type of a variable.
 
-let l = 5;
-let m = 'Hello';
+let x7 = 5;
+let y7 = 'Hello';
+let z7 = new Number(5);
 
 // typeof
-console.log(typeof l); // number
-console.log(typeof m); // string
+console.log("typeof x7: ", typeof x7); // number
+console.log("typeof y7: ", typeof y7); // string
+console.log("typeof z7: ", typeof z7); // object
 
 // instanceof
-console.log(l instanceof Number); // false
-console.log(m instanceof String); // false
+console.log("instanceof x7: ", x7 instanceof Number); // false
+console.log("instanceof y7: ", y7 instanceof String); // false
+console.log("instanceof z7: ", z7 instanceof Number); // true
+
 
 
 //*/ 8. Comma Operator
 // The comma operator is used to evaluate multiple expressions.
+// The comma operator evaluates each of its operands (from left to right) and returns the value of the last operand.
 
-let n = (5 + 2, 3 + 1);
-console.log(n); // 4
+let x8 = 5;
+let y8 = 2;
+
+let commaResult = (x8 += 1, y8 += 1);
+console.log("comma operator: ", commaResult); // returns just the last operand, 3
+
+// in a for loop
+for (let i = 0, j = 10; i <= j; i++, j--) { // increment i, decrement j in each iteration
+    console.log(i, j);
+}
+
+// in a return statement
+function myFunction() {
+    return (console.log('Hello'), 42); // returns 42 and prints Hello
+}
+
+console.log("comma operator in a return statement: ", myFunction()); // 42
+
 
 
 //*/ 9. Unary Operators
 // Unary operators are used to perform operations on a single operand.
 
-let o = 5;
+let x9 = 5;
 
 // Unary plus (+)
-console.log(+o); // 5
+console.log("unary plus: ", +x9); // 5
 
 // Unary minus (-)
-console.log(-o); // -5
+console.log("unary minus: ", -x9); // -5
 
 // Increment (++)
-console.log(++o); // 6
+console.log("increment: ", ++x9); // 6
 
 // Decrement (--)
-console.log(--o); // 5
+console.log("decrement: ", --x9); // 5
 
 // Logical NOT (!)
-console.log(!o); // false
+console.log("logical NOT: ", !x9); // false
 
 // Bitwise NOT (~)
-console.log(~o); // -6
+console.log("bitwise NOT: ", ~x9); // -6
+
 
 
 //*/ 10. Relational Operators
 // Relational operators are used to compare two values.
 
-let p = 5;
-let q = 2;
-
 // in
-let r = [1, 2, 3];
-console.log(2 in r); // true
+let cars = ['BMW', 'Volvo', 'Mini'];
+console.log("in: ", 0 in cars); // true because cars[0] is BMW
+
+// in (other example)
+let person = { firstName: 'John', lastName: 'Doe' };
+console.log("in: ", 'firstName' in person); // true
 
 // instanceof
-let s = new Number(5);
-console.log(s instanceof Number); // true
+let date = new Date();
+console.log("instanceof: ", date instanceof Date); // true
+
 
 
 //*/ 11. Spread Operator
 // The spread operator is used to expand elements of an iterable object.
 
-let t = [1, 2, 3];
-let u = [...t, 4, 5];
-console.log(u); // [1, 2, 3, 4, 5]
+let arr1 = [1, 2, 3];
+let arr2 = [...arr1, 4, 5];
+console.log("spread operator: ", arr2); // [1, 2, 3, 4, 5]
+
+
+
+//*/ 12. Nullish Coalescing Operator
+// The nullish coalescing operator is used to provide a default value when a variable is null or undefined.
+
+let x12 = null;
+let y12 = x12 ?? 'default value';
+console.log("nullish coalescing operator: ", y12); // default value
+
+
+
+//*/ 13. Optional Chaining Operator
+// The optional chaining operator is used to access nested properties without causing an error if a property is null or undefined.
+
+let person2 = { name: 'John', address: { city: 'New York' } };
+let city = person.address?.city;
+console.log("optional chaining operator: ", city); // New York
