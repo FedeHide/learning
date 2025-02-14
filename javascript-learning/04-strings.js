@@ -64,6 +64,9 @@ console.log("repeat(2): ", x1.repeat(2)); // JavaScriptJavaScript
 // replace(): searches a string for a specified value, or a regular expression, and returns a new string where the specified values are replaced.
 console.log("replace('Java', 'Type'): ", x1.replace('Java', 'Type')); // TypeScript
 
+// replaceAll(): replaces all occurrences of a specified value in a string.
+console.log("replaceAll('a', 'A'): ", x1.replaceAll('a', 'A')); // JAvAScript
+
 // search(): searches a string for a specified value, or a regular expression, and returns the position of the match.
 console.log("search('Script'): ", x1.search('Script')); // 4
 
