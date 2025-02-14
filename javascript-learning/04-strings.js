@@ -12,11 +12,25 @@ let stringConstructor = new String('JavaScript');
 console.log("string constructor: ", stringConstructor); // [String: 'JavaScript']
 
 
+//*/ template string (backticks): are enclosed by the backtick (` `) character instead of double or single quotes.
+let templateString = `TypeScript`;
+let templateString2 = `JavaScript Learning`;
+console.log("template string: ", `${templateString} and ${templateString2}`); // TypeScript and JavaScript Learning
+
+
 //*/ String Properties
 let stringLength = 'JavaScript';
 console.log("string length: ", stringLength.length); // 10
 
 
+//*/ String concatenation: is the operation of joining two strings together.
+let stringConcatenation = 'Java' + 'Script';
+console.log("string concatenation: ", stringConcatenation); // JavaScript
+
+
+//*/ access characters: you can access characters in a string using the index.
+let stringAccess = 'JavaScript';
+console.log("access characters[4]: ", stringAccess[4]); // S
 
 
 //*/ String Methods: are used to work with strings.
