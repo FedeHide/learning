@@ -3,96 +3,102 @@
 // Strings can be created as primitives, from string literals, or as objects, using the String() constructor.
 
 //*/ String Literals
-let a = 'JavaScript';
-console.log(a); // JavaScript
+let stringLiteral = 'JavaScript';
+console.log("string literal: ", stringLiteral); // JavaScript
 
 
 //*/ String Constructor
-let b = new String('JavaScript');
-console.log(b); // [String: 'JavaScript']
+let stringConstructor = new String('JavaScript');
+console.log("string constructor: ", stringConstructor); // [String: 'JavaScript']
 
 
 //*/ String Properties
-let c = 'JavaScript';
-console.log(c.length); // 10
+let stringLength = 'JavaScript';
+console.log("string length: ", stringLength.length); // 10
+
+
 
 
 //*/ String Methods: are used to work with strings.
-let d = 'JavaScript';
+console.log("\n", "String Methods");
+let x1 = 'JavaScript';
 
 // charAt(): returns the character at a specified index (position) in a string.
-console.log(d.charAt(4)); // S
+console.log("chartAt(4): ", x1.charAt(4)); // S
 
 // charCodeAt(): returns the Unicode of the character at a specified index in a string.
-console.log(d.charCodeAt(4)); // 83
+console.log("charCodeAt(4): ", x1.charCodeAt(4)); // 83
 
 // concat(): joins two or more strings.
-console.log(d.concat(' ', 'Learning')); // JavaScript Learning
+console.log("concat(' ', 'Learning'): ", x1.concat(' ', 'Learning')); // JavaScript Learning
 
 // includes(): checks if a string contains a specified string.
-console.log(d.includes('Script')); // true
+console.log("includes('Java'): ", x1.includes('Java')); // true
 
 // indexOf(): returns the index of the first occurrence of a specified value in a string.
-console.log(d.indexOf('a')); // 1
+console.log("indexOf('a'): ", x1.indexOf('a')); // 1
 
 // lastIndexOf(): returns the index of the last occurrence of a specified value in a string.
-console.log(d.lastIndexOf('a')); // 3
+console.log("lastIndexOf('a'): ", x1.lastIndexOf('a')); // 3
 
 // match(): searches a string for a match against a regular expression and returns the matches.
-console.log(d.match(/a/g)); // [ 'a', 'a' ]
+console.log("match(/Java/): ", x1.match(/Java/)); // [ 'Java', index: 0, input: 'JavaScript', groups: undefined ]
 
 // repeat(): returns a new string with a specified number of copies of an existing string.
-console.log(d.repeat(2)); // JavaScriptJavaScript
+console.log("repeat(2): ", x1.repeat(2)); // JavaScriptJavaScript
 
 // replace(): searches a string for a specified value, or a regular expression, and returns a new string where the specified values are replaced.
-console.log(d.replace('Java', 'Type')); // TypeScript
+console.log("replace('Java', 'Type'): ", x1.replace('Java', 'Type')); // TypeScript
 
 // search(): searches a string for a specified value, or a regular expression, and returns the position of the match.
-console.log(d.search('Script')); // 4
+console.log("search('Script'): ", x1.search('Script')); // 4
 
 // slice(): extracts a part of a string and returns a new string.
-console.log(d.slice(0, 4)); // Java
+console.log("slice(4, 10): ", x1.slice(4, 10)); // Script
 
 // split(): splits a string into an array of substrings.
-console.log(d.split('')); // [ 'J', 'a', 'v', 'a', 'S', 'c', 'r', 'i', 'p', 't' ]
+console.log("split('a'): ", x1.split('a')); // [ 'J', 'v', 'Script' ]
 
 // startsWith(): checks if a string starts with a specified value.
-console.log(d.startsWith('Java')); // true
-
-// substr(): extracts the characters from a string, beginning at a specified start position, and through the specified number of character.
-console.log(d.substr(4, 6)); // Script
+console.log("startsWith('Java'): ", x1.startsWith('Java')); // true
 
 // substring(): extracts the characters from a string, between two specified indices.
-console.log(d.substring(4, 10)); // Script
+console.log("substring(4, 10): ", x1.substring(4, 10)); // Script
 
 // toLowerCase(): converts a string to lowercase letters.
-console.log(d.toLowerCase()); // javascript
+console.log("toLowerCase(): ", x1.toLowerCase()); // javascript
 
 // toUpperCase(): converts a string to uppercase letters.
-console.log(d.toUpperCase()); // JAVASCRIPT
+console.log("toUpperCase(): ", x1.toUpperCase()); // JAVASCRIPT
 
 // trim(): removes whitespace from both ends of a string.
-let e = '  JavaScript  ';
-console.log(e.trim()); // JavaScript
+let x2 = '  JavaScript  ';
+console.log("trim(): ", x2.trim()); // JavaScript
 
 // valueOf(): returns the primitive value of a string object.
-console.log(d.valueOf()); // JavaScript
+console.log("valueOf(): ", x1.valueOf()); // JavaScript
 
 
 //*/ Template Literals: are string literals allowing embedded expressions.
-let f = 'JavaScript';
-let g = 'Learning';
-let h = `${f} ${g}`;
-console.log(h); // JavaScript Learning
+console.log("\n", "Template Literals");
+
+let x3 = 'JavaScript';
+let x4 = 'Learning';
+let x5 = `${x3} ${x4}`;
+console.log("template literals: ", x5); // JavaScript Learning
 
 
 //*/ Escape Sequences: are used to insert special characters in strings.
-let i = 'I\'m learning "JavaScript"';
-console.log(i); // I'm learning "JavaScript"
+console.log("\n", "Escape Sequences");
+
+let x6 = 'I\'m learning "JavaScript"';
+console.log("escape sequences: ", x6); // I'm learning "JavaScript"
 
 
 //*/ String Interpolation: are a way to embed expressions inside string literals, using ${}.
-let j = 'JavaScript';
-let k = 'Learning';
-let l = `I'm learning ${j}`;
-console.log(l); // I'm learning JavaScript
+console.log("\n", "String Interpolation");
+
+let x7 = 'JavaScript';
+let x8 = 'Learning';
+let x9 = `I'm learning ${x7}`;
+console.log("string interpolation: ", x9); // I'm learning JavaScript
