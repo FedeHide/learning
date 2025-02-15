@@ -7,7 +7,10 @@ console.log("array literal:", literalArray);
 
 
 //*/ Array Constructor
-let constructorArray = new Array('JavaScript', 'TypeScript', 'Python');
+let constructorArray = new Array(3);
+constructorArray[0] = 'JavaScript';
+constructorArray[1] = 'TypeScript';
+constructorArray[2] = 'Python';
 console.log("array constructor:", constructorArray);
 
 
