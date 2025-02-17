@@ -24,6 +24,7 @@ console.log("\n", "multiply(2, 3):", multiply(2, 3)); // Output: 6
 
 
 //*/ 3. Arrow Function: defines a shorter syntax for writing function expressions.
+// main difference: does not have its own this, arguments, super, or new.target.
 console.log("\n", "3. Arrow Function:");
 console.log("const nameOfFunction = (parameters) => { code }");
 
