@@ -1,58 +1,73 @@
 //?/ Functions: are a block of code that can be called and executed whenever needed.
-// They are used to perform a specific task. 
-// Functions are defined using the function keyword, followed by a name, followed by parentheses () and a block of code enclosed in curly braces {}.
+
 
 //*/ 1. Function Declaration: defines a named function.
-function greet() {
-    console.log('Hello, World!');
+console.log("\n", "1. Function Declaration:");
+console.log("function nameOfFunction(parameters) { code }");
+
+function sum(a, b) {
+    return a + b;
 }
 
-greet(); // Output: Hello, World!
+console.log("\n", "sum(1, 2):", sum(41, 456)); // Output: 497
 
 
 //*/ 2. Function Expression: defines an unnamed function stored in a variable.
-const greet2 = function() {
-    console.log('Hello, World!');
-};
+console.log("\n", "2. Function Expression:");
+console.log("const nameOfFunction = function(parameters) { code }");
 
-greet2(); // Output: Hello, World!
+const multiply = function(a, b) {
+    return a * b;
+}
+
+console.log("\n", "multiply(2, 3):", multiply(2, 3)); // Output: 6
 
 
 //*/ 3. Arrow Function: defines a shorter syntax for writing function expressions.
-const greet3 = () => {
-    console.log('Hello, World!');
-};
+console.log("\n", "3. Arrow Function:");
+console.log("const nameOfFunction = (parameters) => { code }");
 
-greet3(); // Output: Hello, World!
+const divide = (a, b) => {
+    return a / b;
+}
+
+console.log("\n", "divide(6, 3):", divide(6, 3)); // Output: 2
 
 
 //*/ 4. Function Parameters: are used to pass values to a function.
-function greet4(name) {
-    console.log(`Hello, ${name}!`);
+console.log("\n", "4. Function Parameters:");
+
+function concatFour(a, b, c, d) {
+    return a + b + c + d;
 }
 
-greet4('John'); // Output: Hello, John!
+console.log("\n", "concatFour('a', 'b', 'c', 'd'):", concatFour('a', 'b', 'c', 'd')); // Output: abcd
 
 
 //*/ 5. Function Return: specifies the value returned by the function.
-function greet5(name) {
-    return `Hello, ${name}!`;
+console.log("\n", "5. Function Return:");
+
+function submitFullName(firstName, lastName) {
+    return `${firstName} ${lastName}`;
 }
 
-const message = greet5('John');
-console.log(message); // Output: Hello, John!
+const fullName = submitFullName('John', 'Doe');
+console.log("\n", "fullName:", fullName); // Output: John Doe
 
 
 //*/ 6. Default Parameters: assigns default values to parameters.
-function greet6(name = 'World') {
-    console.log(`Hello, ${name}!`);
+console.log("\n", "6. Default Parameters:");
+
+function catFood(catName, food = 'tuna') {
+    return `${catName} eats ${food}!`;
 }
 
-greet6(); // Output: Hello, World!
-greet6('John'); // Output: Hello, John!
+console.log("\n", "catFood('Anya'):", catFood('Anya')); // Output: Anya eats tuna!
 
 
 //*/ 7. Rest Parameters: captures multiple arguments into an array.
+console.log("\n", "7. Rest Parameters:");
+
 function sum(...numbers) {
     let result = 0;
 
@@ -63,68 +78,76 @@ function sum(...numbers) {
     return result;
 }
 
-const total = sum(1, 2, 3, 4, 5);
-
-console.log(total); // Output: 15
+console.log("\n", "sum(1, 2, 3, 4, 5):", sum(1, 2, 3, 4, 5)); // Output: 15
 
 
 //*/ 8. Spread Operator: spreads the elements of an array into individual arguments.
+console.log("\n", "8. Spread Operator:");
+
 const numbers = [1, 2, 3, 4, 5];
 
-function sum2(a, b, c, d, e) {
-    return a + b + c + d + e;
+function multiply2(a, b, c, d, e) {
+    return a * b * c * d * e;
 }
 
-const total2 = sum2(...numbers);
-
-console.log(total2); // Output: 15
+console.log("\n", "multiply2(...numbers):", multiply2(...numbers)); // Output: 120
 
 
 //*/ 9. Higher-Order Function: is a function that takes another function as an argument or returns a function.
-function greet9() {
-    return function() {
-        console.log('Hello, World!');
-    };
-}  
+console.log("\n", "9. Higher-Order Function:");
 
-const greeter = greet9();
-greeter(); // Output: Hello, World!
+function catHobby(catName, hobby) {
+    return hobby(catName);
+}
+
+function play(catName) {
+    return `${catName} loves to play with toys!`;
+}
+
+console.log("\n", "catHobby('Ruki', play):", catHobby('Ruki', play)); // Output: Ruki loves to play with toys!
 
 
 //*/ 10. Callback Function: is a function passed into another function as an argument and executed inside the function.
-function greet10(callback) {
+console.log("\n", "10. Callback Function:");
+
+function carEngine(callback) {
+    console.log('Starting the engine...');
     callback();
 }
 
-function sayHello() {
-    console.log('Hello, World!');
+function drive() {
+    console.log('Driving the car!');
 }
 
-greet10(sayHello); // Output: Hello, World!
+carEngine(drive); // Output: Starting the engine... Driving the car!
 
 
 //*/ 11. IIFE (Immediately Invoked Function Expression): is a function that is executed immediately after it is created.
-(function() {
-    console.log('Hello, World!');
-})(); // Output: Hello, World!
+console.log("\n", "11. IIFE (Immediately Invoked Function Expression):");
+
+console.log("\n", "(function() { return 10 + 20; })():", (function() { return 10 + 20; })()); // Output: 30
 
 
 //*/ 12. Closures: are functions that have access to variables from an outer function even after the outer function has finished executing.
-function outer() {
-    const name = 'John';
+console.log("\n", "12. Closures:");
 
-    function inner() {
-        console.log(name);
+function outerFunction() {
+    const message = 'The secret code is 12345';
+
+    function innerFunction() {
+        return message;
     }
 
-    return inner;
+    return innerFunction;
 }
 
-const closure = outer();
-closure(); // Output: John
+const secretCode = outerFunction();
+console.log("\n", "secretCode():", secretCode()); // Output: The secret code is 12345
 
 
 //*/ 13. Recursion: is a technique where a function calls itself to solve a problem.
+console.log("\n", "13. Recursion:");
+
 function factorial(n) {
     if (n === 0) {
         return 1;
@@ -133,12 +156,12 @@ function factorial(n) {
     return n * factorial(n - 1);
 }
 
-const result = factorial(5);
-
-console.log(result); // Output: 120
+console.log("\n", "factorial(5):", factorial(5)); // Output: 120
 
 
 //*/ 14. Memoization: is an optimization technique used to speed up programs by storing the results of expensive function calls and returning the cached result when the same inputs occur again.
+console.log("\n", "14. Memoization:");
+
 function memoize(fn) {
     const cache = {};
 
@@ -160,4 +183,4 @@ function sum3(a, b) {
 
 const memoizedSum = memoize(sum3);
 
-console.log(memoizedSum(1, 2)); // Output: 3
+console.log("\n", "memoizedSum(2, 3):", memoizedSum(2, 3)); // Output: 5
