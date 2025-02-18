@@ -50,7 +50,7 @@ console.log("num2: ", num2); // [2, 3]
 // 3. Rest Operator with Objects:
 console.log("\n", "Rest Operator with Objects");
 
-const { name, ...rest } = { name: 'John', age: 30, city: 'New York' };
+const { name, ...rest } = { name: 'John', age: 30, city: 'New York' }; //! Note: The rest operator must be the last element in the object and will collect all remaining properties.
 console.log("name: ", name); // John
 console.log("rest: ", rest); // {age: 30, city: 'New York'}
 

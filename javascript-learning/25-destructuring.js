@@ -4,18 +4,18 @@
 console.log("Destructuring Arrays");
 
 const numbers = [1, 2, 3, 4, 5];
-const [first, second, third] = numbers;
-console.log("first: ", first); // 1
-console.log("second: ", second); // 2
-console.log("third: ", third); // 3
+const [first, , third, , fifth] = numbers; //! skip the second and fourth elements
+console.log("first: ", first); 
+console.log("third: ", third);
+console.log("fifth: ", fifth);
 
 
 //*/ Destructuring Objects: is a way to extract properties from an object and assign them to variables.
 console.log("\n", "Destructuring Objects");
 
 const pokemon = { name: 'Pikachu', type: 'Electric', level: 25 };
-const { name, type, level } = pokemon;
-console.log("name: ", name); // Pikachu
+const { name: pokeName, type, level } = pokemon; //! extract with the same key name or assign a new name with a colon
+console.log("pokeName: ", pokeName); // Pikachu
 console.log("type: ", type); // Electric
 console.log("level: ", level); // 25
 
