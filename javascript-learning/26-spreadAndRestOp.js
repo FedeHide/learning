@@ -1,6 +1,7 @@
 //?/ Spread and Rest Operator: 
 
-// Spread Operator: is used to split up array elements or object properties.
+//*/ Spread Operator: is used to split up array elements or object properties.
+console.log("\n", "Spread Operator", "\n");
 
 // 1. Spread Operator with Arrays:
 const numbers = [1, 2, 3];
