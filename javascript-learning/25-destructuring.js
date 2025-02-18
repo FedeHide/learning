@@ -56,9 +56,11 @@ console.log("details: ", details); // {age: 20}
 console.log("\n", "Default Values in Destructuring");
 
 const animals = ['Dog', 'Cat'];
-const [pet = 'Rabbit', wild = 'Lion'] = animals;
-console.log("pet: ", pet); // Dog
-console.log("wild: ", wild); // Cat
+const [pet1, pet2 = 'Rabbit', wild1 = 'Wolf', wild2= 'Tiger'] = animals;
+console.log("pet: ", pet1); // Dog
+console.log("wild: ", wild1); // Wolf
+console.log("pet: ", pet2); // Cat
+console.log("wild: ", wild2); // Tiger
 
 
 //*/ Swapping Variables using Destructuring: is a technique to swap the values of two variables without using a temporary variable.
@@ -163,4 +165,3 @@ fetchData().then(({ data }) => {
 }
 );
 // Output: Data
-
