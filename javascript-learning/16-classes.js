@@ -1,12 +1,17 @@
 //?/ Classes: are a blueprint for creating objects with pre-defined properties and methods.
 
+
 //*/ 1. Class Declaration: defines a named class.
+console.log("\n", "1. Class Declaration");
+
 class User {
     type = 'User'; // Property: defines a property for the class.
+    #bankAccount = '123456'; // Private Property: defines a private property for the class.
 
-    constructor(name, age) { // Constructor: method for creating and initializing an object created with a class.
+    constructor(name, age, bankAccount) { // Constructor: method for creating and initializing an object created with a class.
         this.name = name; // this: refers to the current object.
         this.age = age;
+        this.#bankAccount = bankAccount;
     }
 
     obtainInformation() { // Method: defines a method for the class.
@@ -34,7 +39,7 @@ class Admin extends User { // Inheritance: creates a class based on another clas
 }
 
 const user = new User('John', 30); // new: creates an instance of a class.
-const admin = new Admin('Jane', 25, ['delete']);
+const admin = new Admin('Jane', 25, ['delete']); // new: creates an instance of a class
 
 user.obtainInformation(); // Output: Name: John, Age: 30
 admin.deletePost(5); // Output: Post 5 has been deleted.
