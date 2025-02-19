@@ -11,15 +11,20 @@ export { userId, postId };
 
 
 //*/ 2. Default Exports: exports a module as the default export.
-//To export a module as the default export, use the export default keywords followed by the name of the module.
+// To export a module as the default export, use the export default keywords followed by the name of the module.
+//! There can only be one default export per module. 
 
 export default function foo() {
     return 'Hello, World!';
 }
 
+//! variable example
+// const string = 'Hello, World!';
+// export default string;
+
 
 //*/ 3. Named Exports: exports a module as a named export.
-//To export a module as a named export, use the export keyword followed by the name of the module.
+// To export a module as a named export, use the export keyword followed by the name of the module.
 
 export const name = 'Fluffy';
 export function getPost() {
@@ -27,7 +32,7 @@ export function getPost() {
 }
 
 //*/ 4. Exporting Classes: exports a class as a module.
-//To export a class as a module, use the export keyword followed by the class name.
+// To export a class as a module, use the export keyword followed by the class name.
 
 export class Animal {
     constructor(name) {
