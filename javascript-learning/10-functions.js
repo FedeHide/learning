@@ -185,3 +185,17 @@ function sum3(a, b) {
 const memoizedSum = memoize(sum3);
 
 console.log("memoizedSum(2, 3):", memoizedSum(2, 3)); // Output: 5
+
+
+//*/ 15. Currying: is the process of converting a function that takes multiple arguments into a sequence of functions that each take a single argument.
+console.log("\n", "15. Currying:");
+
+function multiply4(a) {
+    return function(b) {
+        return function(c) {
+            return a * b * c;
+        };
+    };
+}
+
+console.log("multiply4(2)(3)(4):", multiply4(2)(3)(4)); // Output: 24

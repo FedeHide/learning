@@ -5,16 +5,32 @@
 //*/ Object Literals: is a comma-separated list of key-value pairs (properties) wrapped in curly braces {}.
 console.log("\n", "Object Literals", "\n");
 
+// shorthand for defining an object property:
+let phone = {
+    brand: 'Apple',
+    model: 'iPhone 12',
+    year: 2020
+};
+
 let person = {
     name: 'John Doe',
     age: 30,
     isEmployed: true,
+    // shorthand for defining an object property:
+    phone,
     address: {
         street: '123 Main St',
         city: 'New York',
         zip: '10001'
     },
-    hobbies: ['reading', 'traveling', 'music']
+    hobbies: ['reading', 'traveling', 'music'],
+    // two ways to define a method in an object:
+    sendMail: function () {
+        return 'Send an email';
+    },
+    deleteAccount() {
+        return 'Account deleted';
+    }
 };
 
 console.log("object literal: ", person);
