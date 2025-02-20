@@ -75,16 +75,16 @@ console.log("every(item => item.length > 10):", array2.every((item) => item.leng
 console.log("fill('Java', 1, 2):", array2.fill('Java', 1, 2)); // [ 'JavaScript', 'Java', 'Python' ]
 
 // filter(): creates a new array with every element in an array that pass a test.
-console.log("filter(item => item.length > 10):", array2.filter((item) => item.length > 10)); // []
+console.log("filter(item => item.length > 10):", array2.filter((item) => item !== "Python")); // [ 'JavaScript', 'TypeScript' ]
 
 // find(): returns the value of the first element in an array that pass a test.
-console.log("find(item => item.length > 10):", array2.find((item) => item.length > 10)); // undefined
+console.log("find(item => item.length > 10):", array2.find((item) => item === "Python")); // Python
 
 // findIndex(): returns the index of the first element in an array that pass a test.
-console.log("findIndex(item => item.length > 10):", array2.findIndex((item) => item.length > 10)); // -1
+console.log("findIndex(item => item.length > 10):", array2.findIndex((item) => item === "Python")); // 2
 
 // forEach(): calls a function for each array element.
-array2.forEach((item) => console.log(`forEach(array[${array2.indexOf(item)}]):`, item));
+array2.forEach((item) => console.log(`forEach(array[${array2.indexOf(item)}]):`, item)); // JavaScript TypeScript Python
 
 // includes(): checks if an array contains a specified element.
 console.log("includes('Python'):", array2.includes('Python')); // true

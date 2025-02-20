@@ -34,6 +34,18 @@ const divide = (a, b) => {
 
 console.log("divide(6, 3):", divide(6, 3)); // Output: 2
 
+// inline arrow function
+//! if the function body consists of a single expression, the return keyword is not needed.
+const subtract = (a, b) => a - b;
+
+console.log("subtract(10, 5):", subtract(10, 5)); // Output: 5
+
+// inline arrow function with object
+//! if the function returns an object literal, it must be wrapped in parentheses to avoid a syntax error.
+const createPerson = (name, age) => ({ name, age });
+
+console.log("createPerson('John', 30):", createPerson('John', 30)); // Output: { name: 'John', age: 30 }
+
 
 //*/ 4. Function Parameters: are used to pass values to a function.
 console.log("\n", "4. Function Parameters:");

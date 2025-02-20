@@ -2,6 +2,8 @@
 //?/ It represents the structure of the document as a tree of nodes. 
 //?/ Each node is an object representing a part of the document.
 
+//! this file is not meant to be executed, it's just a reference for DOM manipulation
+
 //*/ 1. Selecting elements
 
 // getElementById - returns an Element object representing the element whose id property matches the specified string.
@@ -49,6 +51,9 @@ newDiv.setAttribute('class', 'active');
 
 // innerHTML - represents the markup of the element's content.
 newDiv.innerHTML = '<b>New Div</b>';
+
+// innerText - represents the "rendered" text content of a node and its descendants.
+newDiv.innerText = 'New Div';
 
 // style - represents an element's style attribute.
 newDiv.style.color = 'red';
@@ -152,7 +157,3 @@ box1.addEventListener('click', (event) => {
     event.stopPropagation(); // stop the propagation
     console.log('Click on box');
 } /*, { capture: true } */);
-
-
-//*/ 7. Styles modification
-
