@@ -1,0 +1,17 @@
+{
+    "id": 1,
+    "name": "ruki",
+    "active_subscriber": true,
+    "posts": [
+        {
+            "id": 1,
+            "title": "Title of the first post",
+            "text": "text of the first post ..."
+        },
+        {
+            "id": 2,
+            "title": "Title of the second post",
+            "text": "text of the second post ..."
+        }
+    ]
+}
