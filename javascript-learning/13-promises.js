@@ -9,21 +9,16 @@
 //?/ Syntax:
 
 let promise = new Promise((resolve, reject) => {
-    // asynchronous operation
-    let success = true; // change to false to simulate error
+    fetch('https://jsonplaceholder.typicode.com/users/1')
+        .then(response => response.json())
+        .then(data => resolve(data))
+        .catch(error => reject(error));
+}
+);
 
-    if (success) {
-        resolve('Operation successful!');
-    } else {
-        reject('Operation failed!');
-    }
-});
-
-promise.then(result => {
-    console.log(result);
-}).catch(error => {
-    console.error(error);
-});
-
-//?/ Output: Operation successful! (if success is true)
-//?/ Output: Operation failed! (if success is false)
+promise
+    .then(data => console.log(data))
+    .catch(error => console.error(error))
+    .finally(() => console.log('Data fetched!'));
+//?/ Output: [ { id: 1, name: 'Leanne Graham', ... }, ... ]
+//?/ Output: Data fetched!
