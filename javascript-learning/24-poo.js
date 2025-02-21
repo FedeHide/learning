@@ -18,6 +18,13 @@ class Pet {
     #energy
     #hunger
 
+    // protected properties: can be accessed within the class and its subclasses but is just for typescript
+    // protected #energy
+
+    // public properties: can be accessed outside the class
+    name
+    species
+
     constructor(name, species) {
         this.name = name;
         this.species = species;
@@ -117,13 +124,29 @@ console.log("\n", "Abstraction:", "\n");
 
 class Shape {
     constructor() {
+        //! new.target: returns a reference to the constructor or function that was called when new was used.
         if (new.target === Shape) {
             throw new Error('Shape class cannot be instantiated.');
         }
     }
 
+    //! abstract method: a method that is declared but not implemented in the base class.
     draw() {
         throw new Error('Method draw() must be implemented.');
+    }
+
+    area() {
+        console.log('Calculating area...');
+    }
+
+    perimeter() {
+        console.log('Calculating perimeter...');
+    }
+
+    getInformation() {
+        this.draw();
+        this.area();
+        this.perimeter();
     }
 }
 
@@ -131,19 +154,42 @@ class Circle extends Shape {
     draw() {
         console.log('Drawing Circle...');
     }
+
+    area() {
+        console.log('Circle area = PI * r^2');
+        super.area();
+    }
+
+    perimeter() {
+        console.log('Perimeter of a circle = 2 * PI * r');
+        super.perimeter();
+    }
+
+    
+
 }
 
 class Rectangle extends Shape {
     draw() {
         console.log('Drawing Rectangle...');
     }
+
+    area() {
+        console.log('Rectangle area = length * width');
+        super.area();
+    }
+
+    perimeter() {
+        console.log('Perimeter of a rectangle = 2 * (length + width)');
+        super.perimeter();
+    }
 }
 
 const circle = new Circle();
-circle.draw(); // Output: Drawing Circle...
-
+circle.getInformation();
+console.log("\n");
 const rectangle = new Rectangle();
-rectangle.draw(); // Output: Drawing Rectangle...
+rectangle.getInformation();
 
 
 //*/ 3. Inheritance: refers to the mechanism by which one class acquires the properties and behavior of another class.
@@ -166,15 +212,21 @@ class Animal {
     sleep() {
         console.log(`${this.name} is sleeping.`);
     }
+
+    // method to override (polymorphism example)
+    makeSound() {
+        console.log('Animal makes a sound.');
+    }
 }
 
 class Mammal extends Animal {
     constructor(name, age, furColor) {
-        //! super() is used to call the constructor of the parent class.
+        //! super() is used to call the constructor of the parent class. Is required when the child class has its own constructor.
         super(name, age);
         this.furColor = furColor;
     }
 
+    // overriding the makeSound method
     makeSound() {
         console.log(`${this.name} makes a sound.`);
     }
@@ -186,7 +238,12 @@ class Dog extends Mammal {
         this.breed = breed;
     }
 
-    bark() {
+    play() {
+        console.log(`${this.name} is playing.`);
+    }
+
+    // overriding the makeSound method
+    makeSound() {
         console.log(`${this.name} barks.`);
     }
 }
@@ -200,6 +257,11 @@ class Bird extends Animal {
     fly() {
         console.log(`${this.name} is flying.`);
     }
+
+    // overriding the makeSound method
+    makeSound() {
+        console.log(`${this.name} chirps.`);
+    }
 }
 
 class Eagle extends Bird {
@@ -211,18 +273,26 @@ class Eagle extends Bird {
     hunt() {
         console.log(`${this.name} is hunting.`);
     }
+
+    // overriding the makeSound method
+    makeSound() {
+        console.log(`${this.name} screeches.`);
+    }
 }
 
 // Create instances of the classes
 const dog = new Dog('Buddy', 5, 'Brown', 'Golden Retriever');
 dog.eat(); // Output: Buddy is eating.
-dog.bark(); // Output: Buddy barks.
+dog.sleep(); // Output: Buddy is sleeping.
+dog.play(); // Output: Buddy is playing.
+dog.makeSound(); // Output: Buddy barks.
 console.log(`${dog.name} is a ${dog.breed} with ${dog.furColor} fur.`); // Output: Buddy is a Golden Retriever with Brown fur.
 
 const eagle = new Eagle('Hawk', 3, 2, 'Golden Eagle');
 eagle.sleep(); // Output: Hawk is sleeping.
 eagle.fly(); // Output: Hawk is flying.
 eagle.hunt(); // Output: Hawk is hunting.
+eagle.makeSound(); // Output: Hawk screeches.
 console.log(`${eagle.name} is a ${eagle.species} with a wingspan of ${eagle.wingSpan} meters.`); // Output: Hawk is a Golden Eagle with a wingspan of 2 meters.
 
 
@@ -232,35 +302,102 @@ console.log("\n", "Polymorphism:", "\n");
 
 // Polymorphism Example:
 
-class dinner {
-    constructor(name) {
+class Instrument {
+    constructor(name, type) {
         this.name = name;
+        this.type = type;
     }
 
-    eat() {
-        console.log(`${this.name} is eating.`);
-    }
-}
-
-class pizza extends dinner {
-    eat() {
-        console.log(`${this.name} is eating pizza.`);
+    play() {
+        console.log(`Playing ${this.name}...`);
     }
 }
 
-class pasta extends dinner {
-    eat() {
-        console.log(`${this.name} is eating pasta.`);
+class Guitar extends Instrument {
+    constructor() {
+        super('Guitar', 'String');
+    }
+
+    play() {
+        console.log("\x1b[31m%s\x1b[0m", `Strumming the strings of the ${this.name}...`);
     }
 }
 
-const pizza1 = new pizza('John');
-pizza1.eat(); // Output: John is eating pizza.
+class Drum extends Instrument {
+    constructor() {
+        super('Drum', 'Percussion');
+    }
 
-const pasta1 = new pasta('Jane');
-pasta1.eat(); // Output: Jane is eating pasta.
+    play() {
+        console.log("\x1b[32m%s\x1b[0m", `Beating the ${this.name}...`);
+    }
+}
+
+class Piano extends Instrument {
+    constructor() {
+        super('Piano', 'Keyboard');
+    }
+
+    play() {
+        console.log("\x1b[34m%s\x1b[0m", `Pressing the keys of the ${this.name}...`);
+    }
+}
+
+function orchestra(orchestra) {
+    orchestra.forEach(instrument => {
+        instrument.play();
+    });
+}
+
+const guitar = new Guitar();
+const drum = new Drum();
+const piano = new Piano();
+
+orchestra([guitar, drum, piano]);
 
 
+
+//*/ static properties and methods: are shared across all instances of a class.
+console.log("\n", "Static Properties and Methods:", "\n");
+
+// Static Properties and Methods Example:
+
+class Circle2 {
+    static pi = 3.14159;
+
+    static calculateArea(radius) {
+        return this.pi * radius * radius;
+    }
+}
+
+console.log(Circle2.pi); // Output: 3.14159
+console.log(Circle2.calculateArea(5)); // Output: 78.53975
+
+
+// Static Properties and Methods Example:
+
+class Calculator {
+    static add(a, b) {
+        return a + b;
+    }
+
+    static subtract(a, b) {
+        return a - b;
+    }
+
+    multiply(a, b) {
+        return a * b;
+    }
+
+    divide(a, b) {
+        return a / b;
+    }
+}
+
+console.log(Calculator.add(5, 3)); // Output: 8
+console.log(Calculator.subtract(5, 3)); // Output: 2
+// console.log(Calculator.multiply(5, 3)); // Error: TypeError: Calculator.multiply is not a function
+// console.log(Calculator.divide(5, 3)); // Error: TypeError: Calculator.divide is not a function
 
 //! other programming paradigms:
 //*/ 1. Imperative: uses statements that change a program. It focuses on describing how a program operates.
