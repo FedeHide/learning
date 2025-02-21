@@ -404,3 +404,4 @@ console.log(Calculator.subtract(5, 3)); // Output: 2
 //*/ 2. Declarative: expresses the logic of a computation without describing its control flow.
 //*/ 3. Functional: treats computation as the evaluation of mathematical functions and avoids changing-state and mutable data.
 //*/ 4. logical: uses logical inference to solve problems.
+//*/ 5. procedural: uses a list of instructions to tell the computer what to do step by step.

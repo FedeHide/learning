@@ -15,17 +15,25 @@
 let literalMap = new Map([
     ['name', 'John'],
     ['age', 30],
-    ['city', 'New York']
+    ['city', 'New York'],
+    ['children', 2],
+    ['married', true],
+    ['run', function () {
+        console.log("Running");
+    }]
 ]);
-console.log(literalMap); // Map { 'name' => 'John', 'age' => 30, 'city' => 'New York' }
+console.log("map literal:", literalMap);
+literalMap.get('run')(); // Running
 
 
 //*/ Map Constructor
+console.log("\n")
+
 let constructorMap = new Map();
 constructorMap.set('name', 'John');
 constructorMap.set('age', 30);
 constructorMap.set('city', 'New York');
-console.log(constructorMap); // Map { 'name' => 'John', 'age' => 30, 'city' => 'New York' }
+console.log("map constructor:", constructorMap);
 
 
 //*/ Map Properties
