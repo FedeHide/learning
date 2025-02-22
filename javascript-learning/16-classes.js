@@ -58,12 +58,12 @@ class Admin extends User { // Inheritance: creates a class based on another clas
     }
 }
 
-const user = new User('John', 30); // new: creates an instance of a class.
+const user1 = new User('John', 30); // new: creates an instance of a class.
 const admin = new Admin('Jane', 25, ['delete']); // new: creates an instance of a class
 
-user.obtainInformation(); // Output: Name: John, Age: 30
-user.work(); // Output: John is working.
-console.log("User Type:", user.type); // Output: User
+user1.obtainInformation(); // Output: Name: John, Age: 30
+user1.work(); // Output: John is working.
+console.log("User Type:", user1.type); // Output: User
 console.log("Admin Register:", Admin.register); // Output: Admin
 admin.deletePost(5); // Output: Post 5 has been deleted.
 Admin.deleteUser(1); // Output: User 1 has been deleted.
