@@ -40,7 +40,7 @@ print("\n", "Other class example:")
 
 class Dog:
     # Class Attribute
-    species = "Canis familiaris"
+    species = "Canis familiaris"  #! Class attributes or static attributes are shared by all instances of a class.
 
     # Initializer / Instance Attributes or constructor
     def __init__(
@@ -56,15 +56,11 @@ mikey = Dog("Mikey", 6)
 
 # Access the instance attributes
 print(f"{mikey.name} is {mikey.age} years old.")  # Mikey is 6 years old.
-print(
-    "{} is {} and {} is {}.".format(philo.name, philo.age, mikey.name, mikey.age)
-)  # Philo is 5 and Mikey is 6.
+print(f"{philo.name} is {philo.age} years old.")  # Philo is 5 and Mikey is 6.
 
 # Is Philo a mammal?
 if philo.species == "Canis familiaris":
-    print(
-        "{0} is a {1}!".format(philo.name, philo.species)
-    )  # Philo is a Canis familiaris!
+    print(f"{philo.name} is a {philo.species}!")  # Philo is a Canis familiaris!
 
 
 ###* Methods
@@ -85,11 +81,11 @@ class Dog:
 
     # instance method
     def description(self):  #! self is needed when defining instance methods
-        return "{} is {} years old".format(self.name, self.age)
+        return f"{self.name} is {self.age} years old"
 
     # instance method
     def speak(self, sound):
-        return "{} says {}".format(self.name, sound)
+        return f"{self.name} says {sound}"
 
 
 # Instantiate the Dog object
@@ -132,7 +128,7 @@ class Animal:
         self.species = species
 
     def make_sound(self, sound):
-        return "{} says {}".format(self.name, sound)
+        return f"{self.name} says {sound}"
 
 
 class Dog(Animal):
@@ -227,7 +223,7 @@ class Warrior(Character):
     # Overriding the attack method
     def attack(self):
         damage = randint(10, 20)
-        return f"🗡️ {self.class_type} {self.name} swings a mighty sword, dealing {damage} damage!"
+        return f"🗡️ \033[092m{self.class_type} {self.name} swings a mighty sword, dealing {damage} damage!"
 
 
 # Mage class
@@ -238,7 +234,7 @@ class Mage(Character):
     # Overriding the attack method
     def attack(self):
         damage = randint(15, 25)
-        return f"🔥 {self.class_type} {self.name} casts a fireball, dealing {damage} damage!"
+        return f"🔥 \033[091m{self.class_type} {self.name} casts a fireball, dealing {damage} damage!"
 
 
 # Rogue class
@@ -249,7 +245,7 @@ class Rogue(Character):
     # Overriding the attack method
     def attack(self):
         damage = randint(5, 30)  # Higher damage range due to critical strikes
-        return f"🗡️ {self.class_type} {self.name} backstabs the enemy, dealing {damage} damage!"
+        return f"🗡️ \033[94m{self.class_type} {self.name} backstabs the enemy, dealing {damage} damage!\033[0m"
 
 
 # Function demonstrating polymorphism
@@ -263,3 +259,77 @@ heroes = [Warrior("Thorin"), Mage("Merlin"), Rogue("Luthien")]
 
 # Running the battle simulation
 battle_simulation(heroes)
+
+
+###* Abstract Base Classes (ABC)
+# Abstract Base Classes are a way to define a common interface for a set of subclasses.
+# ABCs allow you to define a blueprint for a set of classes, ensuring that all subclasses implement the required methods.
+print("\n", "Abstract Base Classes (ABC):")
+
+
+from abc import ABC, abstractmethod
+
+#! Decorator: is a design pattern in Python that allows a user to add new functionality to an object without modifying its structure.
+
+
+# Base class
+class Shape(ABC):
+    number_of_shapes = 0
+
+    def __init__(self):
+        Shape.number_of_shapes += 1
+
+    @abstractmethod  #! This decorator indicates that the method is abstract and must be implemented by subclasses.
+    def area(self):
+        pass
+
+    @abstractmethod
+    def perimeter(self):
+        pass
+
+    # class method (cls)
+    @classmethod
+    def obtain_number_of_shapes(cls):
+        return cls.number_of_shapes
+
+
+# Circle class
+class Circle(Shape):
+    def __init__(self, radius):
+        super().__init__()
+        self.radius = radius
+
+    def area(self):
+        return 3.14 * self.radius**2
+
+    def perimeter(self):
+        return 2 * 3.14 * self.radius
+
+
+# Rectangle class
+class Rectangle(Shape):
+    def __init__(self, width, height):
+        super().__init__()
+        self.width = width
+        self.height = height
+
+    def area(self):
+        return self.width * self.height
+
+    def perimeter(self):
+        return 2 * (self.width + self.height)
+
+
+# Function to calculate the total area of shapes
+def total_area(shapes):
+    return sum([shape.area() for shape in shapes])
+
+
+# Creating instances of different shapes
+shapes = [Circle(5), Rectangle(3, 4)]
+
+# Calculating the total area
+print("Total area:", total_area(shapes))  # Total area: 71.42
+
+# class method
+print("Number of shapes:", Shape.obtain_number_of_shapes())  # Number of shapes: 2
