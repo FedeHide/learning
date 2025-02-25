@@ -84,7 +84,7 @@ class Dog:
         self.age = age
 
     # instance method
-    def description(self):
+    def description(self):  #! self is needed when defining instance methods
         return "{} is {} years old".format(self.name, self.age)
 
     # instance method
@@ -172,27 +172,30 @@ class Computer:
     def __init__(self):
         self.__maxprice = 900  #! private attribute (with double underscore)
 
-    def sell(self):
-        print("Selling Price: {}".format(self.__maxprice))
+    # getter and setter methods
+
+    def getMaxPrice(self):
+        return self.__maxprice
 
     def setMaxPrice(self, price):
+        if price < 1:
+            print("Price can't be less than 1")
+            return
         self.__maxprice = price
 
 
 c = Computer()
-c.sell()  #
+print("Max price:", c.getMaxPrice())  # 900
 
-# change the price
-c.__maxprice = (
-    1000  #! This will not change the price because __maxprice is a private attribute
-)
-c.sell()  # Selling Price: 900
+# change the price without using setter function
+c.__maxprice = 1000  #! This will not change the price because we are trying to change a private attribute
+print("Max price after change without using setter:", c.getMaxPrice())  # 900
 
 # using setter function
 c.setMaxPrice(
     1000
 )  #! This will change the price because we are using the setter function
-c.sell()  # Selling Price: 1000
+print("Max price after change using setter:", c.getMaxPrice())  # 1000
 
 
 ###* Polymorphism
