@@ -204,31 +204,62 @@ print("\n", "Polymorphism:")
 
 
 # Example:
-class Parrot:
-    def fly(self):
-        print("Parrot can fly")
 
-    def swim(self):
-        print("Parrot can't swim")
+from random import randint
 
 
-class Penguin:
-    def fly(self):
-        print("Penguin can't fly")
+# Base class
+class Character:
+    def __init__(self, name, class_type):
+        self.name = name
+        self.class_type = class_type
 
-    def swim(self):
-        print("Penguin can swim")
-
-
-# common interface
-def flying_test(bird):
-    bird.fly()
+    def attack(self):
+        """Each subclass must implement its own attack method"""
+        raise NotImplementedError("Subclasses must implement this method")
 
 
-# instantiate objects
-blu = Parrot()
-peggy = Penguin()
+# Warrior class
+class Warrior(Character):
+    def __init__(self, name):
+        super().__init__(name, class_type="Warrior")
 
-# passing the object
-flying_test(blu)  # Parrot can fly
-flying_test(peggy)  # Penguin can't fly
+    # Overriding the attack method
+    def attack(self):
+        damage = randint(10, 20)
+        return f"🗡️ {self.class_type} {self.name} swings a mighty sword, dealing {damage} damage!"
+
+
+# Mage class
+class Mage(Character):
+    def __init__(self, name):
+        super().__init__(name, class_type="Mage")
+
+    # Overriding the attack method
+    def attack(self):
+        damage = randint(15, 25)
+        return f"🔥 {self.class_type} {self.name} casts a fireball, dealing {damage} damage!"
+
+
+# Rogue class
+class Rogue(Character):
+    def __init__(self, name):
+        super().__init__(name, class_type="Rogue")
+
+    # Overriding the attack method
+    def attack(self):
+        damage = randint(5, 30)  # Higher damage range due to critical strikes
+        return f"🗡️ {self.class_type} {self.name} backstabs the enemy, dealing {damage} damage!"
+
+
+# Function demonstrating polymorphism
+def battle_simulation(characters):
+    for character in characters:
+        print(character.attack())
+
+
+# Creating instances of different character types
+heroes = [Warrior("Thorin"), Mage("Merlin"), Rogue("Luthien")]
+
+# Running the battle simulation
+battle_simulation(heroes)
