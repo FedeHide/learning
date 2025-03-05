@@ -30,3 +30,16 @@ let inferredBoolean = true; // TypeScript infers the type to be boolean
 // inferredString = false //! Error: Type 'false' is not assignable to type 'string'.
 // inferredNumber = "25" //! Error: Type '"25"' is not assignable to type 'number'.
 // inferredBoolean = 0 //! Error: Type '0' is not assignable to type 'boolean'.
+
+
+
+//* function parameters and return types can also have annotations
+
+// regular function
+function addOne(num: number): number {
+    return num + 1;
+}
+
+
+// arrow function
+const multiply = (x: number, y: number): number => x * y;
