@@ -139,6 +139,3 @@ type mixedNumbers = (typeof mixedValues)[number]
 type Enums = {
     [key in mixedNumbers]: any
 }
-
-
-
