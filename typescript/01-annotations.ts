@@ -23,7 +23,7 @@ let myInfo: [string, number] = ["John", 25]; // Tuple
 
 //* type inference: TypeScript can infer the type of a variable based on its value
 
-let inferredString = "Hello"; // TypeScript infers the type to be string
+let inferredString = "Hello"; // TypeScript infers the tpe to be string
 let inferredNumber = 25; // TypeScript infers the type to be number
 let inferredBoolean = true; // TypeScript infers the type to be boolean
 
@@ -42,4 +42,23 @@ function addOne(num: number): number {
 
 
 // arrow function
-const multiply = (x: number, y: number): number => x * y;
+const multiply = (x: number, y: number): number => x * y
+
+
+// function with no return type
+function subtract(a: number, b: number): void { //! void means the function does not return anything
+    console.log(a - b);
+}
+
+
+// function with optional parameter
+function sayHello(name: string, age?: number): void {
+    age ? console.log(`Hello, ${name}! You are ${age} years old.`) : console.log(`Hello, ${name}!`);
+}
+
+
+// function with default parameter
+function greet(name: string, greeting: string = "Hello"): void {
+    console.log(`${greeting}, ${name}!`);
+}
+
