@@ -29,7 +29,7 @@ httptools==0.6.4
 httpx==0.28.0
 idna==3.10
 itsdangerous==2.2.0
-Jinja2==3.1.5
+Jinja2==3.1.6
 kiwisolver==1.4.8
 license-expression==30.4.0
 markdown-it-py==3.0.0
