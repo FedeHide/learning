@@ -9,12 +9,15 @@ class Person {
     readonly id: number; //! readonly property: can't be changed after initialization
 
 
-    constructor(name: string, age: number, job: string, type: string, id: number) {
+    constructor(name: string, age: number, job: string, type: string, id: number, isHuman?: boolean) {
         this.name = name;
         this.age = age;
         this.job = job;
         this.type = type;
         this.id = id;
+        if (isHuman) {
+            Person.isHuman = isHuman;
+        }
     }
 
     // setters and getters
@@ -62,8 +65,11 @@ console.log("isHuman: ", Person.checkIsHuman());
 
 
 class Employee extends Person {
-    constructor(name: string, age: number, job: string, type: string, id: number) {
-        super(name, age, job, type, id);
+    isAdmin: boolean;
+
+    constructor(name: string, age: number, job: string, type: string, id: number, isHuman?: boolean, isAdmin: boolean) {
+        super(name, age, job, type, id, isHuman);
+        this.isAdmin = isAdmin;
     }
 
     printEmployeeJob() {
