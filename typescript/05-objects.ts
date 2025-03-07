@@ -35,14 +35,17 @@ const pokemonAnnotation: { name: string; type: string } = {
 //* optional and readonly properties
 interface Cat {
     name: string;
-    age?: number;
-    readonly furColor: string;
+    age?: number; //! optional property
+    readonly furColor: string; //! cannot be changed
 }
 
 let cat: Cat = {
     name: 'Fluffy',
     furColor: 'white'
 }
+
+cat.name = 'Whiskers'; //! OK
+// cat.furColor = 'black'; //! Error: cannot change a readonly property
 
 
 //* object with nested objects and arrays of objects
