@@ -91,14 +91,14 @@ console.log("Functional Overloading 2:", stringOrNumber({ breed: "Husky", greet:
 
 //* using enums to create a type
 
-enum Keys {
-    name = "name",
-    age = "age",
-    city = "city",
+enum CarModelKeys {
+    brand = "brand",
+    model = "model",
+    year = "year",
 }
 
-type PersonType = {
-    [key in Keys]: string;
+type CarModel = {
+    [key in CarModelKeys]: string;
 }
 
 
