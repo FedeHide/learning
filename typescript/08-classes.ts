@@ -4,29 +4,26 @@ class Person {
     name: string; //! public property: accessible from outside the class, default access modifier is public
     public age: number; //! public property: accessible from outside the class, that public is not necessary
     static isHuman = true; //! static property: can be accessed without creating an instance of the class
-    private type: string; //! private property: only accessible within the class
+    private _type: string; //! private property: only accessible within the class. Conventionally, private properties are prefixed with an underscore
     protected job: string; //! protected property: accessible within the class and its subclasses
     readonly id: number; //! readonly property: can't be changed after initialization
 
 
-    constructor(name: string, age: number, job: string, type: string, id: number, isHuman?: boolean) {
+    constructor(name: string, age: number, job: string, type: string, id: number) { // static properties can't be passed as arguments
         this.name = name;
         this.age = age;
         this.job = job;
-        this.type = type;
+        this._type = type;
         this.id = id;
-        if (isHuman) {
-            Person.isHuman = isHuman;
-        }
     }
 
     // setters and getters
     setType(type: string) {
-        this.type = type;
+        this._type = type;
     }
 
     getType() {
-        return this.type;
+        return this._type;
     }
 
     // public method: accessible from outside the class
@@ -36,12 +33,12 @@ class Person {
 
     // private method: only accessible within the class
     private printType() {
-        console.log(this.type);
+        console.log(this._type);
     }
 
     // protected method: accessible within the class and its subclasses
     protected printJob() {
-        console.log(this.job);
+        console.log("Job: ", this.job);
     }
 
     // static method: can be called without creating an instance of the class
@@ -65,11 +62,11 @@ console.log("isHuman: ", Person.checkIsHuman());
 
 
 class Employee extends Person {
-    isAdmin: boolean;
+    hasExperience: boolean;
 
-    constructor(name: string, age: number, job: string, type: string, id: number, isHuman?: boolean, isAdmin: boolean) {
-        super(name, age, job, type, id, isHuman);
-        this.isAdmin = isAdmin;
+    constructor(name: string, age: number, job: string, type: string, id: number, hasExperience: boolean) {
+        super(name, age, job, type, id);
+        this.hasExperience = hasExperience;
     }
 
     printEmployeeJob() {
@@ -80,6 +77,6 @@ class Employee extends Person {
 }
 
 
-const employee = new Employee('Jane', 25, 'Designer', 'human', 2);
+const employee = new Employee('Jane', 25, 'Designer', 'human', 2, true);
 console.log("employee: ", employee);
 employee.printEmployeeJob();
