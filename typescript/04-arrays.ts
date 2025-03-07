@@ -21,8 +21,11 @@ let users: { name: string, age: number }[] = [
 
 
 //* tuples: fixed-length arrays
-let myTuple: [string, number];
-myTuple = ["hello", 10];
+let myTuple: [string, number] = ["hello", 10]; //! can't change the length or the type in position
+
+
+//* multiple types in an array
+let multiTypeArr: (string | number)[] = [20, 49, "ruki", 30]; //! we can add strings and numbers in any order
 
 
 //* multidimensional arrays

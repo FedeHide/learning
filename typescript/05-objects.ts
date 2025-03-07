@@ -35,7 +35,7 @@ const pokemonAnnotation: { name: string; type: string } = {
 //* optional and readonly properties
 interface Cat {
     name: string;
-    age?: number; //! optional property
+    age?: number; //! optional property  (if not provided, it will be undefined)
     readonly furColor: string; //! cannot be changed
 }
 

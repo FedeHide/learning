@@ -62,3 +62,14 @@ function greet(name: string, greeting: string = "Hello"): void {
     console.log(`${greeting}, ${name}!`);
 }
 
+
+//* literal types: a type that represents a single value
+
+let direction: "left" | "right" | "up" | "down"; // Union of literal types
+// direction = "forward"; //! Error: Type '"forward"' is not assignable to type '"left" | "right" | "up" | "down"'.
+
+let number: 10 = 10; // Literal type
+// number = 20; //! Error: Type '20' is not assignable to type '10'.
+
+let isTrue: true 
+// isTrue = false //! Error: Type 'false' is not assignable to type 'true'.
