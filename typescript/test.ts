@@ -41,9 +41,9 @@ function obtainConfig2() {
 
 //* functional overloading: we can define multiple function signatures and a single implementation
 
-function add(a: number, b: number): number;
-function add(a: string, b: string): string;
-function add(a: number | string, b: number | string): number | string {
+function add2(a: number, b: number): number;
+function add2(a: string, b: string): string;
+function add2(a: number | string, b: number | string): number | string {
     if (typeof a === "number" && typeof b === "number") {
         return a + b;
     } else {
@@ -51,8 +51,8 @@ function add(a: number | string, b: number | string): number | string {
     }
 }
 
-console.log("Functional Overloading:", add(1, 2)); // 3
-console.log("Functional Overloading:", add("Hello", "World")); // HelloWorld
+console.log("Functional Overloading:", add2(1, 2)); // 3
+console.log("Functional Overloading:", add2("Hello", "World")); // HelloWorld
 
 //! if the first two functions are not defined, the type checker will throw an error when calling the function with a string and a number
 
