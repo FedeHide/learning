@@ -18,31 +18,31 @@ class Person {
     }
 
     // setters and getters
-    setType(type: string) {
+    setType(type: string): void {   
         this._type = type;
     }
 
-    getType() {
+    getType(): string {
         return this._type;
     }
 
     // public method: accessible from outside the class
-    printAge() {
+    printAge(): void {
         console.log("Age: ", this.age);
     }
 
     // private method: only accessible within the class
-    private printType() {
+    private printType(): void {
         console.log(this._type);
     }
 
     // protected method: accessible within the class and its subclasses
-    protected printJob() {
+    protected printJob(): void {
         console.log("Job: ", this.job);
     }
 
     // static method: can be called without creating an instance of the class
-    static checkIsHuman() {
+    static checkIsHuman(): boolean {
         return Person.isHuman;
     }
 }
@@ -61,7 +61,7 @@ console.log("isHuman: ", Person.checkIsHuman());
 // person.id = 2; //! ERROR: can't change readonly property
 
 
-class Employee extends Person {
+class ProjectManager extends Person {
     hasExperience: boolean;
 
     constructor(name: string, age: number, job: string, type: string, id: number, hasExperience: boolean) {
@@ -69,7 +69,7 @@ class Employee extends Person {
         this.hasExperience = hasExperience;
     }
 
-    printEmployeeJob() {
+    printEmployeeJob(): void {
         // this.printType(); //! ERROR: private method only accessible within the parent class
         // console.log(this.type) //! ERROR: private property only accessible within the parent class
         this.printJob(); //! protected method inherited from the parent class
@@ -77,6 +77,6 @@ class Employee extends Person {
 }
 
 
-const employee = new Employee('Jane', 25, 'Designer', 'human', 2, true);
+const employee = new ProjectManager('Jane', 25, 'Designer', 'human', 2, true);
 console.log("employee: ", employee);
 employee.printEmployeeJob();

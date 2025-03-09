@@ -14,7 +14,7 @@ type User = {
     platform: Platform;
 }
 
-function logUserDetails(user: User) {
+function logUserDetails(user: User): void {
     console.log(`User ${user.id} is ${user.name} and ${user.age} years old and uses ${user.platform}`);
 }
 
@@ -76,7 +76,7 @@ type Point3D = [number, number, number]; // tuple type
 
 type Distance = (from: Point, to: Point) => number; // function type
 
-const distance: Distance = (from, to) => {
+const distance: Distance = (from, to): number => {
     return Math.sqrt(Math.pow(to[0] - from[0], 2) + Math.pow(to[1] - from[1], 2));
 }
 
