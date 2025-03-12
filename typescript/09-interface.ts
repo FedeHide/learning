@@ -56,7 +56,7 @@ interface MathOperation {
 }
 
 const add: MathOperation = (a, b) => a + b;
-const subtract: MathOperation = (a, b) => a - b;
+const divide: MathOperation = (a, b) => a / b;
 
 
 //* 4. Extending Interface

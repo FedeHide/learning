@@ -86,18 +86,6 @@ let client: Client = {
 }
 
 
-//* object with index signature
-interface Dictionary {
-    [key: string]: string;
-}
-
-
-let dictionary: Dictionary = {
-    message: 'Hello',
-    name: 'John'
-}
-
-
 //* object as function return type
 function createPokemon(name: string, type: string, attacks: string[]): { name: string; type: string; attacks: string[] } {
     return { name, type, attacks }

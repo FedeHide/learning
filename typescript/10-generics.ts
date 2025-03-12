@@ -29,11 +29,11 @@ function mapArray<T, U>(arg: T[], fn: (item: T) => U): U[] {
     return arg.map(fn);
 }
 
-const numbers = [1, 2, 3, 4, 5];
+const listOfNumbers = [1, 2, 3, 4, 5];
 
-const strings = mapArray<number, string>(numbers, (item) => item.toString());
-const doubled = mapArray<number, number>(numbers, (item) => item * 2);
-const isEven = mapArray<number, boolean>(numbers, (item) => item % 2 === 0);
+const strings = mapArray<number, string>(listOfNumbers, (item) => item.toString());
+const doubled = mapArray<number, number>(listOfNumbers, (item) => item * 2);
+const isEven = mapArray<number, boolean>(listOfNumbers, (item) => item % 2 === 0);
 
 
 //* Example 4: how generics help to avoid duplicated code
