@@ -2,3 +2,4 @@
 - intersection types
 - multiple types
 - enums
+- utility types
