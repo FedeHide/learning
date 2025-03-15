@@ -65,3 +65,27 @@
 
 
 
+//* 4. typing hooks
+// - hooks are functions that let you use state and other React features in functional components
+
+// import { Dispatch, SetStateAction, useState } from 'react';
+
+// type ButtonProps = {
+//     setCount: Dispatch<SetStateAction<number>>;
+// }
+
+// const Button = ({ setCount }: ButtonProps) => {
+//     return (
+//         <button onClick={() => setCount((prev) => prev + 1)}>Click me</button>
+//     )
+// }
+
+// const App = () => {
+//     const [count, setCount] = useState(0);
+//
+//     return (
+//         <div>
+//             <p>{count}</p>
+//             <Button setCount={setCount} />
+//         </div>
+//     )
