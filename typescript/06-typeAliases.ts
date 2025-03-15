@@ -45,6 +45,7 @@ type Warrior = {
 type Mage = {
     spells: string[];
     intelligence: number;
+    cast?: (spell: string) => void;
 }
 
 type Paladin = Character & Warrior; //! intersection type
