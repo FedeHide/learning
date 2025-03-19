@@ -125,6 +125,10 @@ type ExcludeType = Exclude<string | number | boolean, boolean>; // you can exclu
 const exclude: ExcludeType = 'string';
 // const exclude2: ExcludeType = true; //! Error: Type 'true' is not assignable to type 'string'
 
+//! difference between exclude and omit
+// Exclude: exclude types from a union
+// Omit: exclude properties from an object type
+
 
 
 //* Extract<T, U>: extracts from T those types that are assignable to U
@@ -132,6 +136,10 @@ type ExtractType = Extract<string | number | boolean, boolean>; // you can extra
 
 const extract: ExtractType = true;
 // const extract2: ExtractType = 'string'; //! Error: Type 'string' is not assignable to type 'boolean'
+
+//! difference between extract and pick
+// Extract: extract types from a union
+// Pick: pick properties from an object type
 
 
 

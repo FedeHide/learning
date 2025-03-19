@@ -74,3 +74,14 @@ const evenNumbers = filterArray<number>(numbersArray, (item) => item % 2 === 0);
 
 const stringsArray = ["banana", "apple", "orange"];
 const longStrings = filterArray<string>(stringsArray, (item) => item.length > 5); // ["banana", "orange"]
+
+
+
+//* Example 5: with interfaces
+
+interface Box<T> {
+    value: T;
+}
+
+const box: Box<string> = { value: "Hello, world!" };
+const box2: Box<number> = { value: 123 };

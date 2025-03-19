@@ -115,3 +115,13 @@
 //             <Button ref={buttonRef} setCount={setCount} />
 //         </div>
 //     )
+
+
+
+//* 5. type assertions
+
+// const inputElement = document.getElementById('input') as HTMLInputElement;
+// const inputElement = <HTMLInputElement>document.getElementById('input');
+// const inputElement = document.getElementById('input') as unknown as HTMLInputElement;  
+// const inputElement = document.getElementById('input') as HTMLInputElement | null; 
+// const inputElement = document.getElementById('input') as HTMLInputElement ?? null; 
