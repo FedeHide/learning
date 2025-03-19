@@ -24,6 +24,20 @@
 
 
 
+//! props for tags and styles
+
+// type Props = {
+//     buttonProps: componentPropsWithoutRef<'button'>;
+//     style?: React.CSSProperties;
+// }
+
+// const Button = ({ buttonProps, style }: Props) => {
+//     return (
+//         <button {...buttonProps} style={style} /> 
+//     )
+// }S
+
+
 //* 2. typing children
 // - children are passed to components as props
 
@@ -68,7 +82,12 @@
 //* 4. typing hooks
 // - hooks are functions that let you use state and other React features in functional components
 
-// import { Dispatch, SetStateAction, useState } from 'react';
+// import { Dispatch, SetStateAction, useState, useRef } from 'react';
+
+// type User = {
+//     name: string;
+//     age: number;
+// }
 
 // type ButtonProps = {
 //     setCount: Dispatch<SetStateAction<number>>;
@@ -80,12 +99,19 @@
 //     )
 // }
 
+
 // const App = () => {
 //     const [count, setCount] = useState(0);
+//     const [text, setText] = useState('');
+//     const [loading, setLoading] = useState(false);
+//     const [user, setUser] = useState<User | null>(null);
+//     const buttonRef = useRef<HTMLButtonElement | null>(null);
+//
+//     buttonRef.current?.focus(); //! useRef is for accessing DOM elements
 //
 //     return (
 //         <div>
 //             <p>{count}</p>
-//             <Button setCount={setCount} />
+//             <Button ref={buttonRef} setCount={setCount} />
 //         </div>
 //     )
