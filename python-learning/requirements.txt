@@ -22,7 +22,7 @@ fastapi==0.115.5
 fastapi-cli==0.0.5
 filelock==3.16.1
 fonttools==4.56.0
-h11==0.14.0
+h11==0.16.0
 html5lib==1.1
 httpcore==1.0.7
 httptools==0.6.4
