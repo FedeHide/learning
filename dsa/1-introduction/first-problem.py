@@ -5,10 +5,10 @@
 # Take 1
 print("Take 1")
 
-studentsList = {"charizard", "Orion", "Nyx", "ruki", "anya", "charizard"}
+students_list = {"charizard", "Orion", "Nyx", "ruki", "anya", "charizard"}
 
 
-def findStudentsByName(allStudents, studentName):
+def find_students_by_name(allStudents, studentName):
     cleanStudentName = studentName.lower()
 
     for student in allStudents:
@@ -19,16 +19,14 @@ def findStudentsByName(allStudents, studentName):
     print(f"{studentName} is not on the list.")
 
 
-findStudentsByName(studentsList, "CharizarD")
+find_students_by_name(students_list, "CharizarD")
 
 
 # Take 2
 print("\nTake 2")
 
-studentsList2 = {"charizard", "Orion", "Nyx", "ruki", "anya", "charizard"}
 
-
-def findStudentsByName2(allStudents, studentName):
+def find_students_by_name_2(allStudents, studentName):
     cleanStudentName = studentName.lower()
     allStudentsCleaned = set()
 
@@ -44,4 +42,4 @@ def findStudentsByName2(allStudents, studentName):
     print(res)
 
 
-findStudentsByName2(studentsList2, "RUKIS")
+find_students_by_name_2(students_list, "RUKIS")
