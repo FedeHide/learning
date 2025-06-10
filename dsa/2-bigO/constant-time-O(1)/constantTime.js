@@ -1,3 +1,6 @@
+const { performance } = require('perf_hooks');
+
+
 const productsList = {
     "abc123": { productName: "notebook", price: 900 },
     "def456": { productName: "smartphone", price: 700 },
@@ -17,3 +20,21 @@ function getProductById2(productsList) {
     return Object.entries(productsList).find(([id, _]) => id === "abc123")?.[1];
 }
 console.log(getProductById2(productsList))
+
+
+// Benchmarking the two functions
+const iterations = 1000000;
+
+let start = performance.now();
+for (let i = 0; i < iterations; i++) {
+    getProductById("abc123");
+}
+let end = performance.now();
+console.log(`getProductById O(1) time: ${(end - start).toFixed(6)} ms`);
+
+start = performance.now();
+for (let i = 0; i < iterations; i++) {
+    getProductById2(productsList);
+}
+end = performance.now();
+console.log(`getProductById2 O(n) time: ${(end - start).toFixed(6)} ms`);

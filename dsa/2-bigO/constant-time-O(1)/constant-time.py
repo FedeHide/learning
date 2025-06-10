@@ -1,3 +1,5 @@
+import timeit
+
 products_list = {
     "abc123": {"productName": "notebook", "price": 900},
     "def456": {"productName": "smartphone", "price": 700},
@@ -23,3 +25,22 @@ def get_product_by_id_2(id):
 
 
 print(get_product_by_id_2("abc123"))
+
+
+# Benchmarking the two functions
+
+iterations = 1000000
+
+time_o1 = timeit.timeit(
+    'get_product_by_id("abc123")', globals=globals(), number=iterations
+)
+time_on = timeit.timeit(
+    'get_product_by_id_2("abc123")', globals=globals(), number=iterations
+)
+
+print(
+    f"get_product_by_id O(1) time: {time_o1 * 1000:.3f} ms for {iterations} iterations"
+)
+print(
+    f"get_product_by_id_2 O(n) time: {time_on * 1000:.3f} ms for {iterations} iterations"
+)
