@@ -12,6 +12,10 @@ let phone = {
     year: 2020
 };
 
+console.log("object literal: ", phone);
+console.log("keys are strings: ", Object.keys(phone)); // ['brand', 'model', 'year']
+//! all keys are strings, even if they are not enclosed in quotes
+
 let person = {
     name: 'John Doe',
     age: 30,
@@ -33,7 +37,7 @@ let person = {
     }
 };
 
-console.log("object literal: ", person);
+console.log("\n","object literal: ", person);
 
 
 //*/ Object constructor: is used to create a new object with the specified properties and values.
