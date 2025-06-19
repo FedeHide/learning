@@ -6,4 +6,4 @@ def reverse_string(text):
     print(text[::-1])
 
 
-reverse_string("")
+reverse_string("Hello")
