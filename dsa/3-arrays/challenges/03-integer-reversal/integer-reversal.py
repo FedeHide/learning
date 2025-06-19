@@ -2,10 +2,13 @@ def reverse_number(number):
     if not isinstance(number, (int, float)):
         raise ValueError("Input must be a number")
 
+    sign = -1 if number < 0 else 1
     if isinstance(number, int):
-        print(int(str(number)[::-1]))
+        reversed_int_str = str(abs(int(number)))[::-1]
+        print(int(reversed_int_str) * sign)
     elif isinstance(number, float):
-        print(float(str(number)[::-1]))
+        reversed_float_str = str(abs(float(number)))[::-1]
+        print(float(reversed_float_str) * sign)
 
 
-reverse_number(123)
+reverse_number(-123.23)
