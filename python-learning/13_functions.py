@@ -50,9 +50,9 @@ def add_subtract(a, b):
 result = add_subtract(5, 3)
 print(result)  # Output: (8, 2)
 
-sum, difference = add_subtract(5, 3)
-print(sum)  # Output: 8
-print(difference)  # Output: 2
+sum_var, difference_var = add_subtract(5, 3)
+print(sum_var)  # Output: 8
+print(difference_var)  # Output: 2
 
 
 ## variable number of arguments:
@@ -73,3 +73,31 @@ def print_upper_texts(*texts):
 
 
 print_upper_texts("Hello", "World", "Python")  # Output: HELLO, WORLD, PYTHON
+
+
+## keyword arguments:
+def print_info(**kwargs):
+    for key, value in kwargs.items():
+        print(f"{key}: {value}")
+
+
+print_info(name="Ruko", surname="ElPurro", age=30)
+# Output:
+# name: Ruko
+# surname: ElPurro
+# age: 30
+
+
+## Generators: are a special type of function that can be paused and resumed.
+# They use the yield keyword to return a value and pause the function's execution.
+# When the generator is called again, it resumes from where it left off.
+def count_up_to(max):
+    count = 1
+    while count <= max:
+        yield count  # Yield the current count
+        count += 1
+
+
+# Using the generator
+for number in count_up_to(5):
+    print(number)  # Output: 1, 2, 3, 4, 5
